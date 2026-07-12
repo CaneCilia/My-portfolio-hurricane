@@ -1,0 +1,86 @@
+.events-container {
+  margin-top: 100px;
+}
+
+.events-subtitle-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-top: -30px;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.event-card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.event-date, .event-participants {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.event-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.event-role {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-purple);
+  margin-bottom: 20px;
+}
+
+.event-contributions-box h6 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.evt-contrib-list {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.evt-contrib-list li::before {
+  content: "•";
+  color: var(--accent-blue);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -0.5em;
+}

@@ -1,0 +1,101 @@
+.publications-section {
+  position: relative;
+  z-index: 2;
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 30px;
+}
+
+.pub-card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pub-tag {
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.15);
+  color: var(--accent-blue);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.pub-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pub-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.pub-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.pub-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pub-learnings {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border-left: 3px solid var(--accent-purple);
+}
+
+.pub-learnings strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pub-learnings p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.pub-footer {
+  margin-top: 10px;
+}
+
+.view-pub-btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .publications-grid {
+    grid-template-columns: 1fr;
+  }
+}

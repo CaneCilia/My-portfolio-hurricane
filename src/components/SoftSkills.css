@@ -1,0 +1,74 @@
+.soft-skills-container {
+  margin-top: 80px;
+}
+
+.sub-section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.sub-section-title::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--accent-purple);
+  margin: 10px auto 0;
+}
+
+.soft-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.soft-card {
+  padding: 30px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+}
+
+.soft-card:hover {
+  border-bottom: 2px solid var(--accent-purple);
+}
+
+.soft-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  color: var(--accent-purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+  transition: var(--transition-bounce);
+}
+
+.soft-card:hover .soft-card-icon {
+  transform: scale(1.1) rotate(15deg);
+  background: var(--accent-purple);
+  color: white;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.soft-card h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.soft-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

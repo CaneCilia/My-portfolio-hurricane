@@ -1,0 +1,129 @@
+.skills-section {
+  position: relative;
+  z-index: 2;
+}
+
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 30px;
+  max-width: 750px;
+  margin: 0 auto 40px;
+}
+
+.tab-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tab-btn.active {
+  color: white;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.skill-card-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.skill-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--accent-blue);
+}
+
+.skill-card:hover .skill-icon-box {
+  color: var(--accent-purple);
+  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(168, 85, 247, 0.05);
+}
+
+.skill-info {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.proficiency-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.proficiency-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.proficiency-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  width: 0;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-card:hover .proficiency-bar {
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+
+.skill-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .skills-tabs {
+    border-radius: 16px;
+    padding: 12px;
+  }
+}

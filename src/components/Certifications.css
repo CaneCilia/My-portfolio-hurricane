@@ -1,0 +1,118 @@
+.certs-container {
+  margin-top: 100px;
+}
+
+.certs-subtitle-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-top: -30px;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cert-preview-box {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 16px;
+  text-align: center;
+}
+
+.cert-icon-glow {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  animation: float-cert 3s ease-in-out infinite alternate;
+}
+
+@keyframes float-cert {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+.cert-info-box {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.cert-info-box h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  height: 44px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.cert-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.cert-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cert-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-blue);
+  font-weight: bold;
+}
+
+.verify-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  margin-top: auto;
+  transition: var(--transition-bounce);
+}
+
+.verify-link:hover {
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.1);
+}

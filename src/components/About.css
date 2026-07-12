@@ -1,0 +1,120 @@
+.about-section {
+  position: relative;
+  z-index: 2;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.about-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 3px solid var(--accent-purple);
+}
+
+.about-main-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.about-title-icon {
+  color: var(--accent-purple);
+}
+
+.about-main h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.about-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.profile-highlights {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.about-card-header h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.about-card-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Colors for icon highlights */
+.text-red { color: #f43f5e; }
+.text-blue { color: var(--accent-blue); }
+.text-purple { color: var(--accent-purple); }
+.text-yellow { color: #eab308; }
+
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
