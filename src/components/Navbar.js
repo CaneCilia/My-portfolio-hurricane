@@ -7,25 +7,27 @@ const navItems = [
   { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
   { id: 'internships', label: 'Internships' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'contributions', label: 'Contributions' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'publications', label: 'Research' },
   { id: 'contact', label: 'Contact' },
 ];
 
-const Navbar = ({ onTerminalToggle }) => {
+const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    if (currentPage === 'contact') {
+      setActiveSection('contact');
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
       // Section tracking for active highlights
       const scrollPosition = window.scrollY + 120;
       for (const item of navItems) {
+        if (item.id === 'contact') continue;
         const element = document.getElementById(item.id);
         if (element) {
           const top = element.offsetTop;
@@ -38,25 +40,39 @@ const Navbar = ({ onTerminalToggle }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPage]);
 
   const handleNavClick = (e, id) => {
     e.preventDefault();
     setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // height of fixed navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    
+    if (id === 'contact') {
+      window.location.hash = '#contact';
+      setCurrentPage('contact');
+      window.scrollTo(0, 0);
+      setActiveSection('contact');
+    } else {
+      window.location.hash = `#${id}`;
+      setCurrentPage('portfolio');
+      
+      // Scroll to the element after state updates and DOM renders
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 80; // height of fixed navbar
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(id);
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
     }
   };
 
@@ -64,8 +80,7 @@ const Navbar = ({ onTerminalToggle }) => {
     <nav className={`navbar glass ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <a href="#home" className="navbar-logo" onClick={(e) => handleNavClick(e, 'home')}>
-          <span>KANISHKAR</span>
-          <span className="logo-dot">.</span>
+          <span>&gt;_</span>
         </a>
 
         {/* Desktop Menu */}

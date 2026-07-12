@@ -24,7 +24,7 @@
   align-items: center;
   height: 80px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 90%;
   padding: 0 24px;
 }
 
@@ -89,15 +89,17 @@
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  color: #10b981;
+  background: #09090b;
+  border: 1px solid #10b981;
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .terminal-btn:hover {
-  border-color: var(--text-primary);
-  background: var(--bg-secondary);
+  background: #10b981;
+  color: #09090b;
+  border-color: #10b981;
 }
 
 .menu-toggle {
@@ -154,16 +156,18 @@
   width: 100%;
   padding: 12px;
   border-radius: 6px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: #09090b;
+  border: 1px solid #10b981;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #10b981;
   cursor: pointer;
+  transition: var(--transition-smooth);
 }
 
 .mobile-terminal-trigger:hover {
-  background: var(--bg-tertiary);
-  border-color: var(--text-primary);
+  background: #10b981;
+  color: #09090b;
+  border-color: #10b981;
 }
 
 /* Responsive adjustments */

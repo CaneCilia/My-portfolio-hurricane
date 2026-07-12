@@ -19,7 +19,9 @@ import Terminal from './components/Terminal';
 import './App.css';
 
 function App() {
-  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(() => {
+    return window.location.hash === '#contact' ? 'contact' : 'portfolio';
+  });
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -27,9 +29,47 @@ function App() {
       setShowScrollTop(window.scrollY > 400);
     };
 
+    const handleHashChange = () => {
+      if (window.location.hash === '#contact') {
+        setCurrentPage('contact');
+        window.scrollTo(0, 0);
+      } else {
+        setCurrentPage('portfolio');
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
+
+  const navigateToSection = (id) => {
+    if (id === 'contact') {
+      window.location.hash = '#contact';
+      setCurrentPage('contact');
+      window.scrollTo(0, 0);
+    } else {
+      window.location.hash = `#${id}`;
+      setCurrentPage('portfolio');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
+    }
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -37,6 +77,8 @@ function App() {
       behavior: 'smooth'
     });
   };
+
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
   const handleTerminalToggle = () => {
     setIsTerminalOpen(prev => !prev);
@@ -47,34 +89,42 @@ function App() {
   return (
     <div className="App">
       {/* Sticky Navigation Bar */}
-      <Navbar onTerminalToggle={handleTerminalToggle} />
+      <Navbar 
+        onTerminalToggle={handleTerminalToggle} 
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
 
       {/* Main Content Layout */}
       <main className="main-content">
-        <Hero />
-        
-        <About />
-        
-        <Education />
-        <Internships />
-        
-        <div className="skills-group-wrapper">
-          <Skills />
-          <SoftSkills />
-        </div>
+        {currentPage === 'contact' ? (
+          <Contact />
+        ) : (
+          <>
+            <Hero />
+            
+            <About />
+            
+            <Education />
+            <Internships />
+            
+            <div className="skills-group-wrapper">
+              <Skills />
+              <SoftSkills />
+            </div>
 
-        <Contributions />
-        
-        <Projects />
+            <Contributions />
+            
+            <Projects />
 
-        <div className="journey-group-wrapper">
-          <DevelopmentJourney />
-          <ResearchPublications />
-          <EventOrganizing />
-          <Certifications />
-        </div>
-
-        <Contact />
+            <div className="journey-group-wrapper">
+              <DevelopmentJourney />
+              <ResearchPublications />
+              <EventOrganizing />
+              <Certifications />
+            </div>
+          </>
+        )}
       </main>
 
       {/* Footer Component */}
@@ -82,7 +132,7 @@ function App() {
         <div className="footer-container">
           <div className="footer-top">
             <div className="footer-info">
-              <a href="#home" className="footer-logo">
+              <a href="#home" className="footer-logo" onClick={(e) => { e.preventDefault(); navigateToSection('home'); }}>
                 KANISHKAR<span>.</span>
               </a>
               <p>Applying technical skills in software development and automation to solve real-world problems.</p>
@@ -91,12 +141,12 @@ function App() {
             <div className="footer-links">
               <h4>Navigation</h4>
               <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#internships">Internships</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" onClick={(e) => { e.preventDefault(); navigateToSection('about'); }}>About</a></li>
+                <li><a href="#education" onClick={(e) => { e.preventDefault(); navigateToSection('education'); }}>Education</a></li>
+                <li><a href="#internships" onClick={(e) => { e.preventDefault(); navigateToSection('internships'); }}>Internships</a></li>
+                <li><a href="#skills" onClick={(e) => { e.preventDefault(); navigateToSection('skills'); }}>Skills</a></li>
+                <li><a href="#projects" onClick={(e) => { e.preventDefault(); navigateToSection('projects'); }}>Projects</a></li>
+                <li><a href="#contact" onClick={(e) => { e.preventDefault(); navigateToSection('contact'); }}>Contact</a></li>
               </ul>
             </div>
 

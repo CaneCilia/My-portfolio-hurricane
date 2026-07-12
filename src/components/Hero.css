@@ -1,26 +1,22 @@
-.hero-section {
+.hero-section.centered-hero {
   min-height: calc(100vh - 80px);
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 100px 24px;
+  padding: 120px 24px;
   background-color: var(--bg-primary);
 }
 
-.hero-grid-container {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 60px;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+.hero-text-content.centered {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
   z-index: 2;
-}
-
-.hero-text-content {
-  text-align: left;
 }
 
 .greeting-badge {
@@ -32,7 +28,7 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   border: 1px solid var(--border-color);
   background: var(--bg-secondary);
   letter-spacing: 0.05em;
@@ -66,97 +62,95 @@
 
 .hero-name {
   font-size: 4.8rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  min-height: 5rem;
 }
 
 .hero-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   letter-spacing: -0.02em;
-}
-
-.hero-title .title-accent {
-  color: var(--text-primary);
-  font-weight: 400;
+  min-height: 3rem;
 }
 
 .hero-intro {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 40px;
-  max-width: 620px;
+  max-width: 850px;
+  min-height: 4rem;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
   margin-bottom: 48px;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 26px;
+  gap: 10px;
   background: var(--text-primary);
   color: var(--bg-primary);
+  padding: 14px 28px;
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.2s ease;
-  border: 1px solid var(--text-primary);
-  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition-smooth);
 }
 
 .hero-btn-primary:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
   transform: translateY(-2px);
-  background: #27272a; /* zinc-800 */
-  box-shadow: 0 4px 12px rgba(9, 9, 11, 0.1);
 }
 
 .hero-btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 26px;
-  background: transparent;
+  gap: 10px;
+  background: var(--bg-primary);
   color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 14px 28px;
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.2s ease;
-  border: 1px solid var(--border-color);
   cursor: pointer;
+  transition: var(--transition-smooth);
 }
 
 .hero-btn-secondary:hover {
-  transform: translateY(-2px);
   border-color: var(--text-primary);
-  background: var(--bg-secondary);
+  transform: translateY(-2px);
 }
 
 .hero-socials {
   display: flex;
-  gap: 12px;
+  gap: 16px;
+  justify-content: center;
 }
 
 .social-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 30px;
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -167,100 +161,17 @@
   transform: translateY(-2px);
 }
 
-/* Physics Sandbox Container */
-.hero-visual-content {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-  width: 100%;
+.typing-cursor {
+  font-weight: 300;
+  animation: blink 0.8s step-end infinite;
+  color: var(--accent-purple);
+  margin-left: 2px;
 }
 
-.antigravity-sandbox {
-  width: 100%;
-  max-width: 450px;
-  height: 480px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(9, 9, 11, 0.03);
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: var(--accent-purple) }
 }
-
-.sandbox-header {
-  height: 38px;
-  background: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  gap: 6px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-.sandbox-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.sandbox-dot.red { background-color: #ef4444; }
-.sandbox-dot.yellow { background-color: #f59e0b; }
-.sandbox-dot.green { background-color: #10b981; }
-
-.sandbox-title {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-left: 8px;
-  font-weight: 500;
-}
-
-.sandbox-instruction {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  bottom: 16px;
-  left: 0;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Floating Pills inside sandbox */
-.physics-pill {
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 2px 8px rgba(9, 9, 11, 0.03);
-  pointer-events: none; /* Let pointer events pass through so tracking is on canvas */
-  user-select: none;
-}
-
-.pill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-muted);
-}
-
-.physics-pill.accent-blue .pill-dot { background-color: var(--accent-blue); }
-.physics-pill.accent-purple .pill-dot { background-color: var(--accent-purple); }
 
 /* Cinematic Stagger Animations */
 @keyframes fadeInUp {
@@ -287,23 +198,18 @@
 .stagger-in-6 { animation-delay: 0.6s; }
 
 /* Responsive Styling */
-@media (max-width: 968px) {
-  .hero-grid-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding-top: 20px;
-  }
+@media (max-width: 768px) {
   .hero-name {
     font-size: 3.5rem;
+    min-height: auto;
   }
   .hero-title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    min-height: auto;
   }
-  .hero-visual-content {
-    justify-content: center;
-  }
-  .antigravity-sandbox {
-    height: 400px;
+  .hero-intro {
+    font-size: 1.1rem;
+    min-height: auto;
   }
 }
 
@@ -313,12 +219,14 @@
   }
   .hero-actions {
     width: 100%;
+    flex-direction: column;
   }
   .hero-actions button, .hero-actions a {
     width: 100%;
     justify-content: center;
   }
-  .antigravity-sandbox {
-    height: 350px;
+  .hero-socials {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

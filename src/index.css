@@ -5,8 +5,8 @@
   --bg-tertiary: #e4e4e7;
   
   --text-primary: #09090b;
-  --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
+  --text-secondary: #3f3f46;
+  --text-muted: #71717a;
   
   --accent-purple: #8b5cf6;
   --accent-purple-rgb: 139, 92, 246;
@@ -85,7 +85,8 @@ button, input, textarea {
 /* Global Layout & Sections */
 section {
   padding: 100px 24px;
-  max-width: 1200px;
+  max-width: 90%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
 }
