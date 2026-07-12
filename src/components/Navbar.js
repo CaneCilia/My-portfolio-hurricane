@@ -5,7 +5,8 @@ import './Navbar.css';
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'timeline', label: 'Journey' },
+  { id: 'education', label: 'Education' },
+  { id: 'internships', label: 'Internships' },
   { id: 'skills', label: 'Skills' },
   { id: 'contributions', label: 'Contributions' },
   { id: 'projects', label: 'Projects' },

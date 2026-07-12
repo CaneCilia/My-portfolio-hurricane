@@ -13,9 +13,9 @@
 }
 
 .navbar.scrolled {
-  background: rgba(12, 12, 15, 0.85);
+  background: var(--glass-bg);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(9, 9, 11, 0.04);
 }
 
 .navbar-container {
@@ -67,7 +67,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  background: var(--text-primary);
   transition: var(--transition-smooth);
 }
 
@@ -85,21 +85,19 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--accent-blue);
-  border: 1px solid rgba(14, 165, 233, 0.2);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: var(--transition-bounce);
+  transition: var(--transition-smooth);
 }
 
 .terminal-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent-purple);
-  color: var(--accent-purple);
-  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+  border-color: var(--text-primary);
+  background: var(--bg-secondary);
 }
 
 .menu-toggle {
@@ -114,7 +112,7 @@
   top: 80px;
   left: 0;
   width: 100%;
-  background: rgba(12, 12, 15, 0.95);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
   max-height: 0;
   overflow: hidden;
@@ -124,7 +122,7 @@
 }
 
 .mobile-nav.open {
-  max-height: 450px;
+  max-height: 480px;
 }
 
 .mobile-menu {
@@ -146,7 +144,7 @@
 .mobile-links.active, .mobile-links:hover {
   color: var(--text-primary);
   padding-left: 8px;
-  border-left: 2px solid var(--accent-purple);
+  border-left: 2px solid var(--text-primary);
 }
 
 .mobile-terminal-trigger {
@@ -155,17 +153,17 @@
   gap: 8px;
   width: 100%;
   padding: 12px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   font-weight: 600;
-  color: var(--accent-blue);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 .mobile-terminal-trigger:hover {
-  background: rgba(14, 165, 233, 0.05);
-  border-color: var(--accent-blue);
+  background: var(--bg-tertiary);
+  border-color: var(--text-primary);
 }
 
 /* Responsive adjustments */

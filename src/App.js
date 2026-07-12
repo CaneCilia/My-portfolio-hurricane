@@ -4,7 +4,8 @@ import { Github, Linkedin } from './components/BrandIcons';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import TimelineSection from './components/TimelineSection';
+import Education from './components/Education';
+import Internships from './components/Internships';
 import Skills from './components/Skills';
 import SoftSkills from './components/SoftSkills';
 import Contributions from './components/Contributions';
@@ -54,7 +55,8 @@ function App() {
         
         <About />
         
-        <TimelineSection />
+        <Education />
+        <Internships />
         
         <div className="skills-group-wrapper">
           <Skills />
@@ -90,7 +92,8 @@ function App() {
               <h4>Navigation</h4>
               <ul>
                 <li><a href="#about">About</a></li>
-                <li><a href="#timeline">Journey</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#internships">Internships</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>

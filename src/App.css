@@ -28,11 +28,10 @@
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
-/* Footer styling */
 .footer {
   border-top: 1px solid var(--border-color);
   padding: 60px 24px 30px;
-  background: rgba(12, 12, 15, 0.95);
+  background: var(--bg-secondary);
   margin-top: 80px;
 }
 
@@ -109,7 +108,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
@@ -120,13 +119,12 @@
 
 .footer-social-icons a:hover {
   color: var(--text-primary);
-  border-color: var(--accent-purple);
+  border-color: var(--text-primary);
   transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(168, 85, 247, 0.15);
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-color);
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
@@ -178,8 +176,8 @@
 
 .scroll-top-btn:hover {
   color: var(--text-primary);
-  border-color: var(--accent-blue);
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+  border-color: var(--text-primary);
+  background: var(--bg-secondary);
 }
 
 /* Print stylesheet overrides for CV printing */
