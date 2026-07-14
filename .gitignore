@@ -23,3 +23,15 @@ yarn-debug.log*
 yarn-error.log*
 
 /work
+
+# secrets and credentials
+.env
+.env*.local
+secrets/
+*secrets*
+*.pem
+*.key
+*.cert
+*.pfx
+credentials*
+
