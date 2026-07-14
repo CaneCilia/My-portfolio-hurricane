@@ -172,10 +172,18 @@
 .certs-show-more-btn {
   padding: 12px 30px;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 30px;
   cursor: pointer;
+  background: var(--accent-blue);
+  color: white;
+  border: none;
   transition: var(--transition-smooth);
+}
+
+.certs-show-more-btn:hover {
+  background: #0284c7;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

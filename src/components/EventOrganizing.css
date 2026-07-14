@@ -1,5 +1,5 @@
-.events-container {
-  margin-top: 100px;
+.events-section {
+  box-sizing: border-box;
 }
 
 .events-subtitle-text {
@@ -11,6 +11,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.5;
 }
 
 .events-grid {
@@ -20,9 +21,54 @@
 }
 
 .event-card {
-  padding: 30px;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--bg-primary);
+  transition: var(--transition-smooth);
+}
+
+.event-card:hover {
+  border-color: var(--accent-purple);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.05);
+}
+
+.event-card-banner {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.event-banner-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.event-card:hover .event-banner-img {
+  transform: scale(1.04);
+}
+
+.event-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .event-card-top {
@@ -45,7 +91,7 @@
 
 .event-title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 750;
   color: var(--text-primary);
   margin-bottom: 6px;
 }
@@ -74,6 +120,7 @@
   flex-direction: column;
   gap: 8px;
   line-height: 1.5;
+  padding: 0;
 }
 
 .evt-contrib-list li::before {
@@ -83,4 +130,33 @@
   display: inline-block;
   width: 1em;
   margin-left: -0.5em;
+}
+
+/* Event-specific banner alignments and default zoom adjustments */
+.banner-buildwithai {
+  padding: 0 !important; /* Full width edge-to-edge alignment */
+}
+
+.img-buildwithai {
+  object-fit: cover !important; /* Forces perfect alignment and coverage */
+  width: 100%;
+  height: 100%;
+}
+
+.img-appathon25 {
+  transform: scale(1.1); /* Zoom in a little bit by default */
+}
+
+.event-card:hover .img-appathon25 {
+  transform: scale(1.14); /* Smooth hover zoom transition */
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .event-card-banner {
+    height: 160px;
+  }
 }

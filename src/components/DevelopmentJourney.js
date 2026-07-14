@@ -30,21 +30,6 @@ const DevelopmentJourney = () => {
 
   return (
     <div className="journey-container">
-      {/* Auto-scrolling background image track */}
-      <div className="journey-scroll-track">
-        {images.map((img, idx) => (
-          <img 
-            key={idx} 
-            src={img} 
-            alt={`Developer landscape ${idx + 1}`} 
-            className="journey-scroll-img" 
-          />
-        ))}
-      </div>
-      
-      {/* Faded overlay mask */}
-      <div className="journey-glass-overlay"></div>
-
       {/* Central Interactive Content */}
       <div className="journey-explore-content animate-slide-up">
         <div className="explore-badge">
@@ -60,7 +45,7 @@ const DevelopmentJourney = () => {
         
         <button 
           onClick={handleExploreClick}
-          className="explore-btn-glowing"
+          className="explore-btn-solid"
           aria-label="Explore Projects"
         >
           Explore Projects <ArrowRight size={18} />

@@ -266,4 +266,14 @@
 
 .contact-cta-btn {
   margin-top: 6px;
+  background: var(--accent-blue) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.contact-cta-btn:hover {
+  background: #0284c7 !important;
+  transform: translateY(-2px) !important;
 }

@@ -43,32 +43,35 @@
   gap: 16px;
   padding: 16px 20px;
   border-radius: 12px;
-  transition: var(--transition-bounce);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  box-shadow: none !important;
 }
 
 .info-card-item:hover {
-  transform: translateX(5px);
-  border-color: rgba(14, 165, 233, 0.3);
-  background: rgba(14, 165, 233, 0.03);
+  /* Clean, no translation or background/border changes on hover */
+  border-color: var(--border-color);
 }
 
 .icon-wrapper {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(14, 165, 233, 0.08);
-  border: 1px solid rgba(14, 165, 233, 0.15);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--accent-blue);
-  transition: var(--transition-bounce);
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+  box-shadow: none !important;
 }
 
 .info-card-item:hover .icon-wrapper {
-  background: var(--accent-blue);
-  color: white;
-  box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
+  /* Clean, no hover events */
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  box-shadow: none !important;
 }
 
 .info-text {
@@ -211,6 +214,16 @@
   align-self: flex-start;
   min-width: 180px;
   justify-content: center;
+  background: var(--accent-blue) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.submit-btn:hover {
+  background: #0284c7 !important;
+  transform: translateY(-2px) !important;
 }
 
 .spinner {

@@ -20,13 +20,13 @@ const Contact = () => {
       icon: <Phone className="contact-info-icon" size={20} />,
       label: "Call Me",
       value: "+91 70109 99821",
-      link: "tel:+919876543210"
+      link: "tel:+917010999821"
     },
     {
       icon: <MapPin className="contact-info-icon" size={20} />,
       label: "Location",
       value: "Salem, Tamil Nadu, India",
-      link: "https://maps.google.com"
+      link: "https://maps.google.com/?q=Salem,TamilNadu,India"
     }
   ];
 
@@ -156,7 +156,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   className={errors.name ? 'error' : ''}
-                  placeholder="John Doe"
+                  placeholder="Your Good Name"
                   disabled={isSubmitting}
                 />
                 {errors.name && <span className="error-message">{errors.name}</span>}
@@ -171,7 +171,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   className={errors.email ? 'error' : ''}
-                  placeholder="john@example.com"
+                  placeholder="name@gmail/domain.com"
                   disabled={isSubmitting}
                 />
                 {errors.email && <span className="error-message">{errors.email}</span>}
@@ -201,7 +201,7 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleInputChange}
                 className={errors.message ? 'error' : ''}
-                placeholder="Hi Kanishkar, I would love to talk about..."
+                placeholder="Hi Kanishkar, I would like to talk about..."
                 rows="6"
                 disabled={isSubmitting}
               ></textarea>
