@@ -31,8 +31,8 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <Github size={20} />, url: "https://github.com", name: "GitHub" },
-    { icon: <Linkedin size={20} />, url: "https://linkedin.com", name: "LinkedIn" }
+    { icon: <Github size={20} />, url: "https://github.com/CaneCilia", name: "GitHub" },
+    { icon: <Linkedin size={20} />, url: "https://www.linkedin.com/in/kanishkar42/", name: "LinkedIn" }
   ];
 
   const handleInputChange = (e) => {

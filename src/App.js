@@ -110,7 +110,6 @@ function App() {
             
             <div className="skills-group-wrapper">
               <Skills />
-              <SoftSkills />
             </div>
 
             <Contributions />
@@ -123,6 +122,22 @@ function App() {
               <EventOrganizing />
               <Certifications />
             </div>
+
+            <SoftSkills />
+
+            {/* Contact CTA Banner */}
+            <div className="contact-cta-banner glass animate-slide-up">
+              <div className="contact-cta-content">
+                <h3>Interested in working together?</h3>
+                <p>Have an automation challenge, a development role, or an application to build?</p>
+                <button 
+                  className="glow-btn glow-btn-primary contact-cta-btn"
+                  onClick={() => navigateToSection('contact')}
+                >
+                  Contact Me <Mail size={16} />
+                </button>
+              </div>
+            </div>
           </>
         )}
       </main>
@@ -133,7 +148,7 @@ function App() {
           <div className="footer-top">
             <div className="footer-info">
               <a href="#home" className="footer-logo" onClick={(e) => { e.preventDefault(); navigateToSection('home'); }}>
-                KANISHKAR<span>.</span>
+                CANECILIA<span>.</span>
               </a>
               <p>Applying technical skills in software development and automation to solve real-world problems.</p>
             </div>
@@ -153,8 +168,8 @@ function App() {
             <div className="footer-socials">
               <h4>Social Links</h4>
               <div className="footer-social-icons">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
+                <a href="https://github.com/CaneCilia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a>
+                <a href="https://www.linkedin.com/in/kanishkar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
                 <a href="mailto:kanishkar@example.com" aria-label="Email"><Mail size={18} /></a>
               </div>
             </div>
@@ -162,7 +177,7 @@ function App() {
 
           <div className="footer-bottom">
             <p className="copyright-text">
-              &copy; {currentYear} Kanishkar R. All rights reserved.
+              &copy; {currentYear} CaneCilia. All rights reserved.
             </p>
             <p className="built-with">
               Built with <Heart size={12} className="heart-icon" /> using React & Vanilla CSS | Last Updated: July 2026

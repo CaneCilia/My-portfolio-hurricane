@@ -4,36 +4,79 @@ import './Internships.css';
 
 const INTERNSHIP_DATA = [
   {
-    role: "Software Engineering Intern",
-    company: "InnovateTech Labs",
-    duration: "Jan 2026 - Present",
-    technologies: ["React.js", "Node.js", "Express", "AWS", "MongoDB"],
+    role: "AI Engineer Intern",
+    company: "Space Marvel AI",
+    duration: "Oct 2025 - Mar 2026",
+    logo: "/icons/spacemarvel_ai_logo.jpg",
+    companyUrl: "https://www.linkedin.com/company/spacemarvel-ai/",
+    technologies: [
+      "Python",
+      "LLMs",
+      "AI Agents",
+      "Generative AI",
+      "Machine Learning"
+    ],
     responsibilities: [
-      "Built responsive client-facing dashboards and custom data widgets",
-      "Optimized backend queries and cache structures, enhancing API performance",
-      "Automated deployment workflows using AWS pipelines and Docker containers"
+      "Developed AI-powered agents for intelligent automation and task execution",
+      "Explored and implemented modern AI technologies to build end-to-end AI solutions",
+      "Collaborated on AI system development and model integration"
     ],
     achievements: [
-      "Reduced page render times by 30% through React code-splitting and memoization",
-      "Designed and built an automated testing suite reducing manual testing overhead by 40%"
+      "Built practical AI agent workflows for real-world applications",
+      "Strengthened expertise in Generative AI and intelligent automation"
     ],
-    learnings: "Mastered full-stack React lifecycle, state optimization patterns, production monitoring, and Agile sprint environments."
+    learnings:
+      "Gained hands-on experience in AI agent development, prompt engineering, LLM integration, and end-to-end AI application development."
   },
   {
-    role: "AI & Automation Intern",
-    company: "Apex Automation Solutions",
-    duration: "June 2025 - Dec 2025",
-    technologies: ["Python", "FastAPI", "LangChain", "OpenAI API", "PostgreSQL"],
+    role: "Android Developer Intern",
+    company: "Weefy",
+    duration: "Jan 2025 - Mar 2025",
+    logo: "/images/weefy.png",
+    companyUrl: "https://www.linkedin.com/company/weefy/",
+    technologies: [
+      "Android",
+      "Java",
+      "Kotlin",
+      "Firebase",
+      "SQLite"
+    ],
     responsibilities: [
-      "Developed custom LLM retrieval-augmented generation (RAG) applications",
-      "Automated administrative reports generation using Python scripting and Cron tasks",
-      "Created background parsing engines for heterogeneous PDF/JSON document scanning"
+      "Developed Android applications for entrepreneurs and small-scale businesses",
+      "Collaborated with the product manager to build interactive software solutions",
+      "Implemented user-friendly interfaces and application features"
     ],
     achievements: [
-      "Deployed agentic AI workflows saving internal staff over 15 hours per week in data sorting",
-      "Achieved a 94% accuracy rate in automated parsing algorithms"
+      "Delivered mobile application features that improved user experience",
+      "Contributed to innovative business-oriented Android solutions"
     ],
-    learnings: "Gained hands-on experience in token efficiency, vector database query structures, REST API architectures, and model orchestration."
+    learnings:
+      "Improved Android application development skills, UI/UX implementation, mobile architecture, and collaborative software development."
+  },
+  {
+    role: "Project Intern",
+    company: "Centre for Health Research and Innovation",
+    duration: "Jul 2024 - Jan 2025",
+    logo: "/icons/CRHIT.png",
+    companyUrl: "https://www.linkedin.com/company/chri-path/",
+    technologies: [
+      "Java",
+      "Python",
+      "SQL",
+      "Android",
+      "Healthcare Software"
+    ],
+    responsibilities: [
+      "Developed healthcare software applications for research projects",
+      "Supported ophthalmology and laboratory management solutions",
+      "Collaborated with researchers to build software for medical applications"
+    ],
+    achievements: [
+      "Contributed to healthcare technology projects supporting medical research",
+      "Delivered reliable software solutions for clinical and laboratory use"
+    ],
+    learnings:
+      "Gained experience in healthcare software development, research collaboration, software engineering practices, and domain-specific application design."
   }
 ];
 
@@ -59,14 +102,34 @@ const Internships = () => {
             </div>
 
             <div className="internship-timeline-content card">
-              <div className="job-meta-row">
-                <span className="job-duration">
-                  <Calendar size={14} /> {job.duration}
-                </span>
+              <div className="job-header-row">
+                <div className="job-title-info">
+                  <div className="job-meta-row">
+                    <span className="job-duration">
+                      <Calendar size={14} /> {job.duration}
+                    </span>
+                  </div>
+                  <h3 className="job-role">{job.role}</h3>
+                  <h4 className="job-company">
+                    {job.companyUrl ? (
+                      <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="job-company-link">
+                        {job.company}
+                      </a>
+                    ) : (
+                      job.company
+                    )}
+                  </h4>
+                </div>
+                {job.logo && (
+                  <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="job-logo-wrapper">
+                    <img 
+                      src={process.env.PUBLIC_URL + job.logo} 
+                      alt={`${job.company} logo`} 
+                      className="job-company-logo" 
+                    />
+                  </a>
+                )}
               </div>
-
-              <h3 className="job-role">{job.role}</h3>
-              <h4 className="job-company">{job.company}</h4>
 
               <div className="job-tech-container">
                 {job.technologies.map((tech, tIdx) => (

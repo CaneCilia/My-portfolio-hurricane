@@ -24,7 +24,7 @@ const Terminal = ({ isOpen, onClose }) => {
     education: "Education:\n- B.E. Computer Science | PSG College of Technology (2022 - 2026)\n  CGPA: 8.7/10. Smart India Hackathon Winner.\n- Higher Secondary Certificate | St. Joseph's HSS\n  Percentage: 96.5%. School Rank 1 in CS.",
     publications: "Research & Publications:\n- 'Automated Crop Disease Detection using Deep Learning' (Journal)\n- 'Edge Computing for LLM Agents: Quantization Constraints' (Conference)",
     certifications: "Certifications:\n- AWS Certified Solutions Architect - Associate\n- Deep Learning Specialization (DeepLearning.AI)\n- Associate Cloud Engineer (Google Cloud)\n- PostgreSQL Database Administration (Michigan)",
-    contact: "Contact Channels:\n- Email: kanishkar@example.com\n- Phone: +1 234 567 890\n- GitHub: github.com/CaneCilia\n- LinkedIn: linkedin.com/in/kanishkar\n- Location: Coimbatore, India"
+    contact: "Contact Channels:\n- Email: kanishkar@example.com\n- Phone: +1 234 567 890\n- GitHub: github.com/CaneCilia\n- LinkedIn: linkedin.com/in/kanishkar42\n- Location: Coimbatore, India"
   };
 
   useEffect(() => {

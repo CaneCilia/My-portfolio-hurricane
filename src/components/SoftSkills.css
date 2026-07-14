@@ -1,5 +1,7 @@
-.soft-skills-container {
-  margin-top: 80px;
+.soft-skills-section {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
 }
 
 .sub-section-title {
@@ -12,63 +14,137 @@
 }
 
 .sub-section-title::after {
-  content: '';
+  content: "";
   display: block;
-  width: 30px;
-  height: 2px;
+  width: 40px;
+  height: 3px;
   background: var(--accent-purple);
-  margin: 10px auto 0;
+  margin: 12px auto 0;
+  border-radius: 10px;
 }
 
 .soft-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
 
 .soft-card {
-  padding: 30px 24px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 2px solid transparent;
+  justify-content: flex-start;
+  text-align: center;
+
+  padding: 28px 24px;
+  min-height: 260px;
+
+  border: 1px solid rgba(168, 85, 247, 0.12);
+  border-bottom: 3px solid transparent;
+  border-radius: 18px;
+
+  transition: all 0.3s ease;
 }
 
 .soft-card:hover {
-  border-bottom: 2px solid var(--accent-purple);
+  transform: translateY(-6px);
+  border-bottom-color: var(--accent-purple);
+  box-shadow: 0 15px 35px rgba(168, 85, 247, 0.12);
 }
 
 .soft-card-icon {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: rgba(168, 85, 247, 0.05);
-  border: 1px solid rgba(168, 85, 247, 0.15);
-  color: var(--accent-purple);
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 18px;
-  transition: var(--transition-bounce);
+  justify-content: center;
+
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  color: var(--accent-purple);
+
+  margin-bottom: 20px;
+
+  transition: all 0.3s ease;
 }
 
 .soft-card:hover .soft-card-icon {
-  transform: scale(1.1) rotate(15deg);
   background: var(--accent-purple);
-  color: white;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+  color: #fff;
+  transform: scale(1.08) rotate(10deg);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
 }
 
 .soft-card h4 {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 10px;
+
+  margin: 0 0 14px;
+  min-height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .soft-card p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: var(--text-secondary);
-  line-height: 1.5;
+
+  margin: 0;
+  flex-grow: 1;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .soft-skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .soft-card {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .soft-skills-section {
+    margin-top: 40px;
+  }
+
+  .sub-section-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .soft-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .soft-card {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+
+  .soft-card-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .soft-card h4 {
+    font-size: 1.1rem;
+  }
+
+  .soft-card p {
+    font-size: 0.9rem;
+  }
 }

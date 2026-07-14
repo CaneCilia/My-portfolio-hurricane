@@ -183,3 +183,104 @@
     gap: 8px;
   }
 }
+
+/* Education Card Side-by-Side Image Styles */
+.education-timeline-content.has-image {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.edu-card-image-side {
+  width: 280px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.edu-card-img-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 1.2s ease-in-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.edu-card-img-side.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.education-timeline-content:hover .edu-card-img-side.active {
+  transform: scale(1.04);
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  background: rgba(9, 9, 11, 0.3);
+  padding: 5px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.slider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.slider-dot.active {
+  background: white;
+  transform: scale(1.15);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.edu-card-details-side {
+  flex-grow: 1;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsiveness for Side-by-Side Layout */
+@media (max-width: 900px) {
+  .education-timeline-content.has-image {
+    flex-direction: column;
+  }
+  .edu-card-image-side {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .edu-card-img-side {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 0;
+  }
+  .edu-card-details-side {
+    padding: 24px;
+  }
+}

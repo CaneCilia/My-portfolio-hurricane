@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     const nameStr = "Kanishkar R";
-    const titleStr = "Software Developer & AI/Automation Builder";
+    const titleStr = "Software Developer & AI Engineer";
     
     let nameIdx = 0;
     let titleIdx = 0;
@@ -93,10 +93,10 @@ const Hero = () => {
         </div>
 
         <div className="hero-socials stagger-in-6">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="GitHub">
+          <a href="https://github.com/CaneCilia" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="GitHub">
             <Github size={16} /> <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/kanishkar42/" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="LinkedIn">
             <Linkedin size={16} /> <span>LinkedIn</span>
           </a>
           <a href="mailto:kanishkar@example.com" className="social-pill" aria-label="Email">
