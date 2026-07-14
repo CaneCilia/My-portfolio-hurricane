@@ -6,36 +6,46 @@ const SLIDES = [
   {
     icon: <User className="slide-icon text-dark" size={32} />,
     title: "Who I Am",
-    statement: "I am a detail-oriented software developer focused on building clean, high-performance web systems and intelligent developer tooling.",
-    subtext: "Specialized in full-stack engineering, API performance scaling, and cloud architectures.",
+    statement:
+      "I'm an Artificial Intelligence & Machine Learning engineering student who enjoys transforming ideas into practical software solutions that solve real-world problems.",
+    subtext:
+      "Driven by curiosity, continuous learning, and a passion for building impactful applications.",
     badge: "Identity"
   },
   {
     icon: <Heart className="slide-icon text-dark" size={32} />,
-    title: "My Passion",
-    statement: "I bridge the gap between design and functionality, creating automated systems that save development time and eliminate manual overhead.",
-    subtext: "Passionate about streamlining developer workflows and designing highly intuitive interface architectures.",
-    badge: "Motivation"
+    title: "Why I Build",
+    statement:
+      "Technology gives us the freedom to create meaningful solutions. I enjoy designing systems that simplify complex problems and make life easier for the people who use them.",
+    subtext:
+      "Building isn't just writing code—it's creating something valuable from an idea.",
+    badge: "Passion"
   },
   {
     icon: <Compass className="slide-icon text-dark" size={32} />,
-    title: "Interests & Stack",
-    statement: "I enjoy building with React, Python, FastAPI, Docker, and exploring the capabilities of agentic workflows and LLM engines.",
-    subtext: "Constantly researching microservice design patterns and model-orchestration architectures.",
+    title: "Interests & Expertise",
+    statement:
+      "My primary interests are Artificial Intelligence, Agentic AI, LLMs, and intelligent automation. I enjoy building AI systems capable of reasoning, planning, and assisting users.",
+    subtext:
+      "Always exploring new AI frameworks, autonomous agents, and emerging technologies.",
     badge: "Technology"
   },
   {
     icon: <Code2 className="slide-icon text-dark" size={32} />,
-    title: "Development Ethics",
-    statement: "I advocate for clean architectures, comprehensive unit testing, and robust documentation. I value code maintainability above short-cuts.",
-    subtext: "Committed to engineering standards, agile processes, and continuous integration workflows.",
-    badge: "Process"
+    title: "How I Work",
+    statement:
+      "I believe every problem deserves thoughtful analysis before implementation. My approach is to understand the challenge from different perspectives and choose the most efficient, scalable solution.",
+    subtext:
+      "I value preparation, continuous improvement, and learning through experimentation.",
+    badge: "Mindset"
   },
   {
     icon: <Target className="slide-icon text-dark" size={32} />,
-    title: "Career Goals",
-    statement: "To contribute to innovative teams scaling software systems, solving complex industrial logic, and creating real-world value.",
-    subtext: "Seeking to apply technical skills in software scaling and automation to drive team success.",
+    title: "Future Vision",
+    statement:
+      "My goal is to become a skilled AI and Software Engineer, contributing to intelligent products that create real-world impact while continuously growing as an engineer.",
+    subtext:
+      "Beyond software, I enjoy PC building and exploring computer hardware to better understand the technology behind modern computing.",
     badge: "Vision"
   }
 ];

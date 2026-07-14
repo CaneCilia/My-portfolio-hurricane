@@ -7,70 +7,167 @@ const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ['All', 'AI / Automation', 'Web Dev', 'Mobile'];
+const categories = ["All","Agentic AI","Generative AI","Machine Learning","Computer Vision"];
 
-  const projectsData = [
-    {
-      title: "Aether Automation Hub",
-      category: "AI / Automation",
-      bannerText: "AI Orchestration Platform",
-      bgGradient: "linear-gradient(135deg, #1e3a8a, #581c87)",
-      desc: "An agentic orchestration dashboard for executing scheduled cloud backups, log reporting, and retrieval-augmented document analysis.",
-      technologies: ["React", "FastAPI", "LangChain", "PostgreSQL", "Docker"],
-      github: "https://github.com",
-      live: "https://example.com",
-      architecture: "React frontend communicating via WebSockets with a FastAPI microservice backend. Background workers run via Celery queues monitored by Redis, with document embeddings stored in a pgvector database.",
-      features: [
-        "Dynamic workflow builder using visual nodes",
-        "Real-time task executor monitoring through WebSockets",
-        "Vector-based document ingestion for custom AI context retrieval",
-        "Automated cron backup configurations"
-      ],
-      challenges: "Encountered high RAM costs and CPU spikes during vector document chunking operations.",
-      solution: "Implemented memory-efficient streaming buffers that process text fragments sequentially in background processes, reducing active memory footfall by 65%.",
-      process: "Conducted requirement mapping -> Designed database structures -> Wrote FastAPI endpoints -> Integrated LLM chains -> Connected React state models -> Polish & deploy."
-    },
-    {
-      title: "Letter Craft Document Builder",
-      category: "Web Dev",
-      bannerText: "Cloud Letterhead Designer",
-      bgGradient: "linear-gradient(135deg, #1e1b4b, #047857)",
-      desc: "A professional letterhead builder supporting custom templates, automated cloudsync, and version control layers.",
-      technologies: ["React", "Vanilla CSS", "Firebase", "Realtime DB"],
-      github: "https://github.com",
-      live: "https://example.com",
-      architecture: "A Client-side Single Page Application utilizing React state management, direct authentication integrations with Firebase, and live websocket syncing with Firebase Realtime Database.",
-      features: [
-        "Interactive canvas layout builder with custom drag sizing",
-        "Version control log history with single-click rolling restore",
-        "Firebase credentials auth verification flow",
-        "Custom PDF layout conversion"
-      ],
-      challenges: "Managing page boundary calculations in a WYSIWYG canvas for multi-page documents.",
-      solution: "Coded a custom React calculation hook that computes layout bounding boxes dynamically, enforcing automatic page-break insertions.",
-      process: "Defined page properties -> Programmed the canvas renderer -> Coupled Firebase DB triggers -> Engineered custom CSS modals -> Automated testing."
-    },
-    {
-      title: "Swift Delivery App",
-      category: "Mobile",
-      bannerText: "Realtime Delivery App",
-      bgGradient: "linear-gradient(135deg, #701a75, #0369a1)",
-      desc: "A cross-platform mobile app offering real-time driver tracking, automated billing, and notification streams.",
-      technologies: ["React Native", "Node.js", "Express", "MongoDB", "Socket.io"],
-      github: "https://github.com",
-      live: "https://example.com",
-      architecture: "React Native mobile client with a load-balanced Node.js API layer. Real-time location streams coordinate over Socket.io, backed by geospatial indexing queries in MongoDB.",
-      features: [
-        "Live Google Map driver tracking coordinates",
-        "Automatic push notifications for delivery states",
-        "In-app secure payment gateway mockups",
-        "Driver route optimizations using Dijkstra's algorithm"
-      ],
-      challenges: "High battery usage during background location polling on driver mobile devices.",
-      solution: "Engineered distance-based adaptive location polling that slows queries down when the driver is stationary, reducing battery drain by 45%.",
-      process: "Wireframed navigation -> Integrated mapping APIs -> Established WebSocket links -> Implemented background tracking -> Final UI tuning."
-    }
-  ];
+const projectsData = [
+  {
+    title: "AI Powered Flight Assistant for NORDO Aviation",
+    category: "AI / Automation",
+    bannerText: "Agentic Aviation AI",
+    bgGradient: "linear-gradient(135deg, #0F172A, #2563EB)",
+    desc: "An Agentic AI-powered cockpit assistant designed for NORDO (No Radio Communication) scenarios. The system assists pilots with emergency procedures, airport information, checklist retrieval, and contextual decision support using Retrieval-Augmented Generation (RAG).",
+    technologies: [
+      "Python",
+      "LangGraph",
+      "Gemini",
+      "RAG",
+      "FastAPI",
+      "Flutter",
+      "Firebase"
+    ],
+    github: "#",
+    live: "#",
+    architecture:
+      "Built using an Agentic AI workflow with LangGraph orchestration, Gemini LLM, Retrieval-Augmented Generation, and a Flutter dashboard communicating with backend APIs.",
+    features: [
+      "Voice-enabled AI flight assistant",
+      "Context-aware RAG retrieval",
+      "Emergency checklist guidance",
+      "Real-time cockpit status monitoring",
+      "Interactive pilot dashboard"
+    ],
+    challenges:
+      "Delivering reliable contextual responses while maintaining low latency during emergency scenarios.",
+    solution:
+      "Designed an Agentic RAG pipeline with optimized retrieval and lightweight orchestration for fast and accurate AI responses.",
+    process:
+      "Research → System Design → RAG Pipeline → Agent Workflow → Flutter Dashboard → Backend Integration → Testing"
+  },
+
+  {
+    title: "Intelligent Meeting Feedback System & Quality Tracker",
+    category: "AI / Automation",
+    bannerText: "AI Meeting Analytics",
+    bgGradient: "linear-gradient(135deg)",
+    desc: "An AI-powered platform that evaluates meetings, tracks participant engagement, and generates actionable feedback reports for improving communication quality.",
+    technologies: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Microsoft Entra ID",
+      "Express"
+    ],
+    github: "#",
+    live: "#",
+    architecture:
+      "Full-stack application with Microsoft Entra ID authentication, Node.js backend, MongoDB storage, and React frontend.",
+    features: [
+      "Meeting quality analysis",
+      "Attendance tracking",
+      "Performance dashboards",
+      "AI-generated feedback reports"
+    ],
+    challenges:
+      "Managing secure authentication while handling multiple meeting records efficiently.",
+    solution:
+      "Integrated Microsoft Entra ID authentication and optimized MongoDB queries for scalable performance.",
+    process:
+      "Requirement Analysis → Database Design → Authentication → Dashboard Development → Testing"
+  },
+
+  {
+    title: "AI/ML Predictive Maintenance System for EVs & IC Engines",
+    category: "AI / Automation",
+    bannerText: "Predictive Maintenance",
+    bgGradient: "linear-gradient(135deg)",
+    desc: "An AI-powered predictive maintenance system that analyzes vehicle sensor data to predict failures before breakdowns occur in electric and internal combustion vehicles.",
+    technologies: [
+      "Python",
+      "TensorFlow",
+      "Machine Learning",
+      "Flask",
+      "Pandas"
+    ],
+    github: "https://github.com/CaneCilia/Ev-predictive-Maintenance-System-using-AIML",
+    live: "#",
+    architecture:
+      "Machine learning models process vehicle sensor datasets and predict potential failures through a Flask-based API.",
+    features: [
+      "Predictive fault detection",
+      "Vehicle health monitoring",
+      "Maintenance recommendations",
+      "Failure prediction dashboard"
+    ],
+    challenges:
+      "Obtaining balanced datasets and improving prediction accuracy.",
+    solution:
+      "Applied preprocessing, feature engineering, and model tuning to improve prediction performance.",
+    process:
+      "Dataset Collection → Data Cleaning → Model Training → Evaluation → Deployment"
+  },
+
+  {
+    title: "YouTube Copyright Analysis Chatbot",
+    category: "AI / Automation",
+    bannerText: "AI Copyright Assistant",
+    bgGradient: "linear-gradient(135deg)",
+    desc: "An AI chatbot that evaluates YouTube videos for copyright risks by analyzing metadata, content information, and copyright-related indicators.",
+    technologies: [
+      "Python",
+      "Streamlit",
+      "Gemini",
+      "YouTube API",
+      "NLP"
+    ],
+    github: "https://github.com/CaneCilia/yt-copyright-chatbot-predictor",
+    live: "#",
+    architecture:
+      "Streamlit frontend integrated with YouTube APIs and AI models to generate copyright analysis reports.",
+    features: [
+      "Video copyright assessment",
+      "AI-powered recommendations",
+      "Metadata analysis",
+      "Interactive chatbot"
+    ],
+    challenges:
+      "Combining API data with AI-generated recommendations accurately.",
+    solution:
+      "Built a structured analysis pipeline combining API responses with LLM reasoning.",
+    process:
+      "API Integration → NLP Processing → AI Analysis → User Interface"
+  },
+
+  {
+    title: "Image Captioning using YOLOv5 & BiLSTM",
+    category: "AI / Automation",
+    bannerText: "Computer Vision",
+    bgGradient: "linear-gradient(135degs)",
+    desc: "A deep learning system combining YOLOv5 object detection with BiLSTM sequence generation to produce context-aware image captions.",
+    technologies: [
+      "YOLOv5",
+      "BiLSTM",
+      "PyTorch",
+      "Deep Learning",
+      "OpenCV"
+    ],
+    github: "#",
+    live: "#",
+    architecture:
+      "YOLOv5 extracts object features which are passed into a BiLSTM network for natural language caption generation.",
+    features: [
+      "Real-time object detection",
+      "Automatic image captioning",
+      "Context-aware sentence generation",
+      "Deep learning pipeline"
+    ],
+    challenges:
+      "Generating meaningful captions from multiple detected objects.",
+    solution:
+      "Integrated object detection features with BiLSTM sequence modeling for improved contextual understanding.",
+    process:
+      "Dataset Preparation → YOLO Training → Feature Extraction → BiLSTM Training → Evaluation"
+  }
+];
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData
