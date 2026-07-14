@@ -1,26 +1,62 @@
-.certs-section {
+.all-certs-section {
+  padding: 80px 24px 100px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
   box-sizing: border-box;
 }
 
-.certs-subtitle-text {
-  text-align: center;
+.certs-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 40px;
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  font-size: 1.05rem;
-  margin-top: -30px;
+  transition: var(--transition-smooth);
+}
+
+.certs-back-btn:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  transform: translateX(-4px);
+}
+
+.all-certs-header {
+  text-align: center;
   margin-bottom: 50px;
+}
+
+.all-certs-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.all-certs-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.5;
 }
 
-.certs-grid {
+.all-certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
 }
 
-.cert-card {
+.all-cert-card {
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -31,22 +67,22 @@
   background: var(--bg-primary);
   transition: var(--transition-smooth);
   box-sizing: border-box;
-  box-shadow: none !important; /* Simple and clean, no shadow */
+  box-shadow: none !important; /* Remove shadows completely */
 }
 
-.cert-card:hover {
+.all-cert-card:hover {
   border-color: var(--text-primary);
-  /* Simple border change, no hover translations or shadow glows */
+  /* Removed scale/translate and shadow glow for a clean, simple look */
 }
 
-.cert-provider-row {
+.all-cert-provider-row {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 18px;
 }
 
-.cert-logo-wrapper {
+.all-cert-logo-wrapper {
   width: 52px;
   height: 52px;
   border-radius: 12px;
@@ -62,8 +98,9 @@
   transition: var(--transition-smooth);
 }
 
-.cert-card:hover .cert-logo-wrapper {
+.all-cert-card:hover .all-cert-logo-wrapper {
   border-color: var(--text-muted);
+  /* Removed hover scale */
 }
 
 .provider-logo-svg {
@@ -73,7 +110,7 @@
   height: auto;
 }
 
-.cert-provider-info {
+.all-cert-provider-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -81,7 +118,7 @@
 
 .provider-name {
   font-size: 0.95rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-weight: 500; /* Simple, not bold */
   color: var(--text-primary);
   line-height: 1.1;
 }
@@ -91,11 +128,11 @@
   align-items: center;
   gap: 4px;
   font-size: 0.72rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-weight: 500; /* Simple, not bold */
   color: var(--accent-blue);
 }
 
-.cert-body {
+.all-cert-body {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -103,9 +140,9 @@
   flex-grow: 1;
 }
 
-.cert-body h4 {
+.all-cert-body h4 {
   font-size: 1.05rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-weight: 500; /* Clean and simple, not bold */
   color: var(--text-primary);
   line-height: 1.45;
   margin: 0;
@@ -116,7 +153,7 @@
   overflow: hidden;
 }
 
-.cert-meta {
+.all-cert-meta {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -125,22 +162,22 @@
   color: var(--text-muted);
 }
 
-.cert-date {
+.all-cert-date {
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
-.cert-id {
+.all-cert-id {
   font-family: var(--font-mono);
   font-size: 0.72rem;
 }
 
-.cert-actions {
+.all-cert-actions {
   margin-top: auto;
 }
 
-.cert-verify-link {
+.all-cert-verify-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,37 +186,27 @@
   padding: 10px;
   border-radius: 8px;
   font-size: 0.8rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-weight: 500; /* Simple, not bold */
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
   transition: var(--transition-smooth);
   cursor: pointer;
 }
 
-.cert-verify-link:hover {
+.all-cert-verify-link:hover {
   border-color: var(--text-primary);
   color: var(--text-primary);
   background: var(--bg-secondary);
 }
 
-.certs-show-more-box {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  width: 100%;
-}
-
-.certs-show-more-btn {
-  padding: 12px 30px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
 @media (max-width: 768px) {
-  .certs-grid {
+  .all-certs-section {
+    padding: 60px 16px;
+  }
+  .all-certs-title {
+    font-size: 1.8rem;
+  }
+  .all-certs-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }

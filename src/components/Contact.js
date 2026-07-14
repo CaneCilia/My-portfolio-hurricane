@@ -13,19 +13,19 @@ const Contact = () => {
     {
       icon: <Mail className="contact-info-icon" size={20} />,
       label: "Email Me",
-      value: "kanishkar@example.com",
-      link: "mailto:kanishkar@example.com"
+      value: "kanew.gdg@gmail.com",
+      link: "mailto:kanew.gdg@gmail.com"
     },
     {
       icon: <Phone className="contact-info-icon" size={20} />,
       label: "Call Me",
-      value: "+91 98765 43210",
+      value: "+91 70109 99821",
       link: "tel:+919876543210"
     },
     {
       icon: <MapPin className="contact-info-icon" size={20} />,
       label: "Location",
-      value: "Coimbatore, Tamil Nadu, India",
+      value: "Salem, Tamil Nadu, India",
       link: "https://maps.google.com"
     }
   ];

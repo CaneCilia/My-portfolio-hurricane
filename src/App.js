@@ -14,6 +14,7 @@ import DevelopmentJourney from './components/DevelopmentJourney';
 import ResearchPublications from './components/ResearchPublications';
 import EventOrganizing from './components/EventOrganizing';
 import Certifications from './components/Certifications';
+import AllCertifications from './components/AllCertifications';
 import Contact from './components/Contact';
 import Terminal from './components/Terminal';
 import './App.css';
@@ -99,6 +100,8 @@ function App() {
       <main className="main-content">
         {currentPage === 'contact' ? (
           <Contact />
+        ) : currentPage === 'certifications' ? (
+          <AllCertifications onBack={() => navigateToSection('certifications')} />
         ) : (
           <>
             <Hero />
@@ -120,7 +123,7 @@ function App() {
               <DevelopmentJourney />
               <ResearchPublications />
               <EventOrganizing />
-              <Certifications />
+              <Certifications onViewAll={() => setCurrentPage('certifications')} />
             </div>
 
             <SoftSkills />
