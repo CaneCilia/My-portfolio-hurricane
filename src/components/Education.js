@@ -9,11 +9,11 @@ const EDUCATION_DATA = [
     duration: "2022 - 2026",
     grade: "CGPA: 8.05 / 10",
     images: [
-      "/images/Sona-main-Building.jpg",
+      "/images/main-buildinge.jpg",
       "/images/mba-library-side-view.jpg",
       "/images/sona-mba-side-view.jpg",
       "/images/college-entrance.jpg",
-      "images/architecture.jpg"
+      "images/main-building.jpg"
     ],
     logo: "/icons/SCT.png",
     milestones: [
