@@ -11,8 +11,11 @@ const EDUCATION_DATA = [
     images: [
       "/images/Sona-main-Building.jpg",
       "/images/mba-library-side-view.jpg",
-      "/images/architecture.jpg"
+      "/images/sona-mba-side-view.jpg",
+      "/images/college-entrance.jpg",
+      "images/architecture.jpg"
     ],
+    logo: "/icons/SCT.png",
     milestones: [
       "Specialized in AI, Automation, and Advanced Software Architectures",
       "Active organizer in the Computer Science Association"
@@ -106,9 +109,19 @@ const Education = () => {
                 
                 <div className="edu-card-details-side">
                   <div className="edu-meta-row">
-                    <span className="edu-duration">
-                      <Calendar size={14} /> {edu.duration}
-                    </span>
+                    <div className="edu-meta-left">
+                      {edu.logo && (
+                        <img 
+                          src={process.env.PUBLIC_URL + edu.logo} 
+                          alt={`${edu.institution} Logo`} 
+                          className="edu-college-logo" 
+                        />
+                      )}
+                      <span className="edu-duration">
+                        <Calendar size={14} /> {edu.duration}
+                      </span>
+                    </div>
+                    <div className="edu-meta-divider"></div>
                     <span className="edu-grade">{edu.grade}</span>
                   </div>
 

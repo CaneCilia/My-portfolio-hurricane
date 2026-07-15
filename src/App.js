@@ -111,22 +111,23 @@ function App() {
             <Education />
             <Internships />
             
+            <Contributions />
+            
             <div className="skills-group-wrapper">
               <Skills />
+              <Certifications onViewAll={() => setCurrentPage('certifications')} />
             </div>
-
-            <Contributions />
             
             <Projects />
 
             <div className="journey-group-wrapper">
               <DevelopmentJourney />
-              <ResearchPublications />
               <EventOrganizing />
-              <Certifications onViewAll={() => setCurrentPage('certifications')} />
             </div>
 
             <SoftSkills />
+
+            <ResearchPublications />
 
             {/* Contact CTA Banner */}
             <div className="contact-cta-banner glass animate-slide-up">

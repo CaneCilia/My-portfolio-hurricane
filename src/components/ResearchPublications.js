@@ -1,65 +1,115 @@
 import React from 'react';
-import { BookOpen, ExternalLink, Award, FileText } from 'lucide-react';
+import { BookOpen, Calendar, Building, CheckCircle2, FileText, ArrowRight } from 'lucide-react';
 import './ResearchPublications.css';
 
 const ResearchPublications = () => {
   const publications = [
     {
-      title: "Automated Crop Disease Detection using Deep Learning Architectures",
-      type: "Journal Paper",
-      journal: "International Journal of Computer Engineering & Science",
-      date: "Nov 2025",
-      link: "https://example.com",
-      description: "Engineered a custom convolutional neural network structure that parses high-resolution agricultural leaf images to diagnose crop infections, achieving a 94.6% validation accuracy.",
-      learnings: "Obtained deep skills in image pre-processing configurations, model layer pruning, and vector spatial convolutions."
+      title: "AI-Powered Flight Assistant for NORDO Aviation",
+      type: "Conference Paper",
+      conference: "ICCISS'26 – Computational Intelligence, Security and Systems",
+      organizer: "Department of CSE, Sona College of Technology",
+      date: "March 2026",
+      status: "Presented",
+      description: "An Agentic AI flight assistant providing real-time emergency decision support to pilots during communication-loss (No Radio) scenarios. Features an adaptive Agentic UI designed to dynamically adjust interfaces based on pilot intent and telemetry data.",
+      highlights: [
+        "Built Retrieval-Augmented Generation (RAG) pipeline over flight manuals.",
+        "Architected adaptive UI to orchestrate multi-agent flight workflows.",
+        "Integrated real-time sensor ingestion with voice navigation support."
+      ],
+      certificate: "https://drive.google.com/file/d/1RKeHFVfMGP1N3o0lHHvSQZZhYe_LHPzj/view"
     },
     {
-      title: "Edge Computing for LLM Agents: Optimizing Localized Execution Constraints",
+      title: "Cost-Efficient Transformer-Based Demand Forecasting for Retail SMEs",
       type: "Conference Paper",
-      journal: "National Conference on Advanced AI Systems",
-      date: "Aug 2025",
-      link: "https://example.com",
-      description: "Analyzed memory consumption profiles and latency spikes when executing lightweight quantized LLM models directly on resource-constrained micro-controllers and client hardware.",
-      learnings: "Investigated neural quantization protocols, ROCm acceleration paths, and API fallback pipelines."
+      conference: "ICMMCISD 2026 – Mathematical Modelling & Computational Intelligence",
+      organizer: "Vellore Institute of Technology (VIT) & University of Queensland",
+      date: "June 2026",
+      status: "Presented",
+      description: "A lightweight transformer-based decision intelligence framework designed to optimize demand forecasting and inventory replenishment schedules for small-to-medium retail enterprises operating under severe historical data constraints.",
+      highlights: [
+        "Adapted self-attention mechanisms to low-resource retail datasets.",
+        "Achieved a 14% forecasting error reduction compared to baseline models.",
+        "Designed local low-parameter deployment requiring zero expensive cloud GPUs."
+      ],
+      certificate: "https://drive.google.com/file/d/1f8Tve6MaQupFNGEbwH8NKNKbRYDqs-GP/view"
     }
   ];
 
   return (
     <section id="publications" className="publications-section">
-      <div className="glow-orb" style={{ right: '15%', top: '20%' }} />
+      <div className="glow-orb glow-orb-blue" style={{ right: "10%", bottom: "20%", opacity: 0.12 }} />
 
       <div className="section-header">
-        <h2 className="section-title">Research & Publications</h2>
+        <h2 className="section-title">Research Publications</h2>
         <p className="section-subtitle">
-          My academic investigations, conference proceedings, and journal contributions.
+          Peer-reviewed international conference papers detailing contributions in Agentic AI, RAG, and deep learning systems.
         </p>
       </div>
 
       <div className="publications-grid">
         {publications.map((pub, idx) => (
-          <div key={idx} className="pub-card glass card animate-slide-up" style={{ animationDelay: `${idx * 150}ms` }}>
-            <div className="pub-header">
-              <span className="pub-tag">{pub.type}</span>
-              <span className="pub-date">{pub.date}</span>
+          <div
+            key={idx}
+            className="pub-card glass card animate-slide-up"
+            style={{ animationDelay: `${idx * 150}ms` }}
+          >
+            {/* Header: Type and Date */}
+            <div className="pub-card-header">
+              <div className="pub-badges">
+                <span className="pub-badge-type">{pub.type}</span>
+                <span className="pub-badge-status">{pub.status}</span>
+              </div>
+              <div className="pub-date-box">
+                <Calendar size={14} />
+                <span>{pub.date}</span>
+              </div>
             </div>
 
+            {/* Title */}
             <h3 className="pub-title">{pub.title}</h3>
-            
-            <div className="pub-meta">
-              <BookOpen size={16} />
-              <span>{pub.journal}</span>
+
+            {/* Metadata (Conference & Host) */}
+            <div className="pub-metadata-group">
+              <div className="pub-meta-item">
+                <BookOpen size={14} className="meta-icon" />
+                <span className="meta-text"><strong>Venue:</strong> {pub.conference}</span>
+              </div>
+              <div className="pub-meta-item">
+                <Building size={14} className="meta-icon" />
+                <span className="meta-text"><strong>Organizer:</strong> {pub.organizer}</span>
+              </div>
             </div>
 
-            <p className="pub-desc">{pub.description}</p>
+            <div className="pub-divider"></div>
 
-            <div className="pub-learnings glass">
-              <strong><Award size={14} /> Key Contribution:</strong>
-              <p>{pub.learnings}</p>
+            {/* Abstract/Description */}
+            <p className="pub-description-text">{pub.description}</p>
+
+            {/* Highlights */}
+            <div className="pub-highlights-section">
+              <span className="highlights-title">Core Contributions</span>
+              <ul className="pub-highlights-list">
+                {pub.highlights.map((highlight, hIdx) => (
+                  <li key={hIdx} className="pub-highlight-item">
+                    <CheckCircle2 size={14} className="check-icon" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="pub-footer">
-              <a href={pub.link} target="_blank" rel="noopener noreferrer" className="view-pub-btn glow-btn glow-btn-secondary">
-                <FileText size={16} /> View Full Paper <ExternalLink size={14} />
+            {/* Footer action link */}
+            <div className="pub-card-footer">
+              <a
+                href={pub.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pub-action-link"
+              >
+                <FileText size={16} />
+                <span>View Certificate</span>
+                <ArrowRight size={14} className="arrow-icon" />
               </a>
             </div>
           </div>

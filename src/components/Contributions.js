@@ -8,7 +8,7 @@ const Contributions = () => {
   const gitHubStats = {
     username: "CaneCilia",
     fullName: "Kanishkar R",
-    bio: "Software Developer | AI & Automation Systems Architect",
+    bio: "Codebyte Crafter | AI & Automation Systems Architect",
     avatarUrl: "https://github.com/CaneCilia.png",
     repos: "24+",
     stars: "15+",
@@ -160,7 +160,7 @@ const Contributions = () => {
             
             <div className="github-chart-wrapper">
               <img 
-                src={`https://ghchart.rshah.org/8b5cf6/${gitHubStats.username}`} 
+                src={`https://ghchart.rshah.org/8b5cf6/${gitHubStats.username}?v=${Date.now()}`} 
                 alt={`${gitHubStats.username}'s GitHub Contribution Chart`}
                 className="github-chart-img"
               />
@@ -190,7 +190,7 @@ const Contributions = () => {
         </div>
 
         {/* Other Platform Cards Header */}
-        <h3 className="sub-section-title animate-slide-up" style={{ animationDelay: '100ms' }}>
+        <h3 className="contributions-sub-title animate-slide-up" style={{ animationDelay: '100ms' }}>
           Additional Professional Platforms
         </h3>
 
@@ -230,6 +230,14 @@ const Contributions = () => {
                       </div>
                     </div>
 
+                    <div className="linkedin-skills-tags">
+                      <span className="skill-tag">Full-Stack React</span>
+                      <span className="skill-tag">AI Workflows</span>
+                      <span className="skill-tag">Database Ops</span>
+                    </div>
+
+                    <p className="platform-desc">{item.description}</p>
+
                     <div className="platform-stats-row linkedin-stats">
                       {item.stats.map((stat, sIdx) => (
                         <div key={sIdx} className="platform-stat-cell">
@@ -237,14 +245,6 @@ const Contributions = () => {
                           <span className="platform-stat-lbl">{stat.label}</span>
                         </div>
                       ))}
-                    </div>
-
-                    <p className="platform-desc">{item.description}</p>
-
-                    <div className="linkedin-skills-tags">
-                      <span className="skill-tag">Full-Stack React</span>
-                      <span className="skill-tag">AI Workflows</span>
-                      <span className="skill-tag">Database Ops</span>
                     </div>
 
                     <div className="platform-impact-box">
@@ -257,8 +257,11 @@ const Contributions = () => {
                 {isGoogle && (
                   <>
                     <div className="platform-card-header">
-                      <div className="platform-icon-wrapper google-icon-wrapper">
-                        {item.icon}
+                      <div className="platform-avatar-wrapper">
+                        <img src={gitHubStats.avatarUrl} alt="Kanishkar R" className="platform-avatar" />
+                        <div className="platform-icon-badge google-icon-badge">
+                          {item.icon}
+                        </div>
                       </div>
                       <div className="platform-meta">
                         <span className="platform-tag">{item.platform}</span>
@@ -307,8 +310,11 @@ const Contributions = () => {
                 {isAMD && (
                   <>
                     <div className="platform-card-header">
-                      <div className="platform-icon-wrapper amd-icon-wrapper">
-                        {item.icon}
+                      <div className="platform-avatar-wrapper">
+                        <img src={gitHubStats.avatarUrl} alt="Kanishkar R" className="platform-avatar" />
+                        <div className="platform-icon-badge amd-icon-badge">
+                          {item.icon}
+                        </div>
                       </div>
                       <div className="platform-meta">
                         <span className="platform-tag">{item.platform}</span>

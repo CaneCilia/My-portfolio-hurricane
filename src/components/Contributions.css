@@ -277,17 +277,17 @@
 }
 
 /* Sub-section Header */
-.sub-section-title {
+.contributions-sub-title {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 28px;
   position: relative;
   letter-spacing: -0.015em;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
-.sub-section-title::after {
+.contributions-sub-title::after {
   content: '';
   position: absolute;
   bottom: -8px;
@@ -372,14 +372,11 @@
 .platform-card-header {
   display: flex;
   gap: 14px;
-  align-items: flex-end;
-  margin-top: -38px; /* pull up to overlap banner */
+  align-items: center;
+  margin-top: -27px; /* pull up to overlap banner centered */
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
-  /* MODIFICATION: Force a consistent height for the header container so the metadata details align horizontally */
-  height: 58px;
-  box-sizing: border-box;
 }
 
 /* Avatar layout for LinkedIn Card */
@@ -408,11 +405,23 @@
   height: 22px;
   border-radius: 50%;
   background: var(--bg-primary);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.linkedin-icon-badge {
+  border-color: #0077b5;
+}
+
+.google-icon-badge {
+  border-color: #4285f4;
+}
+
+.amd-icon-badge {
+  border-color: #ed1c24;
 }
 
 .platform-icon-badge svg {
@@ -451,8 +460,7 @@
 .platform-meta {
   display: flex;
   flex-direction: column;
-  /* MODIFICATION: Enforce baseline alignment to ensure text starts at the exact same horizontal position */
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .platform-tag {
@@ -492,11 +500,11 @@
   border: 1px solid var(--border-color);
 }
 
-/* MODIFICATION: Added class-specific heights for the upper content widgets to ensure descriptions start at the exact same position */
+/* Stats row at the bottom slot, standardized to 62px height */
 .platform-stats-row.linkedin-stats {
-  height: 82px;
+  height: 62px;
   box-sizing: border-box;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   align-content: center;
 }
 
@@ -551,14 +559,17 @@
   overflow: hidden;
 }
 
-/* LinkedIn specific tags */
+/* Skills tags at the top slot, standardized to 82px height with container background */
 .linkedin-skills-tags {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  /* MODIFICATION: Set consistent height for the lower slot position to match Google/AMD stats row heights */
-  height: 62px;
+  gap: 8px;
+  margin-bottom: 18px;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  border-radius: 10px;
+  height: 82px;
   box-sizing: border-box;
   align-items: center;
 }

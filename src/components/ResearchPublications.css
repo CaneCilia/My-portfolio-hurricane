@@ -5,97 +5,203 @@
 
 .publications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
   gap: 30px;
+  width: 100%;
 }
 
 .pub-card {
-  padding: 30px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  border-radius: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
 }
 
-.pub-header {
+.pub-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-primary);
+  box-shadow: 0 12px 30px rgba(9, 9, 11, 0.03);
+}
+
+.pub-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-.pub-tag {
+.pub-badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pub-badge-type {
   background: rgba(14, 165, 233, 0.08);
   border: 1px solid rgba(14, 165, 233, 0.15);
   color: var(--accent-blue);
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
-.pub-date {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
+.pub-badge-status {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pub-date-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
 }
 
 .pub-title {
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.pub-metadata-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pub-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
   line-height: 1.4;
 }
 
-.pub-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
+.meta-icon {
+  margin-top: 3px;
   color: var(--text-secondary);
-  font-style: italic;
+  flex-shrink: 0;
 }
 
-.pub-desc {
+.meta-text strong {
+  color: var(--text-primary);
+}
+
+.pub-divider {
+  height: 1px;
+  background: var(--border-color);
+  width: 100%;
+}
+
+.pub-description-text {
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-.pub-learnings {
-  padding: 16px;
-  border-radius: 12px;
+/* Highlights */
+.pub-highlights-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   background: rgba(255, 255, 255, 0.01);
-  border-left: 3px solid var(--accent-purple);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 18px;
 }
 
-.pub-learnings strong {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
+.highlights-title {
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--text-primary);
   text-transform: uppercase;
-  margin-bottom: 6px;
+  letter-spacing: 0.05em;
 }
 
-.pub-learnings p {
+.pub-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pub-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   font-size: 0.85rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.pub-footer {
-  margin-top: 10px;
+.check-icon {
+  color: var(--accent-purple);
+  margin-top: 3px;
+  flex-shrink: 0;
 }
 
-.view-pub-btn {
+/* Footer Action */
+.pub-card-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.pub-action-link {
   display: inline-flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+
+.pub-action-link .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.pub-action-link:hover {
+  color: var(--accent-purple);
+}
+
+.pub-action-link:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .publications-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
-  .publications-grid {
-    grid-template-columns: 1fr;
+  .pub-card {
+    padding: 24px;
+  }
+  .pub-title {
+    font-size: 1.25rem;
   }
 }

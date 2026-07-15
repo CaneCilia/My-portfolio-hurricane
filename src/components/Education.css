@@ -62,6 +62,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 14px;
+  gap: 16px;
 }
 
 .edu-duration {
@@ -180,7 +181,10 @@
   .edu-meta-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
+  }
+  .edu-meta-divider {
+    display: none;
   }
 }
 
@@ -193,7 +197,7 @@
 }
 
 .edu-card-image-side {
-  width: 280px;
+  width: 380px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
@@ -271,7 +275,7 @@
   }
   .edu-card-image-side {
     width: 100%;
-    height: 200px;
+    height: 280px;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
   }
@@ -283,4 +287,32 @@
   .edu-card-details-side {
     padding: 24px;
   }
+}
+
+/* Meta Left Row (Logo + Duration) */
+.edu-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* College Logo Styling */
+.edu-college-logo {
+  height: 38px;
+  max-width: 110px;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.edu-college-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Dotted / Dashed Divider Line */
+.edu-meta-divider {
+  flex-grow: 1;
+  height: 1px;
+  border-bottom: 1px dashed var(--border-color);
+  opacity: 0.6;
 }
