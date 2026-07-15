@@ -249,3 +249,44 @@ section {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13.5px; /* Global font-size zoom out on phones */
+  }
+  
+  section {
+    padding: 50px 12px;
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+
+  /* Compact padding for all container cards */
+  .card, 
+  .education-timeline-content, 
+  .pub-card, 
+  .project-info, 
+  .edu-card-details-side,
+  .event-card-content {
+    padding: 16px !important;
+  }
+  
+  .platform-profile-card {
+    padding: 0 16px 16px 16px !important;
+  }
+
+  /* Compact grid spacings */
+  .cards-grid, 
+  .skills-overview-grid, 
+  .projects-grid, 
+  .other-platforms-grid, 
+  .publications-grid, 
+  .events-grid,
+  .all-certs-grid {
+    gap: 16px !important;
+  }
+}
