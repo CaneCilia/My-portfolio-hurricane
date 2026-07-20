@@ -11,7 +11,6 @@ const EDUCATION_DATA = [
     images: [
       "/images/main-buildinge.jpg",
       "/images/mba-library-side-view.jpg",
-      "/images/sona-mba-side-view.jpg",
       "/images/college-entrance.jpg",
       "images/main-building.jpg"
     ],
