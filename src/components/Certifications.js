@@ -11,8 +11,8 @@ const Certifications = ({ onViewAll }) => {
       link: "#",
       accent: "linear-gradient(135deg, #F80000, #C74634)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#F80000">
-          <path d="M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+        <svg viewBox="0 0 100 60" className="provider-logo-svg" fill="#F80000" style={{ width: '42px', height: 'auto' }}>
+          <path d="M50 5C27.9 5 10 16.2 10 30c0 13.8 17.9 25 40 25s40-11.2 40-25C90 16.2 72.1 5 50 5zm0 37.5c-15.2 0-27.5-7.8-27.5-17.5s12.3-17.5 27.5-17.5 27.5 7.8 27.5 17.5-12.3 17.5-27.5 17.5z"/>
         </svg>
       )
     },

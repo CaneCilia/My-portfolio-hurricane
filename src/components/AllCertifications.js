@@ -11,8 +11,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #F80000, #C74634)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#F80000">
-          <path d="M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+        <svg viewBox="0 0 100 60" className="provider-logo-svg" fill="#F80000" style={{ width: '42px', height: 'auto' }}>
+          <path d="M50 5C27.9 5 10 16.2 10 30c0 13.8 17.9 25 40 25s40-11.2 40-25C90 16.2 72.1 5 50 5zm0 37.5c-15.2 0-27.5-7.8-27.5-17.5s12.3-17.5 27.5-17.5 27.5 7.8 27.5 17.5-12.3 17.5-27.5 17.5z"/>
         </svg>
       )
     },
@@ -71,9 +71,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #007CC3, #00AEEF)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#007CC3">
-          <rect width="24" height="24" rx="4" />
-          <text x="3" y="16" fill="white" fontFamily="var(--font-sans)" fontSize="10">Infy</text>
+        <svg viewBox="0 0 100 30" className="provider-logo-svg" style={{ width: '62px', height: 'auto' }}>
+          <path fill="#007CC3" d="M12 5h4v16h-4zm7 0h3v2.5c.8-1.2 2.2-2.5 4.5-2.5 3.5 0 5.5 2 5.5 5.5V21h-4v-7c0-2.2-1-3.2-2.5-3.2-1.8 0-3.5 1.5-3.5 3.5V21h-4zm24 5c-1 0-2 .2-2.8.6v10.8c.8.4 1.8.6 2.8.6 3.5 0 5.5-2 5.5-6.3 0-4-2-6.3-5.5-6.3zm0-3.5c6.5 0 9.5 3.5 9.5 9.8s-3 9.8-9.5 9.8c-1.5 0-3-.3-4.5-.8V26h-4V5.5h4v4.3c1.5-.5 3-.8 4.5-.8zm15.5 7.3c0-1.8-1.2-2.5-3.2-2.5-1.8 0-3.2.8-3.2 2.5 0 3.5 9.5 2 9.5 7.2 0 3.5-3 5.5-6.8 5.5-2.5 0-5-.8-6.2-1.8l1.8-2.8c1.2 1 3 1.6 4.4 1.6 1.8 0 3.2-.8 3.2-2.5 0-3.5-9.5-2-9.5-7.2 0-3.5 3-5.5 6.8-5.5 2.2 0 4.2.6 5.5 1.5zm11 11.7l6.8-15h4.2l-9.2 19.5h-4.2l3-6.2-5.6-13.3h4.2zm17.5-2.5c0-1.8-1.2-2.5-3.2-2.5-1.8 0-3.2.8-3.2 2.5 0 3.5 9.5 2 9.5 7.2 0 3.5-3 5.5-6.8 5.5-2.5 0-5-.8-6.2-1.8l1.8-2.8c1.2 1 3 1.6 4.4 1.6 1.8 0 3.2-.8 3.2-2.5 0-3.5-9.5-2-9.5-7.2 0-3.5 3-5.5 6.8-5.5 2.2 0 4.2.6 5.5 1.5z"/>
         </svg>
       )
     },
@@ -84,8 +83,10 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #13AA52, #0B6B3A)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#13AA52">
-          <path d="M12 1.5c-.32 0-.64.08-.94.24l-7.5 4c-.95.5-1.56 1.5-1.56 2.58v8.36c0 1.08.6 2.08 1.56 2.58l7.5 4c.3.16.62.24.94.24s.64-.08.94-.24l7.5-4c.95-.5 1.56-1.5 1.56-2.58V8.32c0-1.08-.6-2.08-1.56-2.58l-7.5-4c-.3-.16-.62-.24-.94-.24zm0 2.86l6.38 3.4L12 11.16 5.62 7.76 12 4.36zM3.5 9.7L11 13.7v8.52L3.5 18.22V9.7zm17 0v8.52L13 22.22V13.7l7.5-4z"/>
+        <svg viewBox="0 0 32 32" className="provider-logo-svg" style={{ width: '26px', height: '26px' }}>
+          <path fill="#13AA52" d="M20.2 13.4c-.8-2.9-2.3-5.5-4.2-7.8-.5-.6-1-.6-1.5 0-1.9 2.3-3.4 4.9-4.2 7.8-.8 3 0 6 1.7 8.3 1.8 2.4 4.3 3.9 4.3 3.9s2.5-1.5 4.3-3.9c1.7-2.3 2.5-5.3 1.6-8.3z"/>
+          <path fill="#118843" d="M16 4.5v22c0 0 2.5-1.5 4.3-3.9 1.7-2.3 2.5-5.3 1.6-8.3-.8-2.9-2.3-5.5-4.2-7.8-.5-.6-1-.6-1.7 0z"/>
+          <path fill="#49A466" d="M16 1.5c-.3 0-.5.2-.5.5v2.5c0 .3.2.5.5.5s.5-.2.5-.5V2c0-.3-.2-.5-.5-.5zM16 27.5c-.3 0-.5.2-.5.5v2.5c0 .3.2.5.5.5s.5-.2.5-.5V28c0-.3-.2-.5-.5-.5z"/>
         </svg>
       )
     },
@@ -97,8 +98,10 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #FF9900, #232F3E)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#FF9900">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.132 16.59c-.43.513-.984.81-1.572.852-.894.06-1.74-.324-2.21-.99-.072-.102-.132-.216-.174-.336l-.012-.03c-.276-.816-.96-1.398-1.794-1.536-.78-.132-1.56.096-2.148.624l-.192.174c-.588.528-1.392.768-2.172.636-.93-.162-1.68-.828-1.92-1.722-.24-.9-.012-1.854.606-2.52.888-.948 2.148-1.488 3.468-1.488 1.134 0 2.22.402 3.06 1.134.42-.486.966-.78 1.566-.828.87-.06 1.704.306 2.172.954.108.15.192.318.252.492l.012.036c.27.816.942 1.404 1.776 1.548.78.132 1.572-.096 2.16-.63l.168-.15c.57-.528 1.344-.768 2.112-.66.93.138 1.698.786 1.968 1.674.276.882.072 1.836-.522 2.514-.882.996-2.178 1.572-3.528 1.572-1.122 0-2.196-.402-3.036-1.122z"/>
+        <svg viewBox="0 0 120 40" className="provider-logo-svg" style={{ width: '65px', height: 'auto' }}>
+          <rect width="120" height="40" rx="6" fill="#1F2937"/>
+          <text x="15" y="26" fill="#FFFFFF" fontFamily="var(--font-sans)" fontWeight="800" fontSize="18" letterSpacing="1">FORAGE</text>
+          <circle cx="102" cy="18" r="4" fill="#FF9900" />
         </svg>
       )
     },
@@ -124,9 +127,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #007CC3, #00AEEF)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#007CC3">
-          <rect width="24" height="24" rx="4" />
-          <text x="3" y="16" fill="white" fontFamily="var(--font-sans)" fontSize="10">Infy</text>
+        <svg viewBox="0 0 100 30" className="provider-logo-svg" style={{ width: '62px', height: 'auto' }}>
+          <path fill="#007CC3" d="M12 5h4v16h-4zm7 0h3v2.5c.8-1.2 2.2-2.5 4.5-2.5 3.5 0 5.5 2 5.5 5.5V21h-4v-7c0-2.2-1-3.2-2.5-3.2-1.8 0-3.5 1.5-3.5 3.5V21h-4zm24 5c-1 0-2 .2-2.8.6v10.8c.8.4 1.8.6 2.8.6 3.5 0 5.5-2 5.5-6.3 0-4-2-6.3-5.5-6.3zm0-3.5c6.5 0 9.5 3.5 9.5 9.8s-3 9.8-9.5 9.8c-1.5 0-3-.3-4.5-.8V26h-4V5.5h4v4.3c1.5-.5 3-.8 4.5-.8zm15.5 7.3c0-1.8-1.2-2.5-3.2-2.5-1.8 0-3.2.8-3.2 2.5 0 3.5 9.5 2 9.5 7.2 0 3.5-3 5.5-6.8 5.5-2.5 0-5-.8-6.2-1.8l1.8-2.8c1.2 1 3 1.6 4.4 1.6 1.8 0 3.2-.8 3.2-2.5 0-3.5-9.5-2-9.5-7.2 0-3.5 3-5.5 6.8-5.5 2.2 0 4.2.6 5.5 1.5zm11 11.7l6.8-15h4.2l-9.2 19.5h-4.2l3-6.2-5.6-13.3h4.2zm17.5-2.5c0-1.8-1.2-2.5-3.2-2.5-1.8 0-3.2.8-3.2 2.5 0 3.5 9.5 2 9.5 7.2 0 3.5-3 5.5-6.8 5.5-2.5 0-5-.8-6.2-1.8l1.8-2.8c1.2 1 3 1.6 4.4 1.6 1.8 0 3.2-.8 3.2-2.5 0-3.5-9.5-2-9.5-7.2 0-3.5 3-5.5 6.8-5.5 2.2 0 4.2.6 5.5 1.5z"/>
         </svg>
       )
     },
@@ -137,8 +139,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #049FD9, #0A5E92)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#049FD9">
-          <path d="M2.4 15.6V8.4h1.2v7.2zm2.4 2.4V6h1.2v12zm2.4-2.4V8.4h1.2v7.2zm2.4 4.8V3.6h1.2v16.8zm2.4-4.8V8.4h1.2v7.2zm2.4 2.4V6h1.2v12zm2.4-2.4V8.4h1.2v7.2zM21.6 20.4V3.6h1.2v16.8z"/>
+        <svg viewBox="0 0 40 24" className="provider-logo-svg" style={{ width: '36px', height: 'auto' }}>
+          <path fill="#049FD9" d="M4 14v4h2v-4H4zm4-3v7h2v-7H8zm4-3v10h2V8h-2zm4-4v14h2V4h-2zm4 4v10h2V8h-2zm4 3v7h2v-7h-2zm4 3v4h2v-4h-2z"/>
         </svg>
       )
     },
@@ -149,8 +151,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #049FD9, #0A5E92)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#049FD9">
-          <path d="M2.4 15.6V8.4h1.2v7.2zm2.4 2.4V6h1.2v12zm2.4-2.4V8.4h1.2v7.2zm2.4 4.8V3.6h1.2v16.8zm2.4-4.8V8.4h1.2v7.2zm2.4 2.4V6h1.2v12zm2.4-2.4V8.4h1.2v7.2zM21.6 20.4V3.6h1.2v16.8z"/>
+        <svg viewBox="0 0 40 24" className="provider-logo-svg" style={{ width: '36px', height: 'auto' }}>
+          <path fill="#049FD9" d="M4 14v4h2v-4H4zm4-3v7h2v-7H8zm4-3v10h2V8h-2zm4-4v14h2V4h-2zm4 4v10h2V8h-2zm4 3v7h2v-7h-2zm4 3v4h2v-4h-2z"/>
         </svg>
       )
     },
@@ -161,9 +163,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #00C7B7, #2B2D42)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#00C7B7">
-          <rect width="24" height="24" rx="4" />
-          <text x="3" y="16" fill="white" fontFamily="var(--font-sans)" fontSize="10">SS</text>
+        <svg viewBox="0 0 100 30" className="provider-logo-svg" style={{ width: '70px', height: 'auto' }}>
+          <text x="0" y="22" fill="#00FFC7" fontFamily="var(--font-sans)" fontWeight="900" fontSize="16" letterSpacing="0">SKILLSHARE</text>
         </svg>
       )
     },
@@ -174,9 +175,10 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #F1502F, #24292F)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#F1502F">
-          <rect width="24" height="24" rx="4" />
-          <text x="3" y="16" fill="white" fontFamily="var(--font-sans)" fontSize="10">SL</text>
+        <svg viewBox="0 0 120 30" className="provider-logo-svg" style={{ width: '75px', height: 'auto' }}>
+          <rect width="120" height="30" rx="4" fill="#0A2540"/>
+          <text x="10" y="20" fill="#FF8C00" fontFamily="var(--font-sans)" fontWeight="bold" fontSize="13">simpli</text>
+          <text x="50" y="20" fill="#FFFFFF" fontFamily="var(--font-sans)" fontWeight="bold" fontSize="13">learn</text>
         </svg>
       )
     },
@@ -187,9 +189,8 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #007CC3, #00AEEF)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#007CC3">
-          <rect width="24" height="24" rx="4" />
-          <text x="3" y="16" fill="white" fontFamily="var(--font-sans)" fontSize="10">Infy</text>
+        <svg viewBox="0 0 100 30" className="provider-logo-svg" style={{ width: '62px', height: 'auto' }}>
+          <path fill="#007CC3" d="M12 5h4v16h-4zm7 0h3v2.5c.8-1.2 2.2-2.5 4.5-2.5 3.5 0 5.5 2 5.5 5.5V21h-4v-7c0-2.2-1-3.2-2.5-3.2-1.8 0-3.5 1.5-3.5 3.5V21h-4zm24 5c-1 0-2 .2-2.8.6v10.8c.8.4 1.8.6 2.8.6 3.5 0 5.5-2 5.5-6.3 0-4-2-6.3-5.5-6.3zm0-3.5c6.5 0 9.5 3.5 9.5 9.8s-3 9.8-9.5 9.8c-1.5 0-3-.3-4.5-.8V26h-4V5.5h4v4.3c1.5-.5 3-.8 4.5-.8zm15.5 7.3c0-1.8-1.2-2.5-3.2-2.5-1.8 0-3.2.8-3.2 2.5 0 3.5 9.5 2 9.5 7.2 0 3.5-3 5.5-6.8 5.5-2.5 0-5-.8-6.2-1.8l1.8-2.8c1.2 1 3 1.6 4.4 1.6 1.8 0 3.2-.8 3.2-2.5 0-3.5-9.5-2-9.5-7.2 0-3.5 3-5.5 6.8-5.5 2.2 0 4.2.6 5.5 1.5zm11 11.7l6.8-15h4.2l-9.2 19.5h-4.2l3-6.2-5.6-13.3h4.2zm17.5-2.5c0-1.8-1.2-2.5-3.2-2.5-1.8 0-3.2.8-3.2 2.5 0 3.5 9.5 2 9.5 7.2 0 3.5-3 5.5-6.8 5.5-2.5 0-5-.8-6.2-1.8l1.8-2.8c1.2 1 3 1.6 4.4 1.6 1.8 0 3.2-.8 3.2-2.5 0-3.5-9.5-2-9.5-7.2 0-3.5 3-5.5 6.8-5.5 2.2 0 4.2.6 5.5 1.5z"/>
         </svg>
       )
     },
@@ -201,8 +202,10 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #FA4616, #121212)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#FA4616">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+        <svg viewBox="0 0 120 40" className="provider-logo-svg" style={{ width: '70px', height: 'auto' }}>
+          <path fill="#FA4616" d="M15 10c-5.5 0-10 4.5-10 10s4.5 10 10 10c3.5 0 6.6-1.8 8.4-4.5h4.2C25.5 28.6 20.6 32 15 32 8.4 32 3 26.6 3 20S8.4 8 15 8c5.6 0 10.5 3.4 12.6 6.5h-4.2C21.6 11.8 18.5 10 15 10z"/>
+          <path fill="#FFFFFF" d="M22 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z" />
+          <text x="35" y="26" fill="#FFFFFF" fontFamily="var(--font-sans)" fontWeight="800" fontSize="16">UiPath</text>
         </svg>
       )
     },
@@ -213,9 +216,9 @@ const AllCertifications = ({ onBack }) => {
       link: "#",
       accent: "linear-gradient(135deg, #8B5CF6, #4338CA)",
       logo: (
-        <svg viewBox="0 0 24 24" className="provider-logo-svg" fill="#8B5CF6">
-          <rect width="24" height="24" rx="4" />
-          <text x="2" y="15" fill="white" fontFamily="var(--font-sans)" fontSize="8">NPTEL</text>
+        <svg viewBox="0 0 120 35" className="provider-logo-svg" style={{ width: '70px', height: 'auto' }}>
+          <rect width="120" height="35" rx="5" fill="#E28743"/>
+          <text x="12" y="22" fill="#FFFFFF" fontFamily="var(--font-sans)" fontWeight="800" fontSize="16" letterSpacing="1">NPTEL</text>
         </svg>
       )
     }

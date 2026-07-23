@@ -191,7 +191,11 @@ function App() {
       </footer>
 
       {/* Floating CLI Terminal */}
-      <Terminal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
+      <Terminal 
+        isOpen={isTerminalOpen} 
+        onClose={() => setIsTerminalOpen(false)} 
+        navigateToSection={navigateToSection}
+      />
 
       {/* Back to Top Floating Trigger */}
       <button 
