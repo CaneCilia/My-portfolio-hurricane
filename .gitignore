@@ -35,3 +35,7 @@ secrets/
 *.pfx
 credentials*
 
+# redesign documentation
+skills page plan.md
+WEBSITE_MOTION_GRAPHICS_PLAN.md
+
