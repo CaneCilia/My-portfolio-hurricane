@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronUp, Heart, Mail } from 'lucide-react';
+import { ChevronUp, Mail } from 'lucide-react';
 import { Github, Linkedin } from './components/BrandIcons';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,7 +7,6 @@ import About from './components/About';
 import Education from './components/Education';
 import Internships from './components/Internships';
 import Skills from './components/Skills';
-import SoftSkills from './components/SoftSkills';
 import Contributions from './components/Contributions';
 import Projects from './components/Projects';
 import DevelopmentJourney from './components/DevelopmentJourney';
@@ -85,8 +84,6 @@ function App() {
     setIsTerminalOpen(prev => !prev);
   };
 
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className="App">
       {/* Sticky Navigation Bar */}
@@ -125,8 +122,6 @@ function App() {
               <EventOrganizing />
             </div>
 
-            <SoftSkills />
-
             <ResearchPublications />
 
             {/* Contact CTA Banner */}
@@ -154,19 +149,6 @@ function App() {
               <a href="#home" className="footer-logo" onClick={(e) => { e.preventDefault(); navigateToSection('home'); }}>
                 CANECILIA<span>.</span>
               </a>
-              <p>Applying technical skills in software development and automation to solve real-world problems.</p>
-            </div>
-            
-            <div className="footer-links">
-              <h4>Navigation</h4>
-              <ul>
-                <li><a href="#about" onClick={(e) => { e.preventDefault(); navigateToSection('about'); }}>About</a></li>
-                <li><a href="#education" onClick={(e) => { e.preventDefault(); navigateToSection('education'); }}>Education</a></li>
-                <li><a href="#internships" onClick={(e) => { e.preventDefault(); navigateToSection('internships'); }}>Internships</a></li>
-                <li><a href="#skills" onClick={(e) => { e.preventDefault(); navigateToSection('skills'); }}>Skills</a></li>
-                <li><a href="#projects" onClick={(e) => { e.preventDefault(); navigateToSection('projects'); }}>Projects</a></li>
-                <li><a href="#contact" onClick={(e) => { e.preventDefault(); navigateToSection('contact'); }}>Contact</a></li>
-              </ul>
             </div>
 
             <div className="footer-socials">
@@ -177,15 +159,6 @@ function App() {
                 <a href="mailto:kanishkar@example.com" aria-label="Email"><Mail size={18} /></a>
               </div>
             </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p className="copyright-text">
-              &copy; {currentYear} CaneCilia. All rights reserved.
-            </p>
-            <p className="built-with">
-              Built with <Heart size={12} className="heart-icon" /> using React & Vanilla CSS | Last Updated: July 2026
-            </p>
           </div>
         </div>
       </footer>
