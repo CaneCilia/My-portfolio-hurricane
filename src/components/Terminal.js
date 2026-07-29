@@ -148,7 +148,7 @@ Your tone should be helpful, technical, and professional.`;
 
 const Terminal = ({ isOpen, onClose, navigateToSection }) => {
   const [history, setHistory] = useState([
-    { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
+    { text: 'Initializing Terminal Session...', type: 'system' },
     { text: 'AI Copilot active. Type help to see available commands.', type: 'ai-welcome' }
   ]);
   const [input, setInput] = useState('');
@@ -166,12 +166,12 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     if (apiKey) {
       setHistory([
         { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
-        { text: '✨ Live Gemini RAG Copilot connected. Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
+        { text: 'Live Gemini RAG Copilot connected. Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
       ]);
     } else {
       setHistory([
         { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
-        { text: '💡 Running in Local RAG Mode. Type `setkey <your-gemini-api-key>` to connect to live Gemini LLM!', type: 'ai-welcome' }
+        { text: 'Running in Local RAG Mode. Type `setkey <your-gemini-api-key>` to connect to live Gemini LLM!', type: 'ai-welcome' }
       ]);
     }
   }, []);
@@ -388,8 +388,7 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
       {/* Header */}
       <div className="terminal-header" onClick={() => isMinimized && setIsMinimized(false)}>
         <div className="terminal-title">
-          <Bot size={16} className="title-icon AI-icon animate-pulse" />
-          <span>Interactive AI Copilot Terminal (RAG)</span>
+          <span>Terminal Assistant</span>
         </div>
         
         <div className="header-controls">
