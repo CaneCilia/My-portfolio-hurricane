@@ -142,13 +142,14 @@
   width: 100%;
   height: 100%;
 }
-
-.img-appathon25 {
-  transform: scale(1.1); /* Zoom in a little bit by default */
+.banner-appathon25 {
+  padding: 0 !important;
 }
 
-.event-card:hover .img-appathon25 {
-  transform: scale(1.14); /* Smooth hover zoom transition */
+.img-appathon25 {
+  object-fit: cover !important;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
