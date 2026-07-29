@@ -1,23 +1,183 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Minimize2, Maximize2, X, CornerDownLeft, Sparkles, Bot } from 'lucide-react';
+import { Minimize2, Maximize2, X, CornerDownLeft, Sparkles, Bot, Sun, Moon } from 'lucide-react';
 import './Terminal.css';
+
+// Client-side RAG Knowledge Base
+const PORTFOLIO_DB = [
+  {
+    id: "about",
+    title: "About Kanishkar R",
+    content: "Kanishkar R is a results-oriented Software Developer. He specializes in building high-fidelity web interfaces, database microservices, and orchestrating retrieval-augmented AI workflows (RAG) using modern frameworks. Key focus: applying technical competency to solve practical problems. He loves bridging frontend interfaces with powerful AI, backend microservices, and databases. He studies at PSG College of Technology."
+  },
+  {
+    id: "skills",
+    title: "Technical Skills & Stacks",
+    content: "Programming Languages: Python, JavaScript, Java, C++. Frontend: React.js, Next.js, HTML5, CSS3, Vanilla CSS, Responsive Web Design. Backend: Node.js, Express, FastAPI, REST APIs. AI / ML: LangChain, LangGraph, LLM Prompting, PyTorch, RAG Pipelines, Vector schemas, tool schemas, custom cognitive loop graphs. Database & Cloud: PostgreSQL, MongoDB, Redis, AWS, GCP, DevOps, Docker, Git, GitHub, Linux Shell."
+  },
+  {
+    id: "projects",
+    title: "Projects & Portfolio Work",
+    content: "1. Aether Automation Hub: Built using FastAPI, LangChain RAG & WebSockets agent dashboard. Agentic AI workflow with LangGraph orchestration, Gemini LLM, Retrieval-Augmented Generation, and a Flutter dashboard.\n2. Letter Craft Document Builder: React, Firebase realtime layering workspace for interactive document design.\n3. Swift Delivery App: React Native, Socket.io geospatial polling application for delivery agent tracking."
+  },
+  {
+    id: "internships",
+    title: "Work Experience & Internships",
+    content: "- Software Engineering Intern at InnovateTech Labs: Built dashboard features, tuned SQL indexes, automated AWS EC2 deployments, optimized database queries.\n- AI & Automation Intern at Apex Automation Solutions: Developed agentic LangChain workflows, structured background document scanners, automated reports, created LangChain orchestrators for enterprise workflows and set up multi-source document ingestion."
+  },
+  {
+    id: "education",
+    title: "Education & Academics",
+    content: "- B.E. Computer Science | PSG College of Technology (2022 - 2026). CGPA: 8.7/10. Smart India Hackathon Winner. Led his team to win the Smart India Hackathon (SIH), a prestigious national event, building an automated rapid prototyping solution.\n- Higher Secondary Certificate | St. Joseph's HSS. Percentage: 96.5%. School Rank 1 in Computer Science."
+  },
+  {
+    id: "publications",
+    title: "Research & Publications",
+    content: "- 'Automated Crop Disease Detection using Deep Learning' published in Agricultural AI journal.\n- 'Edge Computing for LLM Agents: Quantization Constraints' presented at AI & Cloud conference."
+  },
+  {
+    id: "certifications",
+    title: "Professional Certifications",
+    content: "- AWS Certified Solutions Architect - Associate.\n- Deep Learning Specialization by DeepLearning.AI.\n- Associate Cloud Engineer by Google Cloud.\n- PostgreSQL Database Administration by University of Michigan."
+  },
+  {
+    id: "contact",
+    title: "Contact Details & Social Profiles",
+    content: "- Email: kanishkar@example.com\n- Phone: +1 234 567 890\n- GitHub: github.com/CaneCilia\n- LinkedIn: linkedin.com/in/kanishkar42\n- Location: Coimbatore, Tamil Nadu, India"
+  }
+];
+
+// Simple, effective client-side RAG retrieval function
+const retrieveContext = (query) => {
+  const words = query.toLowerCase()
+    .replace(/[^a-zA-Z0-9\s]/g, "")
+    .split(/\s+/)
+    .filter(w => w.length > 2); // Keep words longer than 2 characters
+
+  if (words.length === 0) return { context: "", targetSection: null };
+
+  const scoredDocs = PORTFOLIO_DB.map(doc => {
+    let score = 0;
+    const docText = `${doc.title} ${doc.content}`.toLowerCase();
+    
+    words.forEach(word => {
+      // Weight title and ID matches highly
+      if (doc.id.includes(word)) score += 10;
+      if (doc.title.toLowerCase().includes(word)) score += 5;
+      
+      // Count frequency in content
+      const regex = new RegExp(`\\b${word}\\b`, 'g');
+      const matches = docText.match(regex);
+      if (matches) {
+        score += matches.length * 2;
+      } else if (docText.includes(word)) {
+        score += 1; // partial word match
+      }
+    });
+
+    return { ...doc, score };
+  });
+
+  // Sort by score descending
+  scoredDocs.sort((a, b) => b.score - a.score);
+
+  // Take documents with positive score
+  const relevantDocs = scoredDocs.filter(d => d.score > 0);
+
+  if (relevantDocs.length === 0) {
+    return { context: "", targetSection: null };
+  }
+
+  // Get top 2 documents for context
+  const topDocs = relevantDocs.slice(0, 2);
+  const contextText = topDocs.map(d => `[Section: ${d.title}]\n${d.content}`).join("\n\n");
+  
+  // Decide target section for navigation if top match is strong
+  const targetSection = relevantDocs[0].score >= 3 ? relevantDocs[0].id : null;
+
+  return { context: contextText, targetSection };
+};
+
+// API Call to Gemini Live LLM
+const callGeminiAPI = async (query, context, apiKey) => {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  
+  const systemInstruction = `You are Kanishkar R's AI Portfolio Copilot, integrated into his interactive terminal.
+You have access to the following relevant sections of Kanishkar's portfolio (retrieved via client-side RAG):
+
+${context || "No specific sections matched. Use general portfolio knowledge of Kanishkar R."}
+
+Answer the user's question accurately, concisely, and professionally using the retrieved context.
+Keep your answers brief, terminal-friendly (use plain text spacing, avoid heavy markdown, bullet points are fine).
+Do not make up facts. If the information is not in the context, politely state that you do not have that information.
+Your tone should be helpful, technical, and professional.`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: query }]
+        }
+      ],
+      systemInstruction: {
+        parts: [{ text: systemInstruction }]
+      },
+      generationConfig: {
+        maxOutputTokens: 500,
+        temperature: 0.3,
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData?.error?.message || `HTTP error ${response.status}`);
+  }
+
+  const data = await response.json();
+  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) {
+    throw new Error("Invalid response format from Gemini API");
+  }
+  return text.trim();
+};
 
 const Terminal = ({ isOpen, onClose, navigateToSection }) => {
   const [history, setHistory] = useState([
-    { text: 'Initializing Agentic AI Terminal Session...', type: 'system' },
-    { text: 'AI Copilot active. Ask me anything about Kanishkar\'s portfolio, skills, projects, or experience!', type: 'ai-welcome' }
+    { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
+    { text: 'AI Copilot active. Type help to see available commands.', type: 'ai-welcome' }
   ]);
   const [input, setInput] = useState('');
   const [cmdHistory, setCmdHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
   const terminalEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  useEffect(() => {
+    const apiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
+    if (apiKey) {
+      setHistory([
+        { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
+        { text: '✨ Live Gemini RAG Copilot connected. Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
+      ]);
+    } else {
+      setHistory([
+        { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
+        { text: '💡 Running in Local RAG Mode. Type `setkey <your-gemini-api-key>` to connect to live Gemini LLM!', type: 'ai-welcome' }
+      ]);
+    }
+  }, []);
+
   const staticCommands = {
-    help: "Available Commands & Options:\n  about          - Brief professional summary\n  skills         - Comprehensive list of skills & stacks\n  projects       - Highlighted projects\n  internships    - Industry experience details\n  education      - Academic qualifications\n  publications   - Research papers & conference submissions\n  certifications - Professional credentials\n  contact        - Contact details & social profiles\n  clear          - Clear terminal interface\n  history        - Print executed inputs\n\n💡 Pro tip: You can ask natural language questions! \nExample: 'What is his CGPA?' or 'Tell me about Apex Automation' or 'Open projects page'.",
+    help: "Available Commands & Options:\n  about          - Brief professional summary\n  skills         - Comprehensive list of skills & stacks\n  projects       - Highlighted projects\n  internships    - Industry experience details\n  education      - Academic qualifications\n  publications   - Research papers & conference submissions\n  certifications - Professional credentials\n  contact        - Contact details & social profiles\n  setkey <key>   - Connect terminal to your live Gemini LLM\n  removekey      - Remove saved Gemini API key\n  clear          - Clear terminal interface\n  history        - Print executed inputs\n\n💡 Pro tip: You can ask natural language questions! \nExample: 'What is his CGPA?' or 'Tell me about Apex Automation' or 'Open projects page'.",
     about: "Kanishkar R is a results-oriented Software Developer. He specializes in building high-fidelity web interfaces, database microservices, and orchestrating retrieval-augmented AI workflows (RAG) using modern frameworks. Key focus: applying technical competency to solve practical problems.",
     skills: "Technical Stacks:\n- Programming Languages: Python, JavaScript, Java, C++\n- Frontend: React.js, Next.js, HTML5 & CSS3\n- Backend: Node.js, Express, FastAPI, REST APIs\n- AI / ML: LangChain, LLM Prompting, PyTorch\n- Database & Cloud: PostgreSQL, MongoDB, AWS, GCP\n- DevOps & Tools: Docker, Git & GitHub, Linux Shell",
     projects: "Explore My Work:\n1. Aether Automation Hub - FastAPI, LangChain RAG & WebSockets agent dashboard.\n2. Letter Craft Document Builder - React, Firebase realtime layering workspace.\n3. Swift Delivery App - React Native, Socket.io geospatial polling application.\nType 'about' or scroll to Projects section to view more.",
@@ -48,46 +208,25 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Helper AI Engine to answer natural language queries
-  const getAIResponse = (query) => {
-    const q = query.toLowerCase();
+  // Helper AI Engine for Local Mock Fallback
+  const getLocalAIResponse = (query) => {
+    const { context, targetSection } = retrieveContext(query);
     
-    // Auto navigations
+    if (context) {
+      return {
+        text: `[Local RAG Match]\n${context}\n\n💡 Set your Gemini API key in the .env file for a live conversational response.`,
+        action: targetSection
+      };
+    }
+    
+    const q = query.toLowerCase();
     let action = null;
     let text = "";
 
-    // Search rules
-    if (q.includes("hackathon") || q.includes("sih") || q.includes("winner")) {
-      text = "🏆 Smart India Hackathon Winner!\nKanishkar led his team to win the Smart India Hackathon (SIH), a prestigious national event. He built an automated solution demonstrating rapid prototyping and engineering capability.\n\nSchooling & Academics:\n- PSG College of Technology: B.E. CSE (CGPA: 8.7/10)\n- St. Joseph's HSS: 96.5% (Rank 1 in CS)";
-      action = "education";
-    } else if (q.includes("education") || q.includes("study") || q.includes("college") || q.includes("university") || q.includes("psg") || q.includes("academics")) {
-      text = "🎓 Academic Profile:\nKanishkar is pursuing his B.E. in Computer Science at PSG College of Technology (Class of 2022-2026) with an 8.7 CGPA. He finished higher secondary schooling at St. Joseph's HSS with 96.5% scoring Rank 1 in CS.";
-      action = "education";
-    } else if (q.includes("project") || q.includes("portfolio") || q.includes("aether") || q.includes("letter") || q.includes("swift") || q.includes("app")) {
-      text = "💻 Featured Projects:\n1. Aether Automation Hub: FastAPI backend, WebSockets, and LangChain RAG architecture.\n2. Letter Craft Document Builder: Interactive document designer powered by React and Firebase.\n3. Swift Delivery App: React Native application with socket-based geospatial delivery agent polling.";
-      action = "projects";
-    } else if (q.includes("internship") || q.includes("experience") || q.includes("work") || q.includes("innovatetech") || q.includes("apex") || q.includes("job")) {
-      text = "💼 Industry Experience:\n- Software Engineering Intern at InnovateTech Labs: Built dashboard features, tuned SQL indexes, and automated AWS EC2 deployments.\n- AI & Automation Intern at Apex Automation Solutions: Created LangChain orchestrators for enterprise workflows and set up multi-source document ingestion.";
-      action = "internships";
-    } else if (q.includes("skill") || q.includes("tech") || q.includes("programming") || q.includes("language") || q.includes("python") || q.includes("javascript") || q.includes("react") || q.includes("backend")) {
-      text = "🛠️ Tech Stack:\n- Languages: Python, JavaScript, Java, C++\n- Web Dev: React.js, Next.js, Node.js, Express, FastAPI\n- Databases: PostgreSQL, MongoDB, Redis\n- AI: LangChain, LLM Prompting, PyTorch, RAG Pipelines\n- Cloud/DevOps: AWS, Google Cloud, Docker, Git, Linux Shell";
-      action = "skills";
-    } else if (q.includes("cert") || q.includes("aws") || q.includes("credential")) {
-      text = "🎖️ Professional Credentials:\n- AWS Certified Solutions Architect - Associate\n- Deep Learning Specialization (DeepLearning.AI)\n- Associate Cloud Engineer (Google Cloud)\n- PostgreSQL Database Administration (University of Michigan)";
-      action = "certifications";
-    } else if (q.includes("publication") || q.includes("paper") || q.includes("research") || q.includes("crop") || q.includes("edge")) {
-      text = "🔬 Research & Scientific Papers:\n- 'Automated Crop Disease Detection using Deep Learning' (Published in Agricultural AI journal)\n- 'Edge Computing for LLM Agents: Quantization Constraints' (Presented at AI & Cloud conference)";
-      action = "publications";
-    } else if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("touch") || q.includes("reach") || q.includes("github") || q.includes("linkedin")) {
-      text = "✉️ How to connect:\n- Email: kanishkar@example.com\n- Phone: +1 234 567 890\n- GitHub: github.com/CaneCilia\n- LinkedIn: linkedin.com/in/kanishkar42\n- Location: Coimbatore, India";
-      action = "contact";
-    } else if (q.includes("hello") || q.includes("hi ") || q.includes("hey")) {
+    if (q.includes("hello") || q.includes("hi") || q.includes("hey")) {
       text = "👋 Hello there! I'm Kanishkar's AI Portfolio Copilot. Ask me questions about his projects, skills, education, or internships, or type a CLI command like 'help'!";
-    } else if (q.includes("who") || q.includes("about") || q.includes("kanishkar")) {
-      text = "👤 About Kanishkar:\nHe is a software developer and automation enthusiast who loves bridging frontend interfaces with powerful AI, backend microservices, and databases. He studies at PSG College of Technology.";
-      action = "about";
     } else {
-      text = "🤖 AI Assistant:\nI've analyzed your question. While I don't have a direct answer for that specific phrasing, here's a quick navigation lookup for you:\n\n- Try asking about his 'projects', 'education', 'internships', or 'skills'.\n- Or search specifically: 'tell me about crop disease paper' or 'where is PSG college?'.\n- Type 'help' to see standard terminal commands.";
+      text = "🤖 Local RAG Assistant:\nI couldn't find a direct match in my local database for that specific query.\n\nTry asking about:\n- 'What is his education?'\n- 'Show me his projects'\n- 'Where has he interned?'\n- 'What are his technical skills?'";
     }
 
     return { text, action };
@@ -120,43 +259,97 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
       return;
     }
 
-    // AI Simulation Response with loader state
+    // Set Gemini Key Command
+    if (lowerCmd.startsWith('setkey ')) {
+      const key = trimmedCmd.substring(7).trim();
+      if (key) {
+        localStorage.setItem('gemini_api_key', key);
+        setHistory([...updatedHistory, { text: "System: Gemini API Key saved successfully to localStorage! Live Gemini LLM connection active.", type: 'system' }]);
+      } else {
+        setHistory([...updatedHistory, { text: "Usage: setkey <your-gemini-api-key>", type: 'error' }]);
+      }
+      return;
+    }
+
+    // Remove Gemini Key Command
+    if (lowerCmd === 'removekey') {
+      localStorage.removeItem('gemini_api_key');
+      setHistory([...updatedHistory, { text: "System: Gemini API Key removed. Reverted to Local RAG mode.", type: 'system' }]);
+      return;
+    }
+
+    // AI Processing with loader state
     setIsThinking(true);
 
-    setTimeout(() => {
-      let responseText = '';
-      let targetSection = null;
+    const apiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
+    const { context, targetSection } = retrieveContext(trimmedCmd);
 
-      if (staticCommands[lowerCmd]) {
-        responseText = staticCommands[lowerCmd];
-        // Automatically map static commands to page navigation
-        if (['about', 'skills', 'projects', 'internships', 'education', 'publications', 'certifications', 'contact'].includes(lowerCmd)) {
-          targetSection = lowerCmd;
-        }
-      } else {
-        // Natural language query processing
-        const aiResult = getAIResponse(trimmedCmd);
-        responseText = aiResult.text;
-        targetSection = aiResult.action;
-      }
-
+    // Execute static CLI command directly if matched
+    if (staticCommands[lowerCmd]) {
+      const responseText = staticCommands[lowerCmd];
+      const section = ['about', 'skills', 'projects', 'internships', 'education', 'publications', 'certifications', 'contact'].includes(lowerCmd) ? lowerCmd : null;
+      
       setHistory(prev => [
         ...prev, 
-        { text: responseText, type: 'output', isAI: !staticCommands[lowerCmd] }
+        { text: responseText, type: 'output', isAI: false }
       ]);
-      
       setIsThinking(false);
-
-      // Trigger automatic navigation if applicable
-      if (targetSection && navigateToSection) {
-        navigateToSection(targetSection);
-        // Show navigation feedback
+      
+      if (section && navigateToSection) {
+        navigateToSection(section);
         setHistory(prev => [
           ...prev,
-          { text: `System: Navigated screen to '#${targetSection}' section.`, type: 'system' }
+          { text: `System: Navigated screen to '#${section}' section.`, type: 'system' }
         ]);
       }
-    }, 450);
+    } else {
+      // Natural Language Query
+      if (apiKey) {
+        // Live Gemini API call
+        callGeminiAPI(trimmedCmd, context, apiKey)
+          .then((geminiResponse) => {
+            setHistory(prev => [
+              ...prev,
+              { text: geminiResponse, type: 'output', isAI: true }
+            ]);
+            
+            if (targetSection && navigateToSection) {
+              navigateToSection(targetSection);
+              setHistory(prev => [
+                ...prev,
+                { text: `System: Navigated screen to '#${targetSection}' section (RAG detected).`, type: 'system' }
+              ]);
+            }
+          })
+          .catch((err) => {
+            setHistory(prev => [
+              ...prev,
+              { text: `⚠️ Gemini Connection Error: ${err.message}\n\nFalling back to Local AI...\n${getLocalAIResponse(trimmedCmd).text}`, type: 'error' }
+            ]);
+          })
+          .finally(() => {
+            setIsThinking(false);
+          });
+      } else {
+        // Fallback Local RAG Response
+        setTimeout(() => {
+          const aiResult = getLocalAIResponse(trimmedCmd);
+          setHistory(prev => [
+            ...prev,
+            { text: `[Local RAG Mode]\n${aiResult.text}`, type: 'output', isAI: true }
+          ]);
+          
+          if (aiResult.action && navigateToSection) {
+            navigateToSection(aiResult.action);
+            setHistory(prev => [
+              ...prev,
+              { text: `System: Navigated screen to '#${aiResult.action}' section.`, type: 'system' }
+            ]);
+          }
+          setIsThinking(false);
+        }, 450);
+      }
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -181,7 +374,6 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
       }
     } else if (e.key === 'Tab') {
       e.preventDefault();
-      // Match starts with or fallback to suggestions
       const match = Object.keys(staticCommands).find(c => c.startsWith(input.toLowerCase()));
       if (match) {
         setInput(match);
@@ -192,15 +384,27 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
   if (!isOpen) return null;
 
   return (
-    <div className={`terminal-wrapper glass ${isMinimized ? 'minimized' : ''} animate-slide-up`}>
+    <div className={`terminal-wrapper glass ${isMinimized ? 'minimized' : ''} ${isLightMode ? 'terminal-light' : ''} animate-slide-up`}>
       {/* Header */}
       <div className="terminal-header" onClick={() => isMinimized && setIsMinimized(false)}>
         <div className="terminal-title">
           <Bot size={16} className="title-icon AI-icon animate-pulse" />
-          <span>Interactive AI Copilot Terminal</span>
+          <span>Interactive AI Copilot Terminal (RAG)</span>
         </div>
         
         <div className="header-controls">
+          <button 
+            className="control-btn theme-toggle-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLightMode(!isLightMode);
+            }}
+            title={isLightMode ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            aria-label="Toggle Theme"
+          >
+            {isLightMode ? <Moon size={14} /> : <Sun size={14} />}
+          </button>
+
           <button 
             className="control-btn"
             onClick={(e) => {

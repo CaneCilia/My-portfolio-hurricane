@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 500px;
+  width: 680px;
   max-width: calc(100vw - 60px);
   border-radius: 12px;
   overflow: hidden;
@@ -76,7 +76,7 @@
 
 .terminal-body {
   padding: 16px;
-  height: 350px;
+  height: 460px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -102,7 +102,7 @@
 }
 
 .log-line {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   line-height: 1.5;
   white-space: pre-wrap;
 }
@@ -131,7 +131,7 @@
 }
 
 .suggestions-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: bold;
   display: inline-flex;
@@ -141,7 +141,7 @@
 }
 
 .suggest-badge {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
@@ -168,14 +168,14 @@
 }
 
 .input-prompt {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--accent-purple);
   font-weight: bold;
 }
 
 .terminal-input {
   flex-grow: 1;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #10b981;
   background: none;
   border: none;
@@ -252,5 +252,104 @@
 
 .AI-icon {
   color: #38bdf8 !important;
+}
+
+/* ==========================================
+   Light Mode Theme Overrides
+   ========================================== */
+.terminal-wrapper.terminal-light {
+  background: rgba(252, 252, 254, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px);
+}
+
+.terminal-light .terminal-header {
+  background: rgba(241, 242, 246, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.terminal-light .terminal-title {
+  color: #1f2937;
+}
+
+.terminal-light .control-btn {
+  color: #4b5563;
+}
+
+.terminal-light .control-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111827;
+}
+
+.terminal-light .close-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.terminal-light .log-line.system {
+  color: #6b7280;
+}
+
+.terminal-light .log-line.input {
+  color: #2563eb;
+}
+
+.terminal-light .log-line.output {
+  color: #059669;
+}
+
+.terminal-light .log-line.ai-welcome {
+  color: #1d4ed8;
+  border-left-color: #2563eb;
+}
+
+.terminal-light .log-line.ai-response {
+  color: #047857;
+  border-left-color: #10b981;
+}
+
+.terminal-light .ai-badge {
+  color: #0284c7;
+}
+
+.terminal-light .thinking-dots {
+  color: #0284c7;
+}
+
+.terminal-light .suggest-badge {
+  color: #374151;
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.terminal-light .suggest-badge:hover {
+  background: rgba(5, 150, 105, 0.06);
+  border-color: rgba(5, 150, 105, 0.25);
+  color: #059669;
+}
+
+.terminal-light .suggestions-label {
+  color: #6b7280;
+}
+
+.terminal-light .input-line-container {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.terminal-light .input-prompt {
+  color: #7c3aed;
+}
+
+.terminal-light .terminal-input {
+  color: #059669;
+}
+
+.terminal-light .enter-hint {
+  color: #9ca3af;
+}
+
+.terminal-light .logs-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
 }
 
