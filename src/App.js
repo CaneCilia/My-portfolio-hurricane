@@ -123,20 +123,6 @@ function App() {
             </div>
 
             <ResearchPublications />
-
-            {/* Contact CTA Banner */}
-            <div className="contact-cta-banner glass animate-slide-up">
-              <div className="contact-cta-content">
-                <h3>Interested in working together?</h3>
-                <p>Have an automation challenge, a development role, or an application to build?</p>
-                <button 
-                  className="glow-btn glow-btn-primary contact-cta-btn"
-                  onClick={() => navigateToSection('contact')}
-                >
-                  Contact Me <Mail size={16} />
-                </button>
-              </div>
-            </div>
           </>
         )}
       </main>
