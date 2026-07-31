@@ -781,6 +781,9 @@
   .github-graph-section {
     padding: 24px;
   }
+  .github-chart-wrapper {
+    justify-content: flex-start;
+  }
   .github-profile-info {
     flex-direction: column;
     text-align: center;

@@ -29,7 +29,6 @@ const Contributions = () => {
         { label: "Weekly Views", value: "40+" }
       ],
       description: "Networking and sharing updates on full-stack React systems, database architectures, and retrieval-augmented AI workflows.",
-      impact: "Connecting with global developers, contributing to discussions on local LLMs and computing.",
       linkUrl: "https://www.linkedin.com/in/kanishkar42/"
     },
     {
@@ -44,7 +43,6 @@ const Contributions = () => {
         { label: "Firebase Integrations", value: "3" }
       ],
       description: "Deployed full-stack services utilizing Firebase Auth, Realtime Databases, and Cloud Functions. Completed VM compute paths on Google Cloud Skills Boost.",
-      impact: "Architected secure data backup policies and cloud API wrappers for enterprise-level parsing scripts.",
       linkUrl: "https://g.dev/kanecodebytecrafter"
     },
     {
@@ -59,7 +57,6 @@ const Contributions = () => {
         { label: "Local LLM Guides", value: "2" }
       ],
       description: "Optimizing ROCm GPU compute workflows with PyTorch. Documented compatibility workflows for running quantized local LLMs on client-side consumer GPUs.",
-      impact: "Established functional local development runtimes for running high-parameter models on consumer graphics units.",
       linkUrl: "https://devcommunity.amd.com/u/kanishkar_ravichandr"
     }
   ];
@@ -67,7 +64,7 @@ const Contributions = () => {
   return (
     <section id="contributions" className="contributions-section">
       <div className="glow-orb glow-orb-purple" style={{ right: '5%', top: '10%', opacity: 0.15 }} />
-      
+
       <div className="section-header">
         <h2 className="section-title">Contributions & Impact</h2>
         <p className="section-subtitle">
@@ -85,16 +82,16 @@ const Contributions = () => {
                 <img src={gitHubStats.avatarUrl} alt={gitHubStats.fullName} className="github-avatar" />
                 <span className="github-badge-pulse"></span>
               </div>
-              
+
               <div className="github-user-meta">
                 <div className="github-brand-label">
                   <Github size={18} />
                   <span>GitHub Profile</span>
                 </div>
                 <h3>{gitHubStats.fullName}</h3>
-                <a 
-                  href={`https://github.com/${gitHubStats.username}`} 
-                  target="_blank" 
+                <a
+                  href={`https://github.com/${gitHubStats.username}`}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="github-handle"
                 >
@@ -115,7 +112,7 @@ const Contributions = () => {
                   <span className="github-stat-label">Repositories</span>
                 </div>
               </div>
-              
+
               <div className="github-stat-item">
                 <div className="github-stat-icon-box">
                   <Star size={18} />
@@ -125,7 +122,7 @@ const Contributions = () => {
                   <span className="github-stat-label">Stars Earned</span>
                 </div>
               </div>
-              
+
               <div className="github-stat-item">
                 <div className="github-stat-icon-box">
                   <Users size={18} />
@@ -157,15 +154,15 @@ const Contributions = () => {
               </div>
               <span className="github-graph-desc">Last 12 Months Activity</span>
             </div>
-            
+
             <div className="github-chart-wrapper">
-              <img 
-                src={`https://ghchart.rshah.org/8b5cf6/${gitHubStats.username}?v=${Date.now()}`} 
+              <img
+                src={`https://ghchart.rshah.org/8b5cf6/${gitHubStats.username}?v=${Date.now()}`}
                 alt={`${gitHubStats.username}'s GitHub Contribution Chart`}
                 className="github-chart-img"
               />
             </div>
-            
+
             <div className="github-graph-footer">
               <div className="chart-legend">
                 <span>Less</span>
@@ -176,8 +173,8 @@ const Contributions = () => {
                 <span className="legend-cell lvl-4"></span>
                 <span>More</span>
               </div>
-              
-              <a 
+
+              <a
                 href={`https://github.com/${gitHubStats.username}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -202,9 +199,9 @@ const Contributions = () => {
             const isAMD = item.id === 'amd';
 
             return (
-              <div 
-                key={item.id} 
-                className={`platform-profile-card glass card animate-slide-up ${item.id}-card`} 
+              <div
+                key={item.id}
+                className={`platform-profile-card glass card animate-slide-up ${item.id}-card`}
                 style={{ animationDelay: `${150 + idx * 50}ms` }}
               >
                 {/* Visual Banner */}
@@ -245,11 +242,6 @@ const Contributions = () => {
                           <span className="platform-stat-lbl">{stat.label}</span>
                         </div>
                       ))}
-                    </div>
-
-                    <div className="platform-impact-box">
-                      <span className="platform-impact-tag">Key Impact</span>
-                      <p className="platform-impact-text">{item.impact}</p>
                     </div>
                   </>
                 )}
@@ -300,10 +292,6 @@ const Contributions = () => {
                       ))}
                     </div>
 
-                    <div className="platform-impact-box">
-                      <span className="platform-impact-tag">Key Impact</span>
-                      <p className="platform-impact-text">{item.impact}</p>
-                    </div>
                   </>
                 )}
 
@@ -348,14 +336,10 @@ const Contributions = () => {
                       ))}
                     </div>
 
-                    <div className="platform-impact-box">
-                      <span className="platform-impact-tag">Key Impact</span>
-                      <p className="platform-impact-text">{item.impact}</p>
-                    </div>
                   </>
                 )}
 
-                <a 
+                <a
                   href={item.linkUrl}
                   target="_blank"
                   rel="noopener noreferrer"
