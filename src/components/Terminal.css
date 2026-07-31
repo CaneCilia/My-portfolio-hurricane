@@ -120,6 +120,11 @@
   color: #10b981;
 }
 
+.log-line.error {
+  color: #ef4444;
+  font-weight: 500;
+}
+
 /* Autocomplete panel */
 .autocomplete-suggestions {
   display: flex;
@@ -351,5 +356,9 @@
 
 .terminal-light .logs-container::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
+}
+
+.terminal-light .log-line.error {
+  color: #dc2626;
 }
 

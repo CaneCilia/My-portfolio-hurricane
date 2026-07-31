@@ -810,8 +810,8 @@ const Skills = () => {
   return (
     <section id="skills" className={sectionClass} ref={sectionRef}>
       <div className="eco-header">
-        <span className="eco-eyebrow">Engineering Systems</span>
-        <h2 className="section-title">Technology Ecosystem</h2>
+        <span className="eco-eyebrow"></span>
+        <h2 className="section-title">My Skills</h2>
         <p className="section-subtitle">
           Explore the technologies that power my software systems — and how they connect.
         </p>

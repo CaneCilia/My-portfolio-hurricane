@@ -99,7 +99,7 @@ const retrieveContext = (query) => {
 
 // API Call to Gemini Live LLM
 const callGeminiAPI = async (query, context, apiKey) => {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`;
   
   const systemInstruction = `You are Kanishkar R's AI Portfolio Copilot, integrated into his interactive terminal.
 You have access to the following relevant sections of Kanishkar's portfolio (retrieved via client-side RAG):
@@ -156,14 +156,15 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(true);
 
   const terminalEndRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
     const apiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
-    if (apiKey) {
+    const isValidKey = apiKey && apiKey.trim() !== '' && apiKey !== 'your_gemini_api_key_here';
+    if (isValidKey) {
       setHistory([
         { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
         { text: 'Live Gemini RAG Copilot connected. Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
@@ -281,7 +282,8 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     // AI Processing with loader state
     setIsThinking(true);
 
-    const apiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
+    const rawApiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
+    const apiKey = (rawApiKey && rawApiKey.trim() !== '' && rawApiKey !== 'your_gemini_api_key_here') ? rawApiKey : null;
     const { context, targetSection } = retrieveContext(trimmedCmd);
 
     // Execute static CLI command directly if matched
@@ -388,7 +390,8 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
       {/* Header */}
       <div className="terminal-header" onClick={() => isMinimized && setIsMinimized(false)}>
         <div className="terminal-title">
-          <span>Terminal Assistant</span>
+          <Bot size={16} className="title-icon AI-icon animate-pulse" />
+          <span>Interactive AI Copilot Terminal (RAG)</span>
         </div>
         
         <div className="header-controls">
