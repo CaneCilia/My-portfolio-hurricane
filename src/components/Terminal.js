@@ -1,148 +1,139 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Minimize2, Maximize2, X, CornerDownLeft, Sparkles, Bot, Sun, Moon } from 'lucide-react';
+import { Minimize2, Maximize2, X, CornerDownLeft, Sparkles, Sun, Moon } from 'lucide-react';
+import { PORTFOLIO_DB, FULL_CONTEXT, PROFILE, format } from '../data/portfolio';
 import './Terminal.css';
 
-// Client-side RAG Knowledge Base
-const PORTFOLIO_DB = [
-  {
-    id: "about",
-    title: "About Kanishkar R",
-    content: "Kanishkar R is a results-oriented Software Developer. He specializes in building high-fidelity web interfaces, database microservices, and orchestrating retrieval-augmented AI workflows (RAG) using modern frameworks. Key focus: applying technical competency to solve practical problems. He loves bridging frontend interfaces with powerful AI, backend microservices, and databases. He studies at PSG College of Technology."
-  },
-  {
-    id: "skills",
-    title: "Technical Skills & Stacks",
-    content: "Programming Languages: Python, JavaScript, Java, C++. Frontend: React.js, Next.js, HTML5, CSS3, Vanilla CSS, Responsive Web Design. Backend: Node.js, Express, FastAPI, REST APIs. AI / ML: LangChain, LangGraph, LLM Prompting, PyTorch, RAG Pipelines, Vector schemas, tool schemas, custom cognitive loop graphs. Database & Cloud: PostgreSQL, MongoDB, Redis, AWS, GCP, DevOps, Docker, Git, GitHub, Linux Shell."
-  },
-  {
-    id: "projects",
-    title: "Projects & Portfolio Work",
-    content: "1. Aether Automation Hub: Built using FastAPI, LangChain RAG & WebSockets agent dashboard. Agentic AI workflow with LangGraph orchestration, Gemini LLM, Retrieval-Augmented Generation, and a Flutter dashboard.\n2. Letter Craft Document Builder: React, Firebase realtime layering workspace for interactive document design.\n3. Swift Delivery App: React Native, Socket.io geospatial polling application for delivery agent tracking."
-  },
-  {
-    id: "internships",
-    title: "Work Experience & Internships",
-    content: "- Software Engineering Intern at InnovateTech Labs: Built dashboard features, tuned SQL indexes, automated AWS EC2 deployments, optimized database queries.\n- AI & Automation Intern at Apex Automation Solutions: Developed agentic LangChain workflows, structured background document scanners, automated reports, created LangChain orchestrators for enterprise workflows and set up multi-source document ingestion."
-  },
-  {
-    id: "education",
-    title: "Education & Academics",
-    content: "- B.E. Computer Science | PSG College of Technology (2022 - 2026). CGPA: 8.7/10. Smart India Hackathon Winner. Led his team to win the Smart India Hackathon (SIH), a prestigious national event, building an automated rapid prototyping solution.\n- Higher Secondary Certificate | St. Joseph's HSS. Percentage: 96.5%. School Rank 1 in Computer Science."
-  },
-  {
-    id: "publications",
-    title: "Research & Publications",
-    content: "- 'Automated Crop Disease Detection using Deep Learning' published in Agricultural AI journal.\n- 'Edge Computing for LLM Agents: Quantization Constraints' presented at AI & Cloud conference."
-  },
-  {
-    id: "certifications",
-    title: "Professional Certifications",
-    content: "- AWS Certified Solutions Architect - Associate.\n- Deep Learning Specialization by DeepLearning.AI.\n- Associate Cloud Engineer by Google Cloud.\n- PostgreSQL Database Administration by University of Michigan."
-  },
-  {
-    id: "contact",
-    title: "Contact Details & Social Profiles",
-    content: "- Email: kanishkar@example.com\n- Phone: +1 234 567 890\n- GitHub: github.com/CaneCilia\n- LinkedIn: linkedin.com/in/kanishkar42\n- Location: Coimbatore, Tamil Nadu, India"
-  }
-];
+/* Words that match every document and so carry no retrieval signal. */
+const STOP_WORDS = new Set([
+  'the', 'and', 'you', 'your', 'his', 'her', 'about', 'what', 'who', 'how', 'why', 'where', 'when',
+  'tell', 'give', 'show', 'list', 'does', 'did', 'has', 'have', 'are', 'was', 'were', 'for', 'with',
+  'can', 'any', 'kanishkar', 'kane', 'him', 'from', 'this', 'that', 'there',
+]);
 
-// Simple, effective client-side RAG retrieval function
+/* Client-side retrieval over the real portfolio data. */
 const retrieveContext = (query) => {
-  const words = query.toLowerCase()
-    .replace(/[^a-zA-Z0-9\s]/g, "")
+  const words = query
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9\s]/g, ' ')
     .split(/\s+/)
-    .filter(w => w.length > 2); // Keep words longer than 2 characters
+    .filter((w) => w.length > 2 && !STOP_WORDS.has(w));
 
-  if (words.length === 0) return { context: "", targetSection: null };
+  /* "who is he?" is all stop words — that's the About section. */
+  if (words.length === 0) {
+    const about = PORTFOLIO_DB.find((d) => d.id === 'about');
+    return {
+      context: `[${about.title}]\n${about.content}`,
+      targetSection: about.section,
+      matched: true,
+      top: about,
+    };
+  }
 
-  const scoredDocs = PORTFOLIO_DB.map(doc => {
+  const scored = PORTFOLIO_DB.map((doc) => {
     let score = 0;
-    const docText = `${doc.title} ${doc.content}`.toLowerCase();
+    const haystack = `${doc.id} ${doc.title} ${doc.keywords} ${doc.content}`.toLowerCase();
+    const keywords = doc.keywords.split(/\s+/);
 
-    words.forEach(word => {
-      // Weight title and ID matches highly
-      if (doc.id.includes(word)) score += 10;
-      if (doc.title.toLowerCase().includes(word)) score += 5;
+    words.forEach((word) => {
+      if (doc.id === word) score += 12;
+      if (keywords.includes(word)) score += 6;
+      /* Shared-stem match, so "interned" still reaches "internship" and
+         "published" reaches "publication". */
+      else if (word.length >= 5 && keywords.some((k) => k.length >= 5 && k.slice(0, 5) === word.slice(0, 5)))
+        score += 5;
+      if (doc.title.toLowerCase().includes(word)) score += 4;
 
-      // Count frequency in content
-      const regex = new RegExp(`\\b${word}\\b`, 'g');
-      const matches = docText.match(regex);
-      if (matches) {
-        score += matches.length * 2;
-      } else if (docText.includes(word)) {
-        score += 1; // partial word match
-      }
+      const matches = haystack.match(new RegExp(`\\b${word}\\b`, 'g'));
+      if (matches) score += matches.length * 2;
+      else if (haystack.includes(word)) score += 1;
     });
 
     return { ...doc, score };
   });
 
-  // Sort by score descending
-  scoredDocs.sort((a, b) => b.score - a.score);
+  scored.sort((a, b) => b.score - a.score);
+  const relevant = scored.filter((d) => d.score > 0);
 
-  // Take documents with positive score
-  const relevantDocs = scoredDocs.filter(d => d.score > 0);
-
-  if (relevantDocs.length === 0) {
-    return { context: "", targetSection: null };
+  if (relevant.length === 0) {
+    return { context: '', targetSection: null, matched: false };
   }
 
-  // Get top 2 documents for context
-  const topDocs = relevantDocs.slice(0, 2);
-  const contextText = topDocs.map(d => `[Section: ${d.title}]\n${d.content}`).join("\n\n");
+  const context = relevant
+    .slice(0, 2)
+    .map((d) => `[${d.title}]\n${d.content}`)
+    .join('\n\n');
 
-  // Decide target section for navigation if top match is strong
-  const targetSection = relevantDocs[0].score >= 3 ? relevantDocs[0].id : null;
-
-  return { context: contextText, targetSection };
+  return {
+    context,
+    targetSection: relevant[0].score >= 6 ? relevant[0].section : null,
+    matched: true,
+    top: relevant[0],
+  };
 };
 
 // API Call to Gemini Live LLM
+const GEMINI_MODEL = 'gemini-3.5-flash';
+
+/* A key from the build-time env, or one the visitor saved via `setkey`. */
+const resolveApiKey = () => {
+  const key = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
+  if (!key || !key.trim() || key === 'your_gemini_api_key_here') return null;
+  return key.trim();
+};
+
 const callGeminiAPI = async (query, context, apiKey) => {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
 
-  const systemInstruction = `You are Kanishkar R's AI Portfolio Copilot, integrated into his interactive terminal.
-You have access to the following relevant sections of Kanishkar's portfolio (retrieved via client-side RAG):
+  /*
+   * Retrieved sections come first; the full portfolio follows as a backstop so
+   * cross-section questions ("which project used Flutter?") still resolve
+   * against real data instead of the model's imagination.
+   */
+  const systemInstruction = `You are ${PROFILE.name}'s AI Portfolio Copilot, embedded in his interactive terminal.
 
-${context || "No specific sections matched. Use general portfolio knowledge of Kanishkar R."}
+Answer ONLY from the portfolio data below. It is the complete and authoritative record.
+If something is not in the data, say plainly that it is not in the portfolio — never invent
+colleges, employers, projects, grades, dates or contact details.
 
-Answer the user's question accurately, concisely, and professionally using the retrieved context.
-Keep your answers brief, terminal-friendly (use plain text spacing, avoid heavy markdown, bullet points are fine).
-Do not make up facts. If the information is not in the context, politely state that you do not have that information.
-Your tone should be helpful, technical, and professional.`;
+${context ? `MOST RELEVANT SECTIONS:\n${context}\n\n` : ''}FULL PORTFOLIO:
+${FULL_CONTEXT}
+
+Style: brief and terminal-friendly. Plain text, short lines, simple "-" bullets.
+No markdown headers, no bold, no tables. Two or three sentences unless asked to list.`;
 
   const response = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: query }]
-        }
-      ],
-      systemInstruction: {
-        parts: [{ text: systemInstruction }]
-      },
+      contents: [{ role: 'user', parts: [{ text: query }] }],
+      systemInstruction: { parts: [{ text: systemInstruction }] },
       generationConfig: {
-        maxOutputTokens: 500,
-        temperature: 0.3,
-      }
-    })
+        /* Generous ceiling: this model reasons before answering, and a tight
+           cap gets spent on thinking, returning a candidate with no text. */
+        maxOutputTokens: 2048,
+        temperature: 0.2,
+      },
+    }),
   });
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData?.error?.message || `HTTP error ${response.status}`);
+    throw new Error(errorData?.error?.message || `HTTP ${response.status} ${response.statusText}`);
   }
 
   const data = await response.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  const candidate = data?.candidates?.[0];
+  const text = candidate?.content?.parts?.map((p) => p.text).filter(Boolean).join('') || '';
+
   if (!text) {
-    throw new Error("Invalid response format from Gemini API");
+    const reason = candidate?.finishReason || data?.promptFeedback?.blockReason;
+    throw new Error(
+      reason === 'MAX_TOKENS'
+        ? 'response exceeded the token budget'
+        : `empty response from Gemini${reason ? ` (${reason})` : ''}`
+    );
   }
+
   return text.trim();
 };
 
@@ -162,40 +153,52 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    const apiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
-    const isValidKey = apiKey && apiKey.trim() !== '' && apiKey !== 'your_gemini_api_key_here';
-    if (isValidKey) {
-      setHistory([
-        { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
-        { text: 'Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
-      ]);
-    } else {
-      setHistory([
-        { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
-        { text: 'Running in Local RAG Mode. Type `setkey <your-gemini-api-key>` to connect to live Gemini LLM!', type: 'ai-welcome' }
-      ]);
-    }
+    setHistory([
+      { text: `Portfolio session ready — ${PORTFOLIO_DB.length} sections indexed.`, type: 'system' },
+      resolveApiKey()
+        ? { text: `Live mode (${GEMINI_MODEL}). Ask anything about the portfolio, or type 'help'.`, type: 'ai-welcome' }
+        : {
+            text: "Local mode — answers come straight from the portfolio data. Type 'setkey <gemini-api-key>' for conversational replies.",
+            type: 'ai-welcome',
+          },
+    ]);
   }, []);
 
+  /* Every command prints from the shared portfolio data. */
   const staticCommands = {
-    help: "Available Commands & Options:\n  about          - Brief professional summary\n  skills         - Comprehensive list of skills & stacks\n  projects       - Highlighted projects\n  internships    - Industry experience details\n  education      - Academic qualifications\n  publications   - Research papers & conference submissions\n  certifications - Professional credentials\n  contact        - Contact details & social profiles\n  setkey <key>   - Connect terminal to your live Gemini LLM\n  removekey      - Remove saved Gemini API key\n  clear          - Clear terminal interface\n  history        - Print executed inputs\n\n💡 Pro tip: You can ask natural language questions! \nExample: 'What is his CGPA?' or 'Tell me about Apex Automation' or 'Open projects page'.",
-    about: "Kanishkar R is a results-oriented Software Developer. He specializes in building high-fidelity web interfaces, database microservices, and orchestrating retrieval-augmented AI workflows (RAG) using modern frameworks. Key focus: applying technical competency to solve practical problems.",
-    skills: "Technical Stacks:\n- Programming Languages: Python, JavaScript, Java, C++\n- Frontend: React.js, Next.js, HTML5 & CSS3\n- Backend: Node.js, Express, FastAPI, REST APIs\n- AI / ML: LangChain, LLM Prompting, PyTorch\n- Database & Cloud: PostgreSQL, MongoDB, AWS, GCP\n- DevOps & Tools: Docker, Git & GitHub, Linux Shell",
-    projects: "Explore My Work:\n1. Aether Automation Hub - FastAPI, LangChain RAG & WebSockets agent dashboard.\n2. Letter Craft Document Builder - React, Firebase realtime layering workspace.\n3. Swift Delivery App - React Native, Socket.io geospatial polling application.\nType 'about' or scroll to Projects section to view more.",
-    internships: "Internships:\n- Software Engineering Intern at InnovateTech Labs\n  Built dashboards, optimized database queries, configured AWS deployment pipelines.\n- AI & Automation Intern at Apex Automation Solutions\n  Developed agentic LangChain workflows, structured background document scanners, and automated reports.",
-    education: "Education:\n- B.E. Computer Science | PSG College of Technology (2022 - 2026)\n  CGPA: 8.7/10. Smart India Hackathon Winner.\n- Higher Secondary Certificate | St. Joseph's HSS\n  Percentage: 96.5%. School Rank 1 in CS.",
-    publications: "Research & Publications:\n- 'Automated Crop Disease Detection using Deep Learning' (Journal)\n- 'Edge Computing for LLM Agents: Quantization Constraints' (Conference)",
-    certifications: "Certifications:\n- AWS Certified Solutions Architect - Associate\n- Deep Learning Specialization (DeepLearning.AI)\n- Associate Cloud Engineer (Google Cloud)\n- PostgreSQL Database Administration (Michigan)",
-    contact: "Contact Channels:\n- Email: kanishkar@example.com\n- Phone: +1 234 567 890\n- GitHub: github.com/CaneCilia\n- LinkedIn: linkedin.com/in/kanishkar42\n- Location: Coimbatore, India"
+    help:
+      'Available Commands:\n' +
+      '  about          - Professional summary\n' +
+      '  skills         - Technical stack by discipline\n' +
+      '  projects       - Project work and stacks\n' +
+      '  internships    - Industry experience\n' +
+      '  education      - Academic qualifications\n' +
+      '  publications   - Conference papers\n' +
+      '  certifications - Credentials earned\n' +
+      '  events         - Events organised\n' +
+      '  contact        - Contact details & profiles\n' +
+      '  setkey <key>   - Connect to a live Gemini LLM\n' +
+      '  removekey      - Remove the saved API key\n' +
+      '  clear          - Clear the terminal\n' +
+      '  history        - Print executed inputs\n\n' +
+      "Tip: plain questions work too — 'what is his CGPA?', 'which project used Flutter?'",
+    about: format.about(),
+    skills: format.skills(),
+    projects: format.projects(),
+    internships: format.internships(),
+    education: format.education(),
+    publications: format.publications(),
+    certifications: format.certifications(),
+    events: format.events(),
+    contact: format.contact(),
   };
 
   const aiSuggestions = [
-    "Tell me about Kanishkar?",
-    "Show me his projects",
-    "What are his backend skills?",
-    "Tell me about the Smart India Hackathon win",
-    "How can I contact Kanishkar?",
-    "Where does he study?"
+    'What is his CGPA?',
+    'Which projects use Agentic AI?',
+    'Where has he interned?',
+    'What did he publish?',
+    'How can I contact him?',
   ];
 
   useEffect(() => {
@@ -209,28 +212,27 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Helper AI Engine for Local Mock Fallback
+  /* Offline answer: return the retrieved portfolio section verbatim. */
   const getLocalAIResponse = (query) => {
-    const { context, targetSection } = retrieveContext(query);
+    const { context, targetSection, matched } = retrieveContext(query);
 
-    if (context) {
-      return {
-        text: `[Local RAG Match]\n${context}\n\n💡 Set your Gemini API key in the .env file for a live conversational response.`,
-        action: targetSection
-      };
+    if (matched) {
+      return { text: context, action: targetSection };
     }
 
     const q = query.toLowerCase();
-    let action = null;
-    let text = "";
-
-    if (q.includes("hello") || q.includes("hi") || q.includes("hey")) {
-      text = "👋 Hello there! I'm Kanishkar's AI Portfolio Copilot. Ask me questions about his projects, skills, education, or internships, or type a CLI command like 'help'!";
-    } else {
-      text = "🤖 Local RAG Assistant:\nI couldn't find a direct match in my local database for that specific query.\n\nTry asking about:\n- 'What is his education?'\n- 'Show me his projects'\n- 'Where has he interned?'\n- 'What are his technical skills?'";
+    if (/\b(hi|hello|hey|yo)\b/.test(q)) {
+      return {
+        text: `Hello. I'm ${PROFILE.name}'s portfolio copilot.\nAsk about his projects, skills, education, internships, publications or certifications — or type 'help'.`,
+        action: null,
+      };
     }
 
-    return { text, action };
+    return {
+      text:
+        "No section of the portfolio matched that.\n\nTry:\n  - What is his CGPA?\n  - Which projects use RAG?\n  - Where has he interned?\n  - What certifications does he hold?",
+      action: null,
+    };
   };
 
   const handleCommand = (cmdText) => {
@@ -265,9 +267,9 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
       const key = trimmedCmd.substring(7).trim();
       if (key) {
         localStorage.setItem('gemini_api_key', key);
-        setHistory([...updatedHistory, { text: "System: Gemini API Key saved successfully to localStorage! Live Gemini LLM connection active.", type: 'system' }]);
+        setHistory([...updatedHistory, { text: `Key saved. Live mode active (${GEMINI_MODEL}).`, type: 'system' }]);
       } else {
-        setHistory([...updatedHistory, { text: "Usage: setkey <your-gemini-api-key>", type: 'error' }]);
+        setHistory([...updatedHistory, { text: 'Usage: setkey <your-gemini-api-key>', type: 'error' }]);
       }
       return;
     }
@@ -275,82 +277,57 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     // Remove Gemini Key Command
     if (lowerCmd === 'removekey') {
       localStorage.removeItem('gemini_api_key');
-      setHistory([...updatedHistory, { text: "System: Gemini API Key removed. Reverted to Local RAG mode.", type: 'system' }]);
+      setHistory([...updatedHistory, { text: 'Key removed. Back to local mode.', type: 'system' }]);
       return;
     }
 
     // AI Processing with loader state
     setIsThinking(true);
 
-    const rawApiKey = process.env.REACT_APP_GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
-    const apiKey = (rawApiKey && rawApiKey.trim() !== '' && rawApiKey !== 'your_gemini_api_key_here') ? rawApiKey : null;
+    const apiKey = resolveApiKey();
     const { context, targetSection } = retrieveContext(trimmedCmd);
+
+    const goTo = (section, note) => {
+      if (!section || !navigateToSection) return;
+      navigateToSection(section);
+      setHistory((prev) => [...prev, { text: `Navigated to #${section}${note ? ` ${note}` : ''}.`, type: 'system' }]);
+    };
 
     // Execute static CLI command directly if matched
     if (staticCommands[lowerCmd]) {
-      const responseText = staticCommands[lowerCmd];
-      const section = ['about', 'skills', 'projects', 'internships', 'education', 'publications', 'certifications', 'contact'].includes(lowerCmd) ? lowerCmd : null;
+      const doc = PORTFOLIO_DB.find((d) => d.id === lowerCmd);
 
-      setHistory(prev => [
-        ...prev,
-        { text: responseText, type: 'output', isAI: false }
-      ]);
+      setHistory((prev) => [...prev, { text: staticCommands[lowerCmd], type: 'output', isAI: false }]);
       setIsThinking(false);
-
-      if (section && navigateToSection) {
-        navigateToSection(section);
-        setHistory(prev => [
-          ...prev,
-          { text: `System: Navigated screen to '#${section}' section.`, type: 'system' }
-        ]);
-      }
-    } else {
-      // Natural Language Query
-      if (apiKey) {
-        // Live Gemini API call
-        callGeminiAPI(trimmedCmd, context, apiKey)
-          .then((geminiResponse) => {
-            setHistory(prev => [
-              ...prev,
-              { text: geminiResponse, type: 'output', isAI: true }
-            ]);
-
-            if (targetSection && navigateToSection) {
-              navigateToSection(targetSection);
-              setHistory(prev => [
-                ...prev,
-                { text: `System: Navigated screen to '#${targetSection}' section (RAG detected).`, type: 'system' }
-              ]);
-            }
-          })
-          .catch((err) => {
-            setHistory(prev => [
-              ...prev,
-              { text: `⚠️ Gemini Connection Error: ${err.message}\n\nFalling back to Local AI...\n${getLocalAIResponse(trimmedCmd).text}`, type: 'error' }
-            ]);
-          })
-          .finally(() => {
-            setIsThinking(false);
-          });
-      } else {
-        // Fallback Local RAG Response
-        setTimeout(() => {
-          const aiResult = getLocalAIResponse(trimmedCmd);
-          setHistory(prev => [
+      goTo(doc?.section);
+    } else if (apiKey) {
+      // Live Gemini call, grounded on the retrieved portfolio sections
+      callGeminiAPI(trimmedCmd, context, apiKey)
+        .then((geminiResponse) => {
+          setHistory((prev) => [...prev, { text: geminiResponse, type: 'output', isAI: true }]);
+          goTo(targetSection, '(matched section)');
+        })
+        .catch((err) => {
+          /* Never leave the question unanswered — fall back to the local data. */
+          const local = getLocalAIResponse(trimmedCmd);
+          setHistory((prev) => [
             ...prev,
-            { text: `[Local RAG Mode]\n${aiResult.text}`, type: 'output', isAI: true }
+            { text: `Gemini unavailable: ${err.message}. Answering from local data.`, type: 'error' },
+            { text: local.text, type: 'output', isAI: true },
           ]);
-
-          if (aiResult.action && navigateToSection) {
-            navigateToSection(aiResult.action);
-            setHistory(prev => [
-              ...prev,
-              { text: `System: Navigated screen to '#${aiResult.action}' section.`, type: 'system' }
-            ]);
-          }
+          goTo(local.action);
+        })
+        .finally(() => {
           setIsThinking(false);
-        }, 450);
-      }
+        });
+    } else {
+      // Offline: answer straight from the portfolio data
+      setTimeout(() => {
+        const local = getLocalAIResponse(trimmedCmd);
+        setHistory((prev) => [...prev, { text: local.text, type: 'output', isAI: true }]);
+        goTo(local.action);
+        setIsThinking(false);
+      }, 300);
     }
   };
 
