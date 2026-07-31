@@ -165,11 +165,11 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-sm);
   font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  text-transform: none;
   color: var(--text-primary);
   transition: var(--transition-smooth);
 }

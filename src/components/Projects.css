@@ -1298,10 +1298,10 @@
   padding: 13px 24px;
   border: 1px solid var(--border-color);
   border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-sm);
   font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-label);
+  letter-spacing: -0.005em;
   color: var(--text-primary);
   transition:
     border-color 320ms ease,
