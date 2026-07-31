@@ -51,23 +51,25 @@
 .projects-eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   letter-spacing: 0.22em;
   color: var(--text-muted);
   margin-bottom: 18px;
 }
 
 .projects-title {
-  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
   color: var(--text-primary);
 }
 
 .projects-subtitle {
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-lead);
   color: var(--text-secondary);
   margin: 18px auto 0;
   max-width: 620px;
@@ -85,16 +87,17 @@
 
 .count-num {
   font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
 
 .count-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   color: var(--text-muted);
 }
 
@@ -152,8 +155,8 @@
   z-index: 1;
   padding: 9px 20px;
   border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
   letter-spacing: -0.005em;
   color: var(--text-muted);
   cursor: pointer;
@@ -170,7 +173,7 @@
 
 .filter-pill.active {
   color: var(--bg-primary);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 
 /* ------------------------------------------------------------ the grid */
@@ -355,8 +358,9 @@
 .system-index,
 .system-domain {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   color: var(--text-muted);
   transition: color 380ms ease;
 }
@@ -416,25 +420,25 @@
 }
 
 .card-title {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
   color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .card-tagline {
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
   color: var(--text-secondary);
   margin-bottom: 10px;
 }
 
 /* Long-form copy stays out of the way until the panel is engaged. */
 .card-desc {
-  font-size: 0.86rem;
-  line-height: 1.6;
+  font-size: var(--fs-meta);
+  line-height: var(--lh-body);
   color: var(--text-muted);
   margin: 0;
   display: -webkit-box;
@@ -466,7 +470,8 @@
 
 .card-stack li {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
   letter-spacing: 0.02em;
   color: var(--text-secondary);
   padding: 4px 9px;
@@ -498,8 +503,9 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   color: var(--text-primary);
   padding: 8px 14px;
   border: 1px solid transparent;
@@ -586,12 +592,12 @@
 }
 
 .system-card.is-featured .card-title {
-  font-size: 1.55rem;
+  font-size: var(--fs-h3);
   line-height: 1.25;
 }
 
 .system-card.is-featured .card-tagline {
-  font-size: 0.95rem;
+  font-size: var(--fs-body);
 }
 
 .system-card.is-featured .card-desc {
@@ -1020,8 +1026,9 @@
   border: 1px solid var(--border-color);
   border-radius: 100px;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   color: var(--text-secondary);
   cursor: pointer;
   opacity: 0;
@@ -1086,7 +1093,8 @@
 .case-index {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   letter-spacing: 0.2em;
   color: var(--text-muted);
   margin-bottom: 18px;
@@ -1094,17 +1102,17 @@
 }
 
 .case-title {
-  font-size: clamp(2rem, 4.6vw, 3.2rem);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-title);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
   color: var(--text-primary);
 }
 
 .case-tagline {
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1.5;
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-lead);
   color: var(--text-secondary);
   margin-top: 16px;
   max-width: 640px;
@@ -1130,15 +1138,16 @@
 
 .case-meta dt {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.18em;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 8px;
 }
 
 .case-meta dd {
-  font-size: 0.95rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-primary);
 }
 
@@ -1148,23 +1157,23 @@
 
 .case-block h4 {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 14px;
 }
 
 .case-block p {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: var(--fs-body);
+  line-height: var(--lh-lead);
   color: var(--text-secondary);
   max-width: 720px;
 }
 
 .case-lead {
-  font-size: 1.06rem !important;
+  font-size: var(--fs-lead) !important;
   color: var(--text-primary) !important;
 }
 
@@ -1188,7 +1197,8 @@
 
 .case-stack li {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
   color: var(--text-secondary);
   padding: 5px 11px;
   border: 1px solid var(--border-color);
@@ -1210,8 +1220,8 @@
 .case-features li {
   position: relative;
   padding-left: 20px;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
   color: var(--text-secondary);
 }
 
@@ -1261,13 +1271,14 @@
 
 .step-num {
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
   letter-spacing: 0.1em;
   color: var(--text-muted);
 }
 
 .step-label {
-  font-size: 0.85rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-primary);
 }
 
@@ -1288,8 +1299,9 @@
   border: 1px solid var(--border-color);
   border-radius: 100px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   color: var(--text-primary);
   transition:
     border-color 320ms ease,

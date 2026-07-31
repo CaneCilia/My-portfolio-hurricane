@@ -39,9 +39,9 @@
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
   display: flex;
   align-items: center;
   color: var(--text-primary);
@@ -59,8 +59,8 @@
 }
 
 .nav-links {
-  font-size: 0.95rem;
-  font-weight: 450;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-body);
   color: var(--text-muted);
   padding: 8px 0;
   position: relative;
@@ -83,16 +83,16 @@
   height: 0;
   overflow: hidden;
   visibility: hidden;
-  font-weight: 600;
+  font-weight: var(--fw-title);
   pointer-events: none;
 }
 
 .nav-links:hover .nav-label {
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 
 .nav-links.active .nav-label {
-  font-weight: 600;
+  font-weight: var(--fw-title);
 }
 
 .nav-links::after {
@@ -128,8 +128,11 @@
   gap: 8px;
   padding: 8px 16px;
   border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   color: #10b981;
   background: #09090b;
   border: 1px solid #10b981;
@@ -179,8 +182,8 @@
 
 .mobile-links {
   display: block;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
   color: var(--text-secondary);
   padding: 8px 0;
 }
@@ -200,7 +203,11 @@
   border-radius: 6px;
   background: #09090b;
   border: 1px solid #10b981;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   color: #10b981;
   cursor: pointer;
   transition: var(--transition-smooth);

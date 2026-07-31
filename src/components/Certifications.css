@@ -9,13 +9,14 @@
 .certs-subtitle-text {
   text-align: center;
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
   margin-top: -30px;
   margin-bottom: 50px;
-  max-width: 600px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.5;
+  line-height: var(--lh-lead);
 }
 
 .certs-grid {
@@ -84,19 +85,21 @@
 }
 
 .provider-name {
-  font-size: 0.95rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
   color: var(--text-primary);
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .verify-badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.72rem;
-  font-weight: 500; /* Clean weight, not bold */
-  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
 }
 
 .cert-body {
@@ -108,10 +111,11 @@
 }
 
 .cert-body h4 {
-  font-size: 1.05rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-heading);
   color: var(--text-primary);
-  line-height: 1.45;
+  line-height: var(--lh-heading);
   margin: 0;
   min-height: 44px;
   display: -webkit-box;
@@ -125,7 +129,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  letter-spacing: 0.04em;
   color: var(--text-muted);
   margin-top: auto; /* Align dates/IDs vertically at the bottom of the body */
 }
@@ -138,7 +144,7 @@
 
 .cert-id {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-label-sm);
 }
 
 .cert-actions {
@@ -153,8 +159,11 @@
   width: 100%;
   padding: 10px;
   border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 500; /* Clean weight, not bold */
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
   transition: var(--transition-smooth);
@@ -179,8 +188,11 @@
   border: 1px solid var(--text-primary);
   padding: 12px 28px;
   border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   cursor: pointer;
   transition: var(--transition-smooth);
 }

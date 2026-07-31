@@ -35,11 +35,11 @@
   padding: 6px 14px;
   border-radius: 20px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
-  color: var(--accent-blue);
-  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  letter-spacing: var(--ls-label);
   margin-bottom: 18px;
 }
 
@@ -53,18 +53,18 @@
 }
 
 .journey-explore-content h3 {
-  font-size: 2.1rem;
-  font-weight: 700; /* Clean, simple bold */
-  color: var(--text-primary); /* Uses theme text primary */
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-title);
+  color: var(--text-primary);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-title);
   margin-bottom: 12px;
 }
 
 .journey-explore-content p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-secondary); /* Uses theme text secondary */
+  font-size: var(--fs-body);
+  line-height: var(--lh-lead);
+  color: var(--text-secondary);
   margin-bottom: 28px;
 }
 
@@ -74,8 +74,8 @@
   color: white;
   padding: 12px 30px;
   border-radius: 30px;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body-sm);
   cursor: pointer;
   border: none;
   display: inline-flex;
@@ -105,15 +105,10 @@
   .journey-explore-content {
     width: 95%;
   }
-  .journey-explore-content h3 {
-    font-size: 1.6rem;
-  }
   .journey-explore-content p {
-    font-size: 0.85rem;
     margin-bottom: 20px;
   }
   .explore-btn-solid {
     padding: 12px 24px;
-    font-size: 0.9rem;
   }
 }

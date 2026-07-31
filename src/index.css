@@ -22,7 +22,39 @@
   
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
+  /* ---------------------------------------------------------------------
+     TYPE SCALE — single source of truth for every section.
+     Sizes step; weights only ever take three values; mono is reserved for
+     uppercase labels, metadata and code.
+     --------------------------------------------------------------------- */
+  --fs-display: clamp(2.8rem, 6.4vw, 4.8rem);  /* hero name */
+  --fs-h1: clamp(2.1rem, 4.4vw, 3.1rem);       /* section titles */
+  --fs-h2: clamp(1.7rem, 3.2vw, 2.2rem);       /* sub-section titles */
+  --fs-h3: 1.35rem;                            /* large card titles */
+  --fs-h4: 1.2rem;                             /* card titles */
+  --fs-h5: 1.05rem;                            /* small card titles */
+  --fs-lead: 1.05rem;                          /* intro paragraphs */
+  --fs-body: 1rem;                             /* section subtitles */
+  --fs-body-sm: 0.9rem;                        /* card copy */
+  --fs-meta: 0.82rem;                          /* secondary detail */
+  --fs-label: 0.72rem;                         /* mono uppercase labels */
+  --fs-label-sm: 0.66rem;                      /* mono chips, tags */
+
+  --fw-title: 600;   /* every heading */
+  --fw-medium: 500;  /* card titles, labels, buttons */
+  --fw-body: 400;    /* running copy */
+
+  --ls-display: -0.035em;
+  --ls-title: -0.03em;
+  --ls-heading: -0.015em;
+  --ls-label: 0.16em;
+
+  --lh-title: 1.1;
+  --lh-heading: 1.35;
+  --lh-body: 1.6;
+  --lh-lead: 1.65;
+
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -91,6 +123,14 @@ section {
   position: relative;
 }
 
+/* Headings share one weight and one tracking rule everywhere. */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-heading);
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+}
+
 .section-header {
   margin-bottom: 50px;
   text-align: center;
@@ -98,51 +138,47 @@ section {
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
   color: var(--text-primary);
   display: inline-block;
   position: relative;
 }
 
+/* Mono eyebrow above a section title. */
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
 .sub-section-title {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
   color: var(--text-primary);
   text-align: center;
   margin-bottom: 40px;
   position: relative;
 }
 
-.sub-section-title::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--text-primary);
-  margin: 12px auto 0;
-  border-radius: 10px;
-}
-
 .section-subtitle {
   color: var(--text-secondary);
-  font-size: 1.1rem;
-  margin-top: 10px;
-  font-weight: 400;
-  max-width: 600px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-lead);
+  margin-top: 16px;
+  font-weight: var(--fw-body);
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--text-primary);
-  margin: 12px auto 0;
-  border-radius: 2px;
 }
 
 /* Helper Components & Animations */
@@ -161,8 +197,9 @@ section {
   gap: 8px;
   padding: 12px 28px;
   border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body-sm);
+  letter-spacing: -0.005em;
   cursor: pointer;
   z-index: 1;
   overflow: hidden;
@@ -261,9 +298,7 @@ section {
   section {
     padding: 70px 16px;
   }
-  .section-title {
-    font-size: 2rem;
-  }
+  /* --fs-h1 clamps on its own — no per-breakpoint title sizes. */
   .cards-grid {
     grid-template-columns: 1fr;
   }
@@ -280,15 +315,11 @@ section {
     width: 95%;
   }
 
-  .section-title {
-    font-size: 1.8rem !important;
-  }
-
   /* Compact padding for all container cards */
-  .card, 
-  .education-timeline-content, 
-  .pub-card, 
-  .project-info, 
+  .card,
+  .education-timeline-content,
+  .pub-card,
+  .system-card .card-inner,
   .edu-card-details-side,
   .event-card-content {
     padding: 16px !important;

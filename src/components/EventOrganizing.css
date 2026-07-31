@@ -9,13 +9,14 @@
 .events-subtitle-text {
   text-align: center;
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
   margin-top: -30px;
   margin-bottom: 50px;
-  max-width: 600px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.5;
+  line-height: var(--lh-lead);
 }
 
 .events-grid {
@@ -79,7 +80,9 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  letter-spacing: 0.04em;
   color: var(--text-muted);
 }
 
@@ -94,43 +97,46 @@
 }
 
 .event-title {
-  font-size: 1.25rem;
-  font-weight: 750;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-heading);
+  line-height: var(--lh-heading);
   color: var(--text-primary);
   margin-bottom: 6px;
 }
 
 .event-role {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent-purple);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
 .event-contributions-box h6 {
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 10px;
-  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  letter-spacing: var(--ls-label);
 }
 
 .evt-contrib-list {
   list-style: none;
-  font-size: 0.85rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-secondary);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  line-height: 1.5;
+  line-height: var(--lh-body);
   padding: 0;
 }
 
 .evt-contrib-list li::before {
   content: "•";
-  color: var(--accent-blue);
-  font-weight: bold;
+  color: var(--text-muted);
+  font-weight: var(--fw-medium);
   display: inline-block;
   width: 1em;
   margin-left: -0.5em;

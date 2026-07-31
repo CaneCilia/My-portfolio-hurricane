@@ -25,21 +25,17 @@
 .eco-eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.34em;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
-.eco-header .section-title {
-  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
-  line-height: 1.05;
-}
-
+/* .section-title / .section-subtitle carry the shared scale. */
 .eco-header .section-subtitle {
   max-width: 520px;
-  font-size: 1rem;
   color: var(--text-muted);
 }
 
@@ -59,9 +55,9 @@
   border: 1px solid var(--border-color);
   background: var(--bg-primary);
   color: var(--text-muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.005em;
   cursor: pointer;
   transition: color 0.4s var(--eco-ease), border-color 0.4s var(--eco-ease),
     background-color 0.4s var(--eco-ease), transform 0.4s var(--eco-ease);
@@ -335,7 +331,7 @@
   white-space: nowrap;
   /* counter-scales slightly so labels stay legible on narrow desktops */
   font-size: min(0.95rem, calc(0.78rem / var(--fit, 1)));
-  font-weight: 650;
+  font-weight: var(--fw-medium);
   letter-spacing: -0.005em;
   color: var(--text-muted);
   opacity: 0;
@@ -462,8 +458,9 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.8);
@@ -509,7 +506,8 @@
   align-items: center;
   gap: 12px;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -543,26 +541,27 @@
 }
 
 .eco-panel-title {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
   color: var(--text-primary);
 }
 
 .eco-panel-tag {
-  margin-top: 6px;
+  margin-top: 8px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--text-muted);
 }
 
 .eco-panel-desc {
   margin-top: 18px;
-  font-size: 0.98rem;
-  line-height: 1.65;
+  font-size: var(--fs-body);
+  line-height: var(--lh-lead);
   color: var(--text-secondary);
 }
 
@@ -573,9 +572,10 @@
 }
 
 .eco-panel-block h4 {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 14px;
@@ -592,8 +592,8 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
   color: var(--text-secondary);
 }
 
@@ -610,8 +610,8 @@
 }
 
 .eco-panel-projects li {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
   color: var(--text-primary);
   padding: 9px 0;
   border-bottom: 1px solid var(--border-color);
@@ -634,8 +634,10 @@
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--border-color);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
   color: var(--text-secondary);
   background: var(--bg-primary);
 }
@@ -656,8 +658,8 @@
   margin-top: 28px;
   padding-top: 22px;
   border-top: 1px solid var(--border-color);
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-size: var(--fs-meta);
+  line-height: var(--lh-body);
   color: var(--text-muted);
   font-style: italic;
 }
@@ -739,11 +741,11 @@
 
   .eco-filter {
     padding: 7px 14px;
-    font-size: 0.76rem;
+    font-size: var(--fs-meta);
   }
 
   .eco-node-label {
-    font-size: 0.68rem;
+    font-size: var(--fs-label-sm);
     margin-top: 6px;
   }
 
@@ -844,7 +846,7 @@
   }
 
   .eco-index li {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body);
   }
 }

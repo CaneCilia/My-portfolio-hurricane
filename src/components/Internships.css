@@ -67,7 +67,9 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
   color: var(--text-secondary);
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -76,16 +78,17 @@
 }
 
 .job-role {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-title);
   color: var(--text-primary);
-  margin-bottom: 4px;
-  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  letter-spacing: var(--ls-heading);
+  line-height: var(--lh-heading);
 }
 
 .job-company {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
   color: var(--text-secondary);
   margin-bottom: 16px;
 }
@@ -99,8 +102,9 @@
 
 .job-tech-badge {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
   color: var(--text-secondary);
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -125,12 +129,13 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+  margin-bottom: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-label);
 }
 
 .job-list {
@@ -140,12 +145,12 @@
 }
 
 .job-list li {
-  font-size: 0.9rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-secondary);
   margin-bottom: 8px;
   padding-left: 14px;
   position: relative;
-  line-height: 1.5;
+  line-height: var(--lh-body);
 }
 
 .job-list li::before {
@@ -172,9 +177,9 @@
 }
 
 .job-learnings-text {
-  font-size: 0.9rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: var(--lh-body);
 }
 
 @media (max-width: 768px) {
@@ -194,9 +199,6 @@
   .timeline-dot {
     width: 32px;
     height: 32px;
-  }
-  .job-role {
-    font-size: 1.2rem;
   }
 }
 

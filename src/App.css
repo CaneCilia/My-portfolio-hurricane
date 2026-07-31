@@ -59,9 +59,9 @@
 }
 
 .footer-logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
   color: var(--text-primary);
 }
 
@@ -71,18 +71,19 @@
 
 .footer-info p {
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
   max-width: 320px;
 }
 
 .footer-socials h4 {
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 18px;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-label);
 }
 
 .footer-social-icons {

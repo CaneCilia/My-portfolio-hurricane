@@ -17,16 +17,19 @@
 }
 
 .contact-info-panel h3, .contact-form-panel h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-title);
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
   color: var(--text-primary);
   margin-bottom: 16px;
 }
 
 .contact-panel-desc {
   color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-lead);
   margin-bottom: 30px;
 }
 
@@ -81,26 +84,28 @@
 }
 
 .info-label {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-label);
 }
 
 .info-value {
-  font-size: 0.95rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: var(--fw-medium);
 }
 
 .contact-social-channels h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 16px;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-label);
 }
 
 .social-row {
@@ -115,8 +120,8 @@
   gap: 8px;
   padding: 8px 18px;
   border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
   color: var(--text-secondary);
   transition: var(--transition-bounce);
 }
@@ -145,13 +150,14 @@
 }
 
 .success-banner h5 {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
   color: #10b981;
 }
 
 .success-banner p {
-  font-size: 0.85rem;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
   color: var(--text-secondary);
   margin-top: 2px;
 }
@@ -175,11 +181,12 @@
 }
 
 .form-group label {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-label);
 }
 
 .form-group input, .form-group textarea {
@@ -188,7 +195,7 @@
   padding: 12px 16px;
   border-radius: 10px;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: var(--fs-body-sm);
   transition: var(--transition-smooth);
 }
 
@@ -204,9 +211,10 @@
 }
 
 .error-message {
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
   color: #ef4444;
-  font-weight: 600;
+  font-weight: var(--fw-medium);
 }
 
 .submit-btn {

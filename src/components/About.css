@@ -50,11 +50,11 @@
 
 .slide-badge {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent-purple);
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
   margin-bottom: 20px;
   display: inline-block;
 }
@@ -67,10 +67,11 @@
 }
 
 .slide-header h3 {
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-title);
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
 }
 
 .slide-icon {
@@ -78,12 +79,12 @@
 }
 
 .slide-statement {
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.4;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-title);
+  line-height: var(--lh-heading);
   color: var(--text-secondary);
   margin-bottom: 24px;
-  letter-spacing: -0.03em;
+  letter-spacing: var(--ls-title);
   position: relative;
   border: none;
   padding: 0;
@@ -91,8 +92,9 @@
 }
 
 .slide-subtext {
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-body);
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -115,18 +117,21 @@
 }
 
 .metric-number {
-  font-size: 2.6rem;
-  font-weight: 800;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-title);
   color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 4px;
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
+  margin-bottom: 6px;
 }
 
 .metric-label {
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 
 .metric-box-divider {
@@ -137,23 +142,12 @@
 
 /* Responsiveness adjustments */
 @media (max-width: 768px) {
-  .slide-statement {
-    font-size: 1.75rem;
-  }
-  .slide-subtext {
-    font-size: 1.1rem;
-  }
-  .slide-header h3 {
-    font-size: 1.5rem;
-  }
+  /* Type sizes clamp themselves — only spacing changes here. */
   .about-slide-panel {
     padding: 20px 8px;
   }
   .about-metrics-footer {
     gap: 32px;
-  }
-  .metric-number {
-    font-size: 2rem;
   }
 }
 

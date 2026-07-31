@@ -4,24 +4,7 @@
   margin-top: 20px;
 }
 
-.sub-section-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  text-align: center;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.sub-section-title::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--accent-purple);
-  margin: 12px auto 0;
-  border-radius: 10px;
-}
+/* Sizing comes from .sub-section-title in index.css — no local overrides. */
 
 .soft-skills-grid {
   display: grid;
@@ -79,8 +62,9 @@
 }
 
 .soft-card h4 {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-heading);
   color: var(--text-primary);
 
   margin: 0 0 14px;
@@ -92,8 +76,8 @@
 }
 
 .soft-card p {
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
   color: var(--text-secondary);
 
   margin: 0;
@@ -121,7 +105,6 @@
   }
 
   .sub-section-title {
-    font-size: 1.6rem;
     margin-bottom: 30px;
   }
 
@@ -140,11 +123,4 @@
     height: 58px;
   }
 
-  .soft-card h4 {
-    font-size: 1.1rem;
-  }
-
-  .soft-card p {
-    font-size: 0.9rem;
-  }
 }

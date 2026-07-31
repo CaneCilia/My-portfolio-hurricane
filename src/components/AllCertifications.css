@@ -13,8 +13,11 @@
   gap: 8px;
   padding: 10px 20px;
   border-radius: 30px;
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   cursor: pointer;
   margin-bottom: 40px;
   border: 1px solid var(--border-color);
@@ -34,20 +37,22 @@
 }
 
 .all-certs-title {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-title);
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--ls-title);
+  line-height: var(--lh-title);
 }
 
 .all-certs-subtitle {
-  font-size: 1.05rem;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
   color: var(--text-secondary);
-  margin-top: 10px;
-  max-width: 600px;
+  margin-top: 16px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.5;
+  line-height: var(--lh-lead);
 }
 
 .all-certs-grid {
@@ -117,10 +122,11 @@
 }
 
 .all-cert-body h4 {
-  font-size: 1.05rem;
-  font-weight: 500;
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-heading);
   color: var(--text-primary);
-  line-height: 1.45;
+  line-height: var(--lh-heading);
   margin: 0;
   min-height: 44px;
   display: -webkit-box;
@@ -134,7 +140,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label-sm);
+  letter-spacing: 0.04em;
   color: var(--text-muted);
   margin-top: auto; /* Align dates/IDs vertically at the bottom of the body */
 }
@@ -147,7 +155,7 @@
 
 .all-cert-id {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-label-sm);
 }
 
 .all-cert-actions {
@@ -162,8 +170,11 @@
   width: 100%;
   padding: 10px;
   border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 500; /* Simple, not bold */
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
   transition: var(--transition-smooth);
@@ -179,9 +190,6 @@
 @media (max-width: 768px) {
   .all-certs-section {
     padding: 60px 16px;
-  }
-  .all-certs-title {
-    font-size: 1.8rem;
   }
   .all-certs-grid {
     grid-template-columns: 1fr;
