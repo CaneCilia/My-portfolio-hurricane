@@ -322,7 +322,7 @@
 }
 
 .platform-profile-card:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   box-shadow: 0 12px 35px rgba(9, 9, 11, 0.05);
 }
 

@@ -23,7 +23,7 @@
 }
 
 .certs-back-btn:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   color: var(--text-primary);
   transform: translateX(-4px);
 }
@@ -71,7 +71,7 @@
 }
 
 .all-cert-card:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   /* Removed scale/translate and shadow glow for a clean, simple look */
 }
 
@@ -194,7 +194,7 @@
 }
 
 .all-cert-verify-link:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   color: var(--text-primary);
   background: var(--bg-secondary);
 }

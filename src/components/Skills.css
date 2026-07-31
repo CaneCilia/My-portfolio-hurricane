@@ -538,7 +538,7 @@
 
 .eco-panel-close:hover {
   color: var(--text-primary);
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   transform: rotate(90deg);
 }
 

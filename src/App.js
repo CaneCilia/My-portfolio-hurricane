@@ -140,7 +140,7 @@ function App() {
               <div className="footer-social-icons">
                 <a href="https://github.com/CaneCilia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a>
                 <a href="https://www.linkedin.com/in/kanishkar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
-                <a href="mailto:kanishkar@example.com" aria-label="Email"><Mail size={18} /></a>
+                <a href="mailto:kanew.gdg@gmail.com" aria-label="Email"><Mail size={18} /></a>
               </div>
             </div>
           </div>

@@ -58,12 +58,12 @@ const retrieveContext = (query) => {
   const scoredDocs = PORTFOLIO_DB.map(doc => {
     let score = 0;
     const docText = `${doc.title} ${doc.content}`.toLowerCase();
-    
+
     words.forEach(word => {
       // Weight title and ID matches highly
       if (doc.id.includes(word)) score += 10;
       if (doc.title.toLowerCase().includes(word)) score += 5;
-      
+
       // Count frequency in content
       const regex = new RegExp(`\\b${word}\\b`, 'g');
       const matches = docText.match(regex);
@@ -90,7 +90,7 @@ const retrieveContext = (query) => {
   // Get top 2 documents for context
   const topDocs = relevantDocs.slice(0, 2);
   const contextText = topDocs.map(d => `[Section: ${d.title}]\n${d.content}`).join("\n\n");
-  
+
   // Decide target section for navigation if top match is strong
   const targetSection = relevantDocs[0].score >= 3 ? relevantDocs[0].id : null;
 
@@ -100,7 +100,7 @@ const retrieveContext = (query) => {
 // API Call to Gemini Live LLM
 const callGeminiAPI = async (query, context, apiKey) => {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`;
-  
+
   const systemInstruction = `You are Kanishkar R's AI Portfolio Copilot, integrated into his interactive terminal.
 You have access to the following relevant sections of Kanishkar's portfolio (retrieved via client-side RAG):
 
@@ -167,7 +167,7 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     if (isValidKey) {
       setHistory([
         { text: 'Initializing Agentic RAG Terminal Session...', type: 'system' },
-        { text: 'Live Gemini RAG Copilot connected. Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
+        { text: 'Ask me anything about Kanishkar\'s portfolio!', type: 'ai-welcome' }
       ]);
     } else {
       setHistory([
@@ -212,14 +212,14 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
   // Helper AI Engine for Local Mock Fallback
   const getLocalAIResponse = (query) => {
     const { context, targetSection } = retrieveContext(query);
-    
+
     if (context) {
       return {
         text: `[Local RAG Match]\n${context}\n\n💡 Set your Gemini API key in the .env file for a live conversational response.`,
         action: targetSection
       };
     }
-    
+
     const q = query.toLowerCase();
     let action = null;
     let text = "";
@@ -290,13 +290,13 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
     if (staticCommands[lowerCmd]) {
       const responseText = staticCommands[lowerCmd];
       const section = ['about', 'skills', 'projects', 'internships', 'education', 'publications', 'certifications', 'contact'].includes(lowerCmd) ? lowerCmd : null;
-      
+
       setHistory(prev => [
-        ...prev, 
+        ...prev,
         { text: responseText, type: 'output', isAI: false }
       ]);
       setIsThinking(false);
-      
+
       if (section && navigateToSection) {
         navigateToSection(section);
         setHistory(prev => [
@@ -314,7 +314,7 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
               ...prev,
               { text: geminiResponse, type: 'output', isAI: true }
             ]);
-            
+
             if (targetSection && navigateToSection) {
               navigateToSection(targetSection);
               setHistory(prev => [
@@ -340,7 +340,7 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
             ...prev,
             { text: `[Local RAG Mode]\n${aiResult.text}`, type: 'output', isAI: true }
           ]);
-          
+
           if (aiResult.action && navigateToSection) {
             navigateToSection(aiResult.action);
             setHistory(prev => [
@@ -390,12 +390,11 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
       {/* Header */}
       <div className="terminal-header" onClick={() => isMinimized && setIsMinimized(false)}>
         <div className="terminal-title">
-          <Bot size={16} className="title-icon AI-icon animate-pulse" />
-          <span>Interactive AI Copilot Terminal (RAG)</span>
+          <span>Terminal Assistant</span>
         </div>
-        
+
         <div className="header-controls">
-          <button 
+          <button
             className="control-btn theme-toggle-btn"
             onClick={(e) => {
               e.stopPropagation();
@@ -407,7 +406,7 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
             {isLightMode ? <Moon size={14} /> : <Sun size={14} />}
           </button>
 
-          <button 
+          <button
             className="control-btn"
             onClick={(e) => {
               e.stopPropagation();
@@ -417,8 +416,8 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
           >
             {isMinimized ? <Maximize2 size={14} /> : <Minimize2 size={14} />}
           </button>
-          
-          <button 
+
+          <button
             className="control-btn close-btn"
             onClick={(e) => {
               e.stopPropagation();
@@ -454,8 +453,8 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
           <div className="autocomplete-suggestions">
             <span className="suggestions-label"><Sparkles size={12} /> Suggestions:</span>
             {aiSuggestions.map((suggestion, idx) => (
-              <button 
-                key={idx} 
+              <button
+                key={idx}
                 className="suggest-badge"
                 onClick={() => setInput(suggestion)}
               >

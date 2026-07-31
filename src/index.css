@@ -192,7 +192,7 @@ section {
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
 }
 

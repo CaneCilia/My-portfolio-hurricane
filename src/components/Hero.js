@@ -99,7 +99,7 @@ const Hero = () => {
           <a href="https://www.linkedin.com/in/kanishkar42/" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="LinkedIn">
             <Linkedin size={16} /> <span>LinkedIn</span>
           </a>
-          <a href="mailto:kanishkar@example.com" className="social-pill" aria-label="Email">
+          <a href="mailto:kanew.gdg@gmail.com" className="social-pill" aria-label="Email">
             <Mail size={16} /> <span>Email</span>
           </a>
         </div>

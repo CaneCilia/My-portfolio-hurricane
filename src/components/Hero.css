@@ -132,7 +132,7 @@
 }
 
 .hero-btn-secondary:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   transform: translateY(-2px);
 }
 
@@ -156,7 +156,7 @@
 }
 
 .social-pill:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   color: var(--text-primary);
   transform: translateY(-2px);
 }

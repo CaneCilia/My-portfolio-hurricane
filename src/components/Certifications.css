@@ -35,7 +35,7 @@
 }
 
 .cert-card:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   /* Simple border change, no hover translations or shadow glows */
 }
 
@@ -157,7 +157,7 @@
 }
 
 .cert-verify-link:hover {
-  border-color: var(--text-primary);
+  border-color: var(--border-hover);
   color: var(--text-primary);
   background: var(--bg-secondary);
 }
