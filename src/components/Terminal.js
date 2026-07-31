@@ -212,7 +212,7 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
 
   /* Offline answer: return the retrieved portfolio section verbatim. */
   const getLocalAIResponse = (query) => {
-    const { context, targetSection, matched, top } = retrieveContext(query);
+    const { targetSection, matched, top } = retrieveContext(query);
 
     if (matched) {
       return { 
