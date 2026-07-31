@@ -153,11 +153,12 @@
   height: 100%;
 }
 .banner-appathon25 {
-  padding: 0 !important;
+  padding: 16px !important;
+  background: var(--bg-secondary) !important;
 }
 
 .img-appathon25 {
-  object-fit: cover !important;
+  object-fit: contain !important;
   width: 100%;
   height: 100%;
 }

@@ -39,7 +39,7 @@ const Contributions = () => {
       subtitle: "Member since 2024",
       stats: [
         { label: "Skill Badges", value: "12" },
-        { label: "Compute Engine VM", value: "4" },
+        { label: "Compute VM", value: "4" },
         { label: "Firebase Integrations", value: "3" }
       ],
       description: "Deployed full-stack services utilizing Firebase Auth, Realtime Databases, and Cloud Functions. Completed VM compute paths on Google Cloud Skills Boost.",

@@ -92,14 +92,12 @@ const callGeminiAPI = async (query, context, apiKey) => {
   const systemInstruction = `You are ${PROFILE.name}'s AI Portfolio Copilot, embedded in his interactive terminal.
 
 Answer ONLY from the portfolio data below. It is the complete and authoritative record.
-If something is not in the data, say plainly that it is not in the portfolio — never invent
-colleges, employers, projects, grades, dates or contact details.
+If something is not in the data, say plainly that it is not in the portfolio — never invent.
 
 ${context ? `MOST RELEVANT SECTIONS:\n${context}\n\n` : ''}FULL PORTFOLIO:
 ${FULL_CONTEXT}
 
-Style: brief and terminal-friendly. Plain text, short lines, simple "-" bullets.
-No markdown headers, no bold, no tables. Two or three sentences unless asked to list.`;
+Style: casual, friendly, conversational, and extremely brief (typically 1-2 short sentences, under 35 words). Answer like a relaxed peer developer. No large paragraphs, no bullet lists unless specifically asked, no bold text. Keep it concise, direct, and casual.`;
 
   const response = await fetch(url, {
     method: 'POST',
@@ -214,10 +212,13 @@ const Terminal = ({ isOpen, onClose, navigateToSection }) => {
 
   /* Offline answer: return the retrieved portfolio section verbatim. */
   const getLocalAIResponse = (query) => {
-    const { context, targetSection, matched } = retrieveContext(query);
+    const { context, targetSection, matched, top } = retrieveContext(query);
 
     if (matched) {
-      return { text: context, action: targetSection };
+      return { 
+        text: `Found something! Check out the "${top.title}" section. I've automatically scrolled the page there for you.`, 
+        action: targetSection 
+      };
     }
 
     const q = query.toLowerCase();
