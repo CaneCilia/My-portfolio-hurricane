@@ -167,6 +167,9 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  .edu-milestones-col {
+    display: none;
+  }
   .education-timeline-item {
     padding-left: 48px;
   }
@@ -317,4 +320,10 @@
   height: 1px;
   border-bottom: 1px dashed var(--border-color);
   opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+  .edu-card-image-side {
+    height: 180px;
+  }
 }

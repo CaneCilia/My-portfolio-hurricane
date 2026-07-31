@@ -21,9 +21,19 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
       setActiveSection('contact');
       return;
     }
+    if (currentPage === 'certifications') {
+      setActiveSection('');
+      return;
+    }
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      // Explicitly highlight Home when near the top of the page
+      if (window.scrollY < 50) {
+        setActiveSection('home');
+        return;
+      }
 
       // Section tracking for active highlights
       const scrollPosition = window.scrollY + 120;
@@ -35,6 +45,7 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
           const height = element.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(item.id);
+            break;
           }
         }
       }
@@ -42,7 +53,14 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Call handleScroll with a slight delay to allow React to mount DOM elements after page switches
+    const timer = setTimeout(handleScroll, 100);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
   }, [currentPage]);
 
   const handleNavClick = (e, id) => {
@@ -57,9 +75,17 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
     } else {
       window.location.hash = `#${id}`;
       setCurrentPage('portfolio');
+      setActiveSection(id);
       
       // Scroll to the element after state updates and DOM renders
       setTimeout(() => {
+        if (id === 'home') {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
         const element = document.getElementById(id);
         if (element) {
           const offset = 80; // height of fixed navbar
@@ -73,7 +99,7 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
             behavior: 'smooth'
           });
         }
-      }, 50);
+      }, 100);
     }
   };
 

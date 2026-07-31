@@ -54,6 +54,13 @@ function App() {
       window.location.hash = `#${id}`;
       setCurrentPage('portfolio');
       setTimeout(() => {
+        if (id === 'home') {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
         const element = document.getElementById(id);
         if (element) {
           const offset = 80;
@@ -66,7 +73,7 @@ function App() {
             behavior: 'smooth'
           });
         }
-      }, 50);
+      }, 100);
     }
   };
 
@@ -106,7 +113,7 @@ function App() {
             
             <Education />
             <Internships />
-            
+            <ResearchPublications />
             <Contributions />
             
             <div className="skills-group-wrapper">
@@ -119,8 +126,6 @@ function App() {
             <div className="journey-group-wrapper">
               <EventOrganizing />
             </div>
-
-            <ResearchPublications />
           </>
         )}
       </main>

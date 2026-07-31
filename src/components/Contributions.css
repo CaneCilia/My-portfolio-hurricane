@@ -831,10 +831,7 @@
   }
 
   .platform-desc {
-    min-height: auto;
-    height: auto;
-    -webkit-line-clamp: unset;
-    margin-bottom: 16px;
+    display: none;
   }
 
   .platform-stats-row.linkedin-stats,

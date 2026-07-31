@@ -128,7 +128,7 @@ const Education = () => {
                   <h4 className="edu-institution">{edu.institution}</h4>
 
                   <div className="edu-details-grid">
-                    <div className="edu-details-col">
+                    <div className="edu-details-col edu-milestones-col">
                       <h5 className="edu-details-title">
                         <Award size={14} /> Key Milestones
                       </h5>

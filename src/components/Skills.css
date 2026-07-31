@@ -499,6 +499,14 @@
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 26px;
+  position: sticky;
+  top: -40px;
+  background: var(--bg-primary);
+  z-index: 10;
+  padding-top: 40px;
+  margin-top: -40px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .eco-panel-meta {
@@ -772,6 +780,15 @@
 
   .eco-panel-inner {
     padding: 24px 20px 40px;
+  }
+
+  .eco-panel-top {
+    top: -24px;
+    padding-top: 24px;
+    margin-top: -24px;
+    background: var(--bg-primary);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
   }
 
   .eco-panel-block {

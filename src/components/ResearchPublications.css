@@ -192,6 +192,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .pub-highlights-section {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .pub-card {
     padding: 24px;
