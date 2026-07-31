@@ -9,7 +9,6 @@ import Internships from './components/Internships';
 import Skills from './components/Skills';
 import Contributions from './components/Contributions';
 import Projects from './components/Projects';
-import DevelopmentJourney from './components/DevelopmentJourney';
 import ResearchPublications from './components/ResearchPublications';
 import EventOrganizing from './components/EventOrganizing';
 import Certifications from './components/Certifications';
@@ -118,7 +117,6 @@ function App() {
             <Projects />
 
             <div className="journey-group-wrapper">
-              <DevelopmentJourney />
               <EventOrganizing />
             </div>
 
