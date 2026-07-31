@@ -52,7 +52,7 @@
 
 .all-certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
@@ -94,42 +94,18 @@
   overflow: hidden;
   padding: 8px;
   flex-shrink: 0;
-  box-shadow: none !important; /* Remove shadow */
+  box-shadow: none !important;
   transition: var(--transition-smooth);
 }
 
 .all-cert-card:hover .all-cert-logo-wrapper {
   border-color: var(--text-muted);
-  /* Removed hover scale */
-}
-
-.provider-logo-svg {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
 }
 
 .all-cert-provider-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
-}
-
-.provider-name {
-  font-size: 0.95rem;
-  font-weight: 500; /* Simple, not bold */
-  color: var(--text-primary);
-  line-height: 1.1;
-}
-
-.verify-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  font-weight: 500; /* Simple, not bold */
-  color: var(--accent-blue);
 }
 
 .all-cert-body {
@@ -142,7 +118,7 @@
 
 .all-cert-body h4 {
   font-size: 1.05rem;
-  font-weight: 500; /* Clean and simple, not bold */
+  font-weight: 500;
   color: var(--text-primary);
   line-height: 1.45;
   margin: 0;
@@ -160,6 +136,7 @@
   gap: 8px;
   font-size: 0.75rem;
   color: var(--text-muted);
+  margin-top: auto; /* Align dates/IDs vertically at the bottom of the body */
 }
 
 .all-cert-date {

@@ -78,7 +78,7 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
   };
 
   return (
-    <nav className={`navbar glass ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <a href="#home" className="navbar-logo" onClick={(e) => handleNavClick(e, 'home')}>
           <span>&gt;_</span>
@@ -93,7 +93,8 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
                 className={`nav-links ${activeSection === item.id ? 'active' : ''}`}
                 onClick={(e) => handleNavClick(e, item.id)}
               >
-                {item.label}
+                {/* data-label reserves the bold width so weight shifts don't reflow the bar */}
+                <span className="nav-label" data-label={item.label}>{item.label}</span>
               </a>
             </li>
           ))}
@@ -121,7 +122,7 @@ const Navbar = ({ onTerminalToggle, currentPage, setCurrentPage }) => {
       </div>
 
       {/* Mobile Drawer */}
-      <div className={`mobile-nav ${isOpen ? 'open' : ''} glass`}>
+      <div className={`mobile-nav ${isOpen ? 'open' : ''}`}>
         <ul className="mobile-menu">
           {navItems.map((item) => (
             <li key={item.id} className="mobile-item">

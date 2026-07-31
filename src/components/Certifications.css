@@ -1,5 +1,9 @@
 .certs-section {
   box-sizing: border-box;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px 90px;
 }
 
 .certs-subtitle-text {
@@ -16,7 +20,7 @@
 
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
@@ -123,6 +127,7 @@
   gap: 8px;
   font-size: 0.75rem;
   color: var(--text-muted);
+  margin-top: auto; /* Align dates/IDs vertically at the bottom of the body */
 }
 
 .cert-date {
@@ -166,23 +171,23 @@
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  width: 100%;
 }
 
 .certs-show-more-btn {
-  padding: 12px 30px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+  padding: 12px 28px;
   border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  background: var(--accent-blue);
-  color: white;
-  border: none;
   transition: var(--transition-smooth);
 }
 
 .certs-show-more-btn:hover {
-  background: #0284c7;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 

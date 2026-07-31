@@ -1,5 +1,9 @@
 .events-section {
   box-sizing: border-box;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 24px 90px;
 }
 
 .events-subtitle-text {

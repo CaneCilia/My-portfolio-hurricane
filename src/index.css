@@ -106,6 +106,25 @@ section {
   position: relative;
 }
 
+.sub-section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.sub-section-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--text-primary);
+  margin: 12px auto 0;
+  border-radius: 10px;
+}
+
 .section-subtitle {
   color: var(--text-secondary);
   font-size: 1.1rem;
