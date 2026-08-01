@@ -162,37 +162,6 @@
   line-height: var(--lh-body);
 }
 
-@media (max-width: 768px) {
-  .edu-details-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .edu-milestones-col {
-    display: none;
-  }
-  .education-timeline-item {
-    padding-left: 48px;
-  }
-  .timeline-line {
-    left: 14px;
-  }
-  .timeline-dot-wrapper {
-    left: 14px;
-  }
-  .timeline-dot {
-    width: 32px;
-    height: 32px;
-  }
-  .edu-meta-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .edu-meta-divider {
-    display: none;
-  }
-}
-
 /* Education Card Side-by-Side Image Styles */
 .education-timeline-content.has-image {
   display: flex;
@@ -273,7 +242,33 @@
   flex-direction: column;
 }
 
-/* Responsiveness for Side-by-Side Layout */
+.edu-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.edu-college-logo {
+  height: 38px;
+  max-width: 110px;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.edu-college-logo:hover {
+  transform: scale(1.05);
+}
+
+.edu-meta-divider {
+  flex-grow: 1;
+  height: 1px;
+  border-bottom: 1px dashed var(--border-color);
+  opacity: 0.6;
+}
+
+/* --- MEDIA QUERIES (Descending Order) --- */
+
 @media (max-width: 900px) {
   .education-timeline-content.has-image {
     flex-direction: column;
@@ -294,36 +289,99 @@
   }
 }
 
-/* Meta Left Row (Logo + Duration) */
-.edu-meta-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-/* College Logo Styling */
-.edu-college-logo {
-  height: 38px;
-  max-width: 110px;
-  object-fit: contain;
-  border-radius: 4px;
-  transition: transform 0.3s ease;
-}
-
-.edu-college-logo:hover {
-  transform: scale(1.05);
-}
-
-/* Dotted / Dashed Divider Line */
-.edu-meta-divider {
-  flex-grow: 1;
-  height: 1px;
-  border-bottom: 1px dashed var(--border-color);
-  opacity: 0.6;
+@media (max-width: 768px) {
+  .edu-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .edu-milestones-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .education-timeline-item {
+    padding-left: 36px;
+    margin-bottom: 30px;
+  }
+  .timeline-line {
+    left: 12px;
+  }
+  .timeline-dot-wrapper {
+    left: 12px;
+  }
+  .timeline-dot {
+    width: 28px;
+    height: 28px;
+  }
+  .timeline-dot svg {
+    width: 14px;
+    height: 14px;
+  }
+  .edu-meta-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+  }
+  .edu-meta-divider {
+    display: none;
+  }
+  .edu-card-details-side {
+    padding: 20px;
+  }
+  .education-timeline-content {
+    padding: 20px;
+  }
+  .education-timeline-content.has-image {
+    padding: 0;
+  }
 }
 
 @media (max-width: 480px) {
+  .timeline-line {
+    display: none;
+  }
+  .timeline-dot-wrapper {
+    display: none;
+  }
+  .education-timeline-item {
+    padding-left: 0;
+    margin-bottom: 24px;
+  }
+  .edu-meta-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+  .edu-duration {
+    padding: 3px 8px;
+    font-size: 0.68rem;
+  }
+  .edu-grade {
+    font-size: 0.68rem;
+  }
+  .edu-degree {
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  .edu-institution {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
   .edu-card-image-side {
     height: 180px;
+  }
+  .edu-card-details-side {
+    padding: 16px;
+  }
+  .education-timeline-content {
+    padding: 16px;
+  }
+  .education-timeline-content.has-image {
+    padding: 0;
   }
 }

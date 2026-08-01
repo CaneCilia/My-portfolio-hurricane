@@ -56,10 +56,6 @@ const Hero = () => {
     }
   };
 
-  const handleDownloadResume = () => {
-    alert("Preparing resume download... Click 'Print' or save as PDF.");
-    window.print();
-  };
 
   return (
     <section id="home" className="hero-section centered-hero">
@@ -87,9 +83,13 @@ const Hero = () => {
           <a href="#contact" onClick={handleScrollToContact} className="hero-btn-primary">
             Get In Touch <ArrowRight size={16} />
           </a>
-          <button onClick={handleDownloadResume} className="hero-btn-secondary">
+          <a 
+            href={process.env.PUBLIC_URL + "/Kanishkar_R Resume.pdf"} 
+            download="Kanishkar_R_Resume.pdf" 
+            className="hero-btn-secondary"
+          >
             Download Resume <Download size={16} />
-          </button>
+          </a>
         </div>
 
         <div className="hero-socials stagger-in-6">

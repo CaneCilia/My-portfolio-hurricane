@@ -113,7 +113,6 @@ function App() {
             
             <Education />
             <Internships />
-            <ResearchPublications />
             <Contributions />
             
             <div className="skills-group-wrapper">
@@ -126,6 +125,8 @@ function App() {
             <div className="journey-group-wrapper">
               <EventOrganizing />
             </div>
+            
+            <ResearchPublications />
           </>
         )}
       </main>

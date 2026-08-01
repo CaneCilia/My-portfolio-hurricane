@@ -109,13 +109,6 @@ const Education = () => {
                 <div className="edu-card-details-side">
                   <div className="edu-meta-row">
                     <div className="edu-meta-left">
-                      {edu.logo && (
-                        <img 
-                          src={process.env.PUBLIC_URL + edu.logo} 
-                          alt={`${edu.institution} Logo`} 
-                          className="edu-college-logo" 
-                        />
-                      )}
                       <span className="edu-duration">
                         <Calendar size={14} /> {edu.duration}
                       </span>
