@@ -106,7 +106,7 @@ const About = () => {
 
       <div className="about-slider-wrapper no-card">
         {/* Slides Track with pointer event listeners */}
-        <div 
+        <div
           className="about-slides-container"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
@@ -114,16 +114,16 @@ const About = () => {
           onPointerLeave={handlePointerUp}
           style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
         >
-          <div 
-            className="about-slides-track" 
-            style={{ 
+          <div
+            className="about-slides-track"
+            style={{
               transform: `translate3d(calc(-${activeSlide * 100}% + ${dragOffset}px), 0, 0)`,
               transition: isDragging ? 'none' : 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
             {SLIDES.map((slide, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`about-slide-panel ${idx === activeSlide ? 'active' : ''}`}
               >
                 <div className="slide-inner">
@@ -148,7 +148,7 @@ const About = () => {
       {/* Profile Metrics Summary */}
       <div className="about-metrics-footer">
         <div className="metric-box">
-          <span className="metric-number">10+</span>
+          <span className="metric-number">24+</span>
           <span className="metric-label">Projects Completed</span>
         </div>
         <div className="metric-box-divider" />
@@ -158,7 +158,7 @@ const About = () => {
         </div>
         <div className="metric-box-divider" />
         <div className="metric-box">
-          <span className="metric-number">5+</span>
+          <span className="metric-number">7+</span>
           <span className="metric-label">Certifications</span>
         </div>
       </div>
