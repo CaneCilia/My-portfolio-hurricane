@@ -105,7 +105,7 @@ const Certifications = ({ onViewAll }) => {
       {/* Show More Actions Button */}
       <div className="certs-show-more-box">
         <button
-          className="glow-btn glow-btn-primary certs-show-more-btn"
+          className="certs-show-more-btn"
           onClick={onViewAll}
         >
           Show More Certifications
