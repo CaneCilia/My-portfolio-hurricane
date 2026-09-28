@@ -60,10 +60,6 @@ const Hero = () => {
   return (
     <section id="home" className="hero-section centered-hero">
       <div className="hero-text-content centered">
-        <div className="greeting-badge stagger-in-1">
-          <span className="pulse-dot"></span>
-          Open to Opportunities
-        </div>
 
         <h1 className="hero-name stagger-in-2">
           {typedName}
